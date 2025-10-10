@@ -1,0 +1,40 @@
+.cancelInvitation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 9px 20px 48px;
+  width: 100%;
+
+  h2 {
+    padding: 23px 40px 0;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: center;
+    color: var(--icube-dark-theme-orange);
+  }
+
+  p {
+    margin-bottom: 32px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: #ffffff;
+    text-align: center;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 0 18px;
+
+  > :first-child {
+    margin-bottom: 24px;
+  }
+}

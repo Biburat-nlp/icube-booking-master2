@@ -1,0 +1,214 @@
+.bookParking {
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
+  row-gap: 16px;
+  font-family: 'SuisseIntl', sans-serif;
+
+  h3 {
+    max-width: 85%;
+    margin-bottom: 7px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+  }
+
+  &__dateSection {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+
+    & path {
+      fill: #FFFFFF;
+    }
+  }
+
+  &__date {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+  }
+
+  &__select {
+    padding: 8px 0;
+    padding-left: -24px;
+    border-bottom: 1px solid #ffffff;
+
+    :global {
+      .ant-select-selection-placeholder {
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+        color: #ffffff;
+      }
+
+      .ant-select-selector {
+        padding: 0 !important;
+      }
+
+      .ant-select-arrow {
+        right: 9px;
+        color: rgb(255, 255, 255);
+      }
+    }
+  }
+
+  &__vehicleItems {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__action {
+    margin-top: 16px;
+    margin-left: auto;
+
+    &_disabled {
+      opacity: 0.6;
+    }
+  }
+}
+
+:global(.body--dark) {
+  .bookParking {
+    h3 {
+      color: #ffffff;
+    }
+
+    &__icon {
+      & path {
+        fill: #FFFFFF;
+      }
+    }
+
+    &__date {
+      color: #ffffff;
+    }
+
+    &__select {
+      border-bottom: 1px solid #ffffff;
+
+      :global {
+        .ant-select-selection-placeholder {
+          color: #ffffff;
+        }
+
+        .ant-select-arrow {
+          color: rgb(255, 255, 255);
+        }
+      }
+    }
+  }
+}
+
+:global(.body--light) {
+  .bookParking {
+    h3 {
+      color: var(--icube-dark-grey);
+    }
+
+    &__icon {
+      & path {
+        fill: var(--icube-dark-grey);
+      }
+    }
+
+    &__date {
+      color: var(--icube-dark-grey);
+    }
+
+    &__select {
+      border-bottom: 1px solid var(--icube-dark-grey);
+
+      :global {
+        .ant-select-selector {
+          background-color: transparent;
+        }
+
+        .ant-select-selection-placeholder {
+          color: var(--icube-dark-grey);
+        }
+
+        .ant-select-arrow {
+          color: var(--icube-dark-grey);
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .bookParking {
+    h3 {
+      color: #ffffff;
+    }
+
+    &__icon {
+      & path {
+        fill: #FFFFFF;
+      }
+    }
+
+    &__date {
+      color: #ffffff;
+    }
+
+    &__select {
+      border-bottom: 1px solid #ffffff;
+
+      :global {
+        .ant-select-selection-placeholder {
+          color: #ffffff;
+        }
+
+        .ant-select-arrow {
+          color: rgb(255, 255, 255);
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .bookParking {
+    h3 {
+      color: var(--icube-dark-grey);
+    }
+
+    &__icon {
+      & path {
+        fill: var(--icube-dark-grey);
+      }
+    }
+
+    &__date {
+      color: var(--icube-dark-grey);
+    }
+
+    &__select {
+      border-bottom: 1px solid var(--icube-dark-grey);
+
+      :global {
+        .ant-select-selector {
+          background-color: transparent;
+        }
+
+        .ant-select-selection-placeholder {
+          color: var(--icube-dark-grey);
+        }
+
+        .ant-select-arrow {
+          color: var(--icube-dark-grey);
+        }
+      }
+    }
+  }
+}

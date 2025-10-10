@@ -1,0 +1,108 @@
+.container {
+  font-family: 'SuisseIntl', sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9.5px 16px 9.5px 11px;
+}
+
+.addButton {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+
+  svg path {
+    fill: white;
+  }
+}
+
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 22px 16px;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.emptyCards {
+  padding: 8px 16px;
+}
+
+.emptyMessage {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+:global(.body--dark) {
+  .title {
+    color: #ffffff;
+  }
+
+  .emptyCards {
+    background: var(--icube-dark-bg-even-rows);
+  }
+
+  .emptyMessage {
+    color: #FFFFFF0D;
+  }
+}
+:global(.body--light) {
+  .title {
+    color: var(--icube-dark-grey);
+  }
+
+  .icon path {
+    fill: var(--icube-dark-grey);
+  }
+
+  .emptyCards {
+    background-color: #e3dede;
+  }
+
+  .emptyMessage {
+    color: var(--icube-dark-grey);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: #ffffff;
+  }
+
+  .emptyCards {
+    background: var(--icube-dark-bg-even-rows);
+  }
+
+  .emptyMessage {
+    color: #FFFFFF0D;
+  }
+}
+@media (prefers-color-scheme: light) {
+  .title {
+    color: var(--icube-dark-grey);
+  }
+
+  .icon path {
+    fill: var(--icube-dark-grey);
+  }
+
+  .emptyCards {
+    background-color: #e3dede;
+  }
+
+  .emptyMessage {
+    color: var(--icube-dark-grey);
+  }
+}

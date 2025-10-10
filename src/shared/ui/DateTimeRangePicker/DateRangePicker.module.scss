@@ -1,0 +1,123 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+.inputContainer {
+  position: relative;
+  width: calc(50% - 5px);
+  box-sizing: border-box;
+
+  &__disabled {
+    opacity: 0.5;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 0 8px !important;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+.inputText {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: right;
+  color: var(--icube-dark-grey);
+}
+
+.picker {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  width: max-content;
+  margin-top: 8px;
+  background: var(--icube-dark-grey);
+  color: #ffffff;
+  padding: 16px;
+  font-family: 'SuisseIntl', sans-serif !important;
+
+  &.rightPicker {
+    left: unset;
+    right: 0;
+  }
+}
+
+ion-datetime::part(time-button) {
+  margin: 0 auto;
+}
+
+:global(.body--dark) {
+  .title {
+    color: #ffffff;
+  }
+
+  .inputContainer {
+    border-bottom: 1px solid rgb(255, 255, 255);
+    background-color: var(--icube-dark-grey);
+    color: rgb(255, 255, 255);
+  }
+
+  .inputText {
+    color: var(--icube-light-grey);
+  }
+}
+
+:global(.body--light) {
+  .title {
+    color: var(--icube-dark-grey);
+  }
+
+  .inputContainer {
+    border-bottom: 1px solid var(--icube-dark-grey);
+    background-color: #EAEAEA;
+    color: var(--icube-dark-grey);
+  }
+
+  .inputText {
+    color: var(--icube-dark-grey);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: #ffffff;
+  }
+
+  .inputContainer {
+    border-bottom: 1px solid rgb(255, 255, 255);
+    background-color: var(--icube-dark-grey);
+    color: rgb(255, 255, 255);
+  }
+
+  .inputText {
+    color: var(--icube-light-grey);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .title {
+    color: var(--icube-dark-grey);
+  }
+
+  .inputContainer {
+    border-bottom: 1px solid var(--icube-dark-grey);
+    background-color: #EAEAEA;
+    color: var(--icube-dark-grey);
+  }
+
+  .inputText {
+    color: var(--icube-dark-grey);
+  }
+}

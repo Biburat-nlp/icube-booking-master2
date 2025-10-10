@@ -1,0 +1,273 @@
+.bookMeetingRooms {
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
+  row-gap: 16px;
+
+  h3 {
+    max-width: 85%;
+    margin-bottom: 7px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+  }
+
+  &__dateWrap {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__date {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  &__timePicker {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 14px;
+  }
+
+  &__textInput {
+    font-size: 14px;
+  }
+
+  &__themeMeeting {
+    position: relative;
+  }
+
+  &__errorText {
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    font-size: 12px;
+    color: var(--icube-dark-theme-red);
+  }
+
+  &__select {
+    padding: 8px 0;
+    padding-left: -24px;
+
+    :global {
+      .ant-select-selection-placeholder {
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+      }
+    }
+  }
+
+  &__sendButton {
+    margin-top: 24px;
+    margin-left: auto;
+
+    &_disabled {
+      opacity: 0.6;
+    }
+  }
+}
+
+:global(.body--dark) {
+  .bookMeetingRooms {
+    h3 {
+      color: #ffffff;
+    }
+
+    &__icon {
+      & path {
+        fill: #FFFFFF;
+      }
+    }
+
+    &__date {
+      color: #ffffff;
+    }
+
+    &__timeStart {
+      border-bottom: 1px solid #ffffff;
+      color: #FFFFFF;
+    }
+
+    &__timeEnd {
+      border-bottom: 1px solid #ffffff;
+      color: #FFFFFF;
+    }
+
+    &__textInput {
+      --border-color: #ffffff;
+      color: #FFFFFF;
+    }
+
+    &__select {
+      border-bottom: 1px solid #ffffff;
+
+      :global {
+        .ant-select-selection-placeholder {
+          color: #ffffff;
+        }
+
+        .ant-select-arrow {
+          color: rgb(255, 255, 255);
+        }
+      }
+    }
+  }
+}
+
+:global(.body--light) {
+  .bookMeetingRooms {
+    h3 {
+      color: var(--icube-dark-grey);
+    }
+
+    &__icon {
+      & path {
+        fill: var(--icube-dark-grey);
+      }
+    }
+
+    &__date {
+      color: var(--icube-dark-grey);
+    }
+
+    &__timeStart {
+      border-bottom: 1px solid var(--icube-dark-grey);;
+      color: var(--icube-dark-grey);;
+    }
+
+    &__timeEnd {
+      border-bottom: 1px solid var(--icube-dark-grey);;
+      color: var(--icube-dark-grey);;
+    }
+
+    &__textInput {
+      --border-color: var(--icube-dark-grey);;
+      color: var(--icube-dark-grey);;
+    }
+
+    &__select {
+      border-bottom: 1px solid var(--icube-dark-grey);
+
+      :global {
+        .ant-select-selector {
+          background-color: transparent;
+        }
+
+        .ant-select-selection-placeholder {
+          color: var(--icube-dark-grey);
+        }
+
+        .ant-select-arrow {
+          color: var(--icube-dark-grey);
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .bookMeetingRooms {
+    h3 {
+      color: #ffffff;
+    }
+
+    &__icon {
+      & path {
+        fill: #FFFFFF;
+      }
+    }
+
+    &__date {
+      color: #ffffff;
+    }
+
+    &__timeStart {
+      border-bottom: 1px solid #ffffff;
+      color: #FFFFFF;
+    }
+
+    &__timeEnd {
+      border-bottom: 1px solid #ffffff;
+      color: #FFFFFF;
+    }
+
+    &__textInput {
+      --border-color: #ffffff;
+      color: #FFFFFF;
+    }
+
+    &__select {
+      border-bottom: 1px solid #ffffff;
+
+      :global {
+        .ant-select-selection-placeholder {
+          color: #ffffff;
+        }
+
+        .ant-select-arrow {
+          color: rgb(255, 255, 255);
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .bookMeetingRooms {
+    h3 {
+      color: var(--icube-dark-grey);
+    }
+
+    &__icon {
+      & path {
+        fill: var(--icube-dark-grey);
+      }
+    }
+
+    &__date {
+      color: var(--icube-dark-grey);
+    }
+
+    &__timeStart {
+      border-bottom: 1px solid var(--icube-dark-grey);;
+      color: var(--icube-dark-grey);;
+    }
+
+    &__timeEnd {
+      border-bottom: 1px solid var(--icube-dark-grey);;
+      color: var(--icube-dark-grey);;
+    }
+
+    &__textInput {
+      --border-color: var(--icube-dark-grey);;
+      color: var(--icube-dark-grey);;
+    }
+
+    &__select {
+      border-bottom: 1px solid var(--icube-dark-grey);
+
+      :global {
+        .ant-select-selector {
+          background-color: transparent;
+        }
+
+        .ant-select-selection-placeholder {
+          color: var(--icube-dark-grey);
+        }
+
+        .ant-select-arrow {
+          color: var(--icube-dark-grey);
+        }
+      }
+    }
+  }
+}

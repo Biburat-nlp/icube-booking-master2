@@ -1,0 +1,158 @@
+.listItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: 'SuisseIntl', sans-serif;
+
+  &__date {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 23px;
+    margin-bottom: 8px;
+  }
+
+  &__user {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 65%;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &__amount {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.updateIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.trashIcon {
+  width: 24px;
+  height: 24px;
+
+  path {
+    fill: var(--icube-light-theme-orange);
+  }
+}
+
+:global(.body--dark) {
+  .listItem {
+    background: var(--icube-dark-grey);
+    box-shadow: 1px 1px 4px 0px #FFFFFF14;
+
+    &__date {
+      color: var(--icube-dark-theme-light-blue)
+    }
+
+    &__user {
+      color: var(--icube-light-grey);
+    }
+
+    &__amount {
+      color: #ffffff;
+    }
+  }
+
+  .updateIcon {
+    path {
+      fill: #ffffff;
+    }
+  }
+}
+
+:global(.body--light) {
+  .listItem {
+    background: var(--icube-very-light-grey);
+    box-shadow: 1px 1px 4px 0px #FFFFFF14;
+
+    &__date {
+      color: var(--icube-dark-theme-light-blue)
+    }
+
+    &__user {
+      color: var(--icube-dark-grey);
+    }
+
+    &__amount {
+      color: var(--icube-dark-grey);
+    }
+  }
+
+  .updateIcon {
+    path {
+      fill: var(--icube-dark-theme-light-blue);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .listItem {
+    background: var(--icube-dark-grey);
+    box-shadow: 1px 1px 4px 0px #FFFFFF14;
+
+    &__date {
+      color: var(--icube-dark-theme-light-blue)
+    }
+
+    &__user {
+      color: var(--icube-light-grey);
+    }
+
+    &__amount {
+      color: #ffffff;
+    }
+  }
+
+  .updateIcon {
+    path {
+      fill: #ffffff;
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .listItem {
+    background: var(--icube-very-light-grey);
+    box-shadow: 1px 1px 4px 0px #FFFFFF14;
+
+    &__date {
+      color: var(--icube-dark-theme-light-blue)
+    }
+
+    &__user {
+      color: var(--icube-dark-grey);
+    }
+
+    &__amount {
+      color: var(--icube-dark-grey);
+    }
+  }
+
+  .updateIcon {
+    path {
+      fill: var(--icube-dark-theme-light-blue);
+    }
+  }
+}

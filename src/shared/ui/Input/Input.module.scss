@@ -1,0 +1,47 @@
+.input {
+  box-sizing: border-box;
+  --border-width: 0;
+  --highlight-height: 0px;
+  font-size: 16px;
+  font-family: 'SuisseIntl', sans-serif;
+
+  :global(.input-bottom) {
+    position: absolute;
+  }
+}
+
+:global(.body--dark) {
+  .input {
+    border-bottom: 1px solid rgb(255, 255, 255);
+    background-color: var(--icube-dark-grey);
+    color: rgb(255, 255, 255);
+    --border-color: #ffffff;
+  }
+}
+
+:global(.body--light) {
+  .input {
+    border-bottom: 1px solid var(--icube-dark-grey);
+    background-color: transparent;
+    color: var(--icube-dark-grey);
+    --border-color: var(--icube-dark-grey);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .input {
+    border-bottom: 1px solid rgb(255, 255, 255);
+    background-color: var(--icube-dark-grey);
+    color: rgb(255, 255, 255);
+    --border-color: #ffffff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .input {
+    border-bottom: 1px solid var(--icube-dark-grey);
+    background-color: transparent;
+    color: var(--icube-dark-grey);
+    --border-color: var(--icube-dark-grey);
+  }
+}

@@ -1,0 +1,42 @@
+:root {
+  // iCube common colors
+  --icube-blue: #0037BF;
+  --icube-dark-grey: #36373F;
+  --icube-light-grey: #C6C6C6;
+  --icube-very-light-grey: #FAFAFA;
+  --icube-dark-bg: #25262C;
+  --icube-viewer-bg: #374043;
+  --icube-darken-light-grey: #999999;
+
+  // Dark Theme Colors
+  --icube-dark-theme-blue: var(--icube-blue);
+  --icube-dark-theme-light-blue: #44A6FF;
+  --icube-dark-theme-red: #FF3636;
+  --icube-dark-theme-green: #7DD836;
+  --icube-dark-theme-orange: #FFA901;
+
+  // Light Theme Colors
+  --icube-light-theme-blue: #214397;
+  --icube-light-theme-light-blue: #0086FF;
+  --icube-light-theme-red: #DE0000;
+  --icube-light-theme-green: #60AC3C;
+  --icube-light-theme-orange: #FF7A00;
+
+  --ion-popover-background: var(--icube-light-grey);
+  --ion-popover-color: #000;
+  --ion-popover-arrow-color: var(--icube-light-grey);
+
+  // Other Varibales
+  --body-min-width: 320px;
+  --space-base: 16px;
+  --space-xs: calc(var(--space-base) * .25);
+  --space-sm: calc(var(--space-base) * .5);
+  --space-md: calc(var(--space-base));
+  --space-lg: calc(var(--space-base) * 1.5);
+  --space-xl: calc(var(--space-base) * 3);
+
+  --bp-xs: 599px;
+
+  // iCube Table
+  --icube-dark-bg-even-rows: #303137;
+}

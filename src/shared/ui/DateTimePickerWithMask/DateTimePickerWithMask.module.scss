@@ -1,0 +1,91 @@
+.maskButton {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  --background: transparent;
+  --background-activated: transparent;
+  --background-focused: transparent;
+  --background-hover: transparent;
+
+  & > div:first-child {
+    width: 100%;
+    margin-right: 24px;
+  }
+
+  &::part(native) {
+    padding: 0;
+  }
+}
+
+.dateInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 45%;
+  gap: 8px;
+
+  svg {
+    width: 24px;
+  }
+
+  span {
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+}
+
+.hiddenDatetimeInput {
+  position: absolute !important;
+  top: 10px !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  z-index: -1 !important;
+  pointer-events: none;
+}
+
+:global(.body--dark) {
+  .maskButton {
+    background-color: var(--icube-dark-bg);
+  }
+
+  .dateInfo {
+    svg {
+      path {
+        fill: #ffffff;
+      }
+    }
+
+    span {
+      color: rgb(255, 255, 255);
+    }
+  }
+}
+
+:global(.body--light) {
+  .maskButton {
+    background-color: transparent;
+  }
+
+  .dateInfo {
+    svg {
+      path {
+        fill: var(--icube-dark-theme-light-blue);
+      }
+    }
+
+    span {
+      color: var(--icube-dark-theme-light-blue);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+@media (prefers-color-scheme: light) {
+}

@@ -1,0 +1,49 @@
+stages:
+  - build
+  - deploy
+  - report
+
+build:
+  stage: build
+  image: node:22-alpine
+  before_script:
+    - npm ci
+  script:
+    - cat $env > .env
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - dev
+
+deploy s3_dev:
+  stage: deploy
+  image:
+    name: python:3-alpine
+  before_script:
+    - cat $s3cfg > ~/.s3cfg
+    - pip install s3cmd
+  script:
+    - s3cmd sync -r --delete-removed dist/ s3://$S3_BUCKET
+  dependencies:
+    - build
+  only:
+    - dev
+
+report:
+  stage: report
+  image: node:22-alpine
+  before_script:
+    - npm ci
+  script:
+    - ./node_modules/jscpd/bin/jscpd -r html --pattern "src/**/*.{js,jsx,ts,tsx}"
+  when: manual
+  manual_confirmation: 'Сформировать отчет о дублях кода?'    
+  artifacts:
+    paths:
+      - report/html/    
+  only:
+    - dev
+    - stage
+    - main    

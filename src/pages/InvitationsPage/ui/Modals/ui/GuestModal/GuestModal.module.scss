@@ -1,0 +1,117 @@
+.guestForm {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 16px 0;
+  gap: 16px;
+}
+
+.select {
+  box-sizing: border-box;
+  --border-width: 0;
+  --highlight-height: 0px;
+  font-size: 16px;
+  height: 56px !important;
+  padding: 8px 0;
+  padding-left: -24px;
+
+  :global {
+    .ant-select-selection-placeholder {
+      inset-inline-start: 0;
+      inset-inline-end: 0;
+    }
+
+    .ant-select-selector {
+      padding: 0 !important;
+    }
+
+    .ant-select-arrow {
+      right: 9px;
+    }
+
+    .ant-select-selection-item {
+      font-size: 16px;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 25px 0;
+  margin-top: auto;
+  gap: 16px;
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+:global(.body--dark) {
+  .guestModal {
+    > div {
+      background: var(--icube-dark-bg) !important;
+    }
+  }
+
+  .select {
+    background-color: var(--icube-dark-bg);
+    color: rgb(255, 255, 255);
+    --border-color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+
+    :global {
+      .ant-select-selection-placeholder {
+        color: #ffffff;
+      }
+
+      .ant-select-selector {
+        background-color: var(--icube-dark-bg) !important;
+      }
+
+      .ant-select-arrow {
+        color: rgb(255, 255, 255);
+      }
+
+      .ant-select-selection-item {
+        background-color: var(--icube-dark-bg) !important;
+      }
+    }
+  }
+
+  .input {
+    background-color: var(--icube-dark-bg);
+  }
+}
+:global(.body--light) {
+  .guestModal {
+    > div {
+      background: #ffffff !important;
+    }
+  }
+
+  .select {
+    border-bottom: 1px solid var(--icube-dark-grey);
+
+    :global {
+      .ant-select-selector {
+        background-color: transparent;
+      }
+
+      .ant-select-selection-placeholder {
+        color: var(--icube-dark-grey);
+      }
+
+      .ant-select-arrow {
+        color: var(--icube-dark-grey);
+      }
+    }
+  }
+
+
+  .input {
+    background-color: transparent;
+  }
+}
+@media (prefers-color-scheme: dark) {}
+@media (prefers-color-scheme: light) {}

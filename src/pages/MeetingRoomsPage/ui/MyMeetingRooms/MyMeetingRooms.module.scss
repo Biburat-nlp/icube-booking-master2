@@ -1,0 +1,215 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 24px;
+  font-family: 'SuisseIntl', sans-serif;
+}
+
+.title {
+  margin-bottom: 23px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+}
+
+.freeMeetingRooms {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 24px;
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 16px;
+    gap: 8px;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 400;
+    min-width: 25%;
+    text-align: left;
+  }
+
+  &__busy {
+    text-align: right;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--icube-dark-theme-red);
+  }
+
+  &__free {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--icube-dark-theme-green);
+  }
+
+  &__emptyMessage {
+    padding-bottom: 32px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.myMeetingRooms {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 0 24px;
+  border-top: 1px solid var(--icube-light-grey);
+
+
+  &__title {
+    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  &__items {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    gap: 8px;
+  }
+
+  &__emptyMessage {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+:global(.body--dark) {
+  .myMeetingRoomsModal {
+    > div {
+      background: var(--icube-dark-bg) !important;
+    }
+  }
+
+  .title {
+    color: #ffffff;
+  }
+
+  .freeMeetingRooms {
+    &__title {
+      color: #ffffff;
+    }
+
+    &__emptyMessage {
+      color: #ffffff;
+    }
+  }
+
+  .myMeetingRooms {
+    &__title {
+      color: #ffffff;
+    }
+
+    &__emptyMessage {
+      color: #ffffff;
+    }
+  }
+}
+
+:global(.body--light) {
+  .myMeetingRoomsModal {
+    > div {
+      background: #ffffff !important;
+    }
+  }
+
+  .title {
+    color: var(--icube-dark-grey);
+  }
+
+  .freeMeetingRooms {
+    &__title {
+      color: var(--icube-dark-grey)
+    }
+
+    &__emptyMessage {
+      color: var(--icube-dark-grey)
+    }
+  }
+
+  .myMeetingRooms {
+    &__title {
+      color: var(--icube-dark-grey)
+    }
+
+    &__emptyMessage {
+      color: var(--icube-dark-grey)
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .myMeetingRoomsModal {
+    > div {
+      background: var(--icube-dark-bg) !important;
+    }
+  }
+
+  .title {
+    color: #ffffff;
+  }
+
+  .freeMeetingRooms {
+    &__title {
+      color: #ffffff;
+    }
+
+    &__emptyMessage {
+      color: #ffffff;
+    }
+  }
+
+  .myMeetingRooms {
+    &__title {
+      color: #ffffff;
+    }
+
+    &__emptyMessage {
+      color: #ffffff;
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .myMeetingRoomsModal {
+    > div {
+      background: #ffffff !important;
+    }
+  }
+
+  .title {
+    color: var(--icube-dark-grey);
+  }
+
+  .freeMeetingRooms {
+    &__title {
+      color: var(--icube-dark-grey)
+    }
+
+    &__emptyMessage {
+      color: var(--icube-dark-grey)
+    }
+  }
+
+  .myMeetingRooms {
+    &__title {
+      color: var(--icube-dark-grey)
+    }
+
+    &__emptyMessage {
+      color: var(--icube-dark-grey)
+    }
+  }
+}

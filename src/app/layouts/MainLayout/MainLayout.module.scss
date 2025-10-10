@@ -1,0 +1,31 @@
+.mainPage {
+  height: 100%;
+}
+
+:global(.body--dark) {
+  .mainPage {
+    background-color: var(--icube-dark-bg);
+    --background: var(--icube-dark-bg);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .mainPage {
+    background-color: var(--icube-dark-bg);
+    --background: var(--icube-dark-bg);
+  }
+}
+
+:global(.body--light) {
+  .mainPage {
+    background-color: #EAEAEA;
+    --background: #EAEAEA;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .mainPage {
+    background-color: #EAEAEA;
+    --background: #EAEAEA;
+  }
+}

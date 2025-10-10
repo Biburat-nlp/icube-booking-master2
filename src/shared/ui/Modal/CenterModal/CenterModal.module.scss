@@ -1,0 +1,91 @@
+.modal {
+  --width: 100%;
+  --max-width: 360px;
+  --border-radius: 8px;
+  --height: fit-content;
+  --max-height: fit-content;
+  align-items: center;
+  background-color: transparent;
+  --backdrop-opacity: 0.5 !important;
+}
+
+.contentWrapper {
+  position: relative;
+  display: flex;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0 0 8px;
+  height: 100%;
+}
+
+.btn {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  z-index: 1;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+:global(.body--dark) {
+  .modal > div {
+    background: var(--icube-dark-grey);
+    box-shadow: 2px 2px 4px 0px #FFFFFF33;
+  }
+
+  .contentWrapper {
+    background: var(--icube-dark-bg);
+  }
+
+  .icon path {
+    fill: #ffffff;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal > div {
+    background: var(--icube-dark-grey);
+    box-shadow: 2px 2px 4px 0px #FFFFFF33;
+  }
+
+  .contentWrapper {
+    background: var(--icube-dark-bg);
+  }
+
+  .icon path {
+    fill: #ffffff;
+  }
+}
+
+:global(.body--light) {
+  .modal > div {
+    background: #ffffff;
+    box-shadow: 0px 2px 6px 0px #00000040;
+  }
+
+  .contentWrapper {
+    background: #ffffff;
+  }
+
+  .icon path {
+    fill: var(--icube-dark-grey);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .modal > div {
+    background: #ffffff;
+    box-shadow: 0px 2px 6px 0px #00000040;
+  }
+
+  .contentWrapper {
+    background: #ffffff;
+  }
+
+  .icon path {
+    fill: var(--icube-dark-grey);
+  }
+}

@@ -1,0 +1,365 @@
+.invitation {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 16px;
+  gap: 16px;
+
+  h2 {
+    max-width: 240px;
+    margin-bottom: 23px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  &__select {
+    box-sizing: border-box;
+    --border-width: 0;
+    --highlight-height: 0px;
+    font-size: 16px;
+    height: 56px !important;
+    padding: 8px 0;
+
+    :global {
+      .ant-select-selector {
+        padding: 0 !important;
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+      }
+
+      .ant-select-arrow {
+        right: 9px;
+      }
+
+      .ant-select-selection-item {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__inputContainer {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+    &_label {
+      position: absolute;
+      top: -7px;
+      left: 3px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0 !important;
+  }
+}
+
+.guests {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  &__button {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+    margin-left: auto;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 25px 0;
+  margin-top: auto;
+  gap: 16px;
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+:global(.body--dark) {
+  .invitationModal {
+    > div {
+      background: var(--icube-dark-bg) !important;
+    }
+  }
+
+  .invitation {
+    h2 {
+      color: #ffffff;
+    }
+
+    &__select {
+      background-color: var(--icube-dark-bg);
+      color: rgb(255, 255, 255);
+      --border-color: #ffffff;
+      border-bottom: 1px solid #ffffff;
+
+      :global {
+        .ant-select-selector {
+          background-color: var(--icube-dark-bg) !important;
+          color: #ffffff;
+        }
+
+        .ant-select-arrow {
+          color: rgb(255, 255, 255);
+        }
+
+        .ant-select-selection-item {
+          font-size: 16px;
+        }
+
+        .ant-select-selection-placeholder {
+          color: #ffffff;
+        }
+      }
+    }
+
+    &__inputContainer {
+      background-color: var(--icube-dark-bg);
+      color: rgb(255, 255, 255);
+
+      &_label {
+        color: rgb(255, 255, 255);
+      }
+    }
+
+    &__input {
+      background-color: var(--icube-dark-bg);
+    }
+  }
+
+  .guests {
+    &__container {
+      color: #FFFFFF;
+    }
+
+    &__button {
+      svg {
+        path {
+          fill: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+:global(.body--light) {
+  .invitationModal {
+    > div {
+      background: #ffffff !important;
+    }
+  }
+
+  .invitation {
+    h2 {
+      color: var(--icube-dark-grey);
+    }
+
+    &__select {
+      background-color: #ffffff;
+      color: var(--icube-dark-grey);
+      --border-color: var(--icube-dark-grey);
+      border-bottom: 1px solid var(--icube-dark-grey);
+
+      :global {
+        .ant-select-selector {
+          background-color: #ffffff !important;
+          color: var(--icube-dark-grey);
+        }
+
+        .ant-select-selection-placeholder {
+          color: var(--icube-dark-grey);
+        }
+
+        .ant-select-arrow {
+          color: var(--icube-dark-grey);
+        }
+      }
+    }
+
+    &__inputContainer {
+      background-color: transparent;
+
+      &_label {
+        color: var(--icube-dark-grey);
+      }
+    }
+
+    &__input {
+      background-color: transparent;
+    }
+  }
+
+  .guests {
+    &__container {
+      color: var(--icube-dark-grey);
+    }
+
+    &__button {
+      svg {
+        path {
+          fill: var(--icube-dark-grey);
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .invitationModal {
+    > div {
+      background: var(--icube-dark-bg) !important;
+    }
+  }
+
+  .invitation {
+    h2 {
+      color: #ffffff;
+    }
+
+    &__select {
+      background-color: var(--icube-dark-bg);
+      color: rgb(255, 255, 255);
+      --border-color: #ffffff;
+      border-bottom: 1px solid #ffffff;
+
+      :global {
+        .ant-select-selector {
+          background-color: var(--icube-dark-bg) !important;
+          color: #ffffff;
+        }
+
+        .ant-select-arrow {
+          color: rgb(255, 255, 255);
+        }
+
+        .ant-select-selection-item {
+          font-size: 16px;
+        }
+
+        .ant-select-selection-placeholder {
+          color: #ffffff;
+        }
+      }
+    }
+
+    &__inputContainer {
+      background-color: var(--icube-dark-bg);
+      color: rgb(255, 255, 255);
+
+      &_label {
+        color: rgb(255, 255, 255);
+      }
+    }
+
+    &__input {
+      background-color: var(--icube-dark-bg);
+    }
+  }
+
+  .guests {
+    &__container {
+      color: #FFFFFF;
+    }
+
+    &__button {
+      svg {
+        path {
+          fill: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .invitationModal {
+    > div {
+      background: #ffffff !important;
+    }
+  }
+
+  .invitation {
+    h2 {
+      color: var(--icube-dark-grey);
+    }
+
+      &__select {
+        border-bottom: 1px solid var(--icube-dark-grey);
+
+        :global {
+          .ant-select-selector {
+            background-color: transparent;
+          }
+
+          .ant-select-selection-placeholder {
+            color: var(--icube-dark-grey);
+          }
+
+          .ant-select-arrow {
+            color: var(--icube-dark-grey);
+          }
+        }
+      }
+
+    &__inputContainer {
+      background-color: transparent;
+
+      &_label {
+        color: var(--icube-dark-grey);
+      }
+    }
+
+    &__input {
+      background-color: transparent;
+    }
+  }
+
+  .guests {
+    &__container {
+      color: var(--icube-dark-grey);
+    }
+
+    &__button {
+      svg {
+        path {
+          fill: var(--icube-dark-grey);
+        }
+      }
+    }
+  }
+}
+
+
+
+

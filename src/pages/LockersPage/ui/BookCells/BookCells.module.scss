@@ -1,0 +1,116 @@
+.bookCells {
+  font-family: 'SuisseIntl', sans-serif;
+  --backdrop-opacity: 0.5 !important;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px 16px;
+  }
+
+  &__title {
+    padding: 0 11px 20px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  &__items {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    padding: 16px 0;
+    height: 100%;
+    gap: 9px;
+    border-top: 1px solid var(--icube-light-grey);
+  }
+
+  &__item {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 3 - 6px);
+    padding: 40px 16px 23px;
+    aspect-ratio: 1;
+    background-color: var(--icube-dark-theme-green);
+
+    &_blue {
+      background-color: var(--icube-dark-theme-light-blue);
+    }
+
+    &_red {
+      background-color: var(--icube-dark-theme-red);
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+
+    path {
+      fill: var(--icube-dark-grey);
+    }
+  }
+
+  &__number {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    color: var(--icube-dark-grey);
+    font-family: "SuisseIntl", sans-serif;
+  }
+
+  &__emptyMessage {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+:global(.body--dark) {
+  .bookCells {
+    &__title {
+      color: #ffffff;
+    }
+
+    &__emptyMessage {
+      color: #ffffff;
+    }
+  }
+}
+
+:global(.body--light) {
+  .bookCells {
+    &__title {
+      color: var(--icube-dark-grey);
+    }
+    &__emptyMessage {
+      color: var(--icube-dark-grey)
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .bookCells {
+    &__title {
+      color: #ffffff;
+    }
+        &__emptyMessage {
+      color: #ffffff;
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .bookCells {
+    &__title {
+      color: var(--icube-dark-grey);
+    }
+        &__emptyMessage {
+      color: var(--icube-dark-grey)
+    }
+  }
+}

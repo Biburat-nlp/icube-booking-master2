@@ -1,0 +1,76 @@
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Android.gitlab-ci.yml
+
+# Read more about this script on this blog post https://about.gitlab.com/2018/10/24/setting-up-gitlab-ci-for-android-projects/, by Jason Lenny
+# If you are interested in using Android with FastLane for publishing take a look at the Android-Fastlane template.
+
+image: images/gitlab-ci-android-33
+
+stages:
+- build
+
+before_script:
+- export GRADLE_USER_HOME=$(pwd)/.gradle
+- chmod +x ./gradlew
+
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+  - .gradle/
+
+# Make developTest
+test:
+  interruptible: true
+  stage: build
+  tags: [ main ]
+  script:
+    - ./gradlew assembleDevelopTestRelease
+    - cp app/build/outputs/apk/developTest/release/app-developTest-release.apk app-developTest-release.apk
+  artifacts:
+    paths:
+      - "*.apk"
+
+# Make production
+production:
+  interruptible: true
+  stage: build
+  tags: [ main ]
+  script:
+    - ./gradlew assembleProductionRelease bundleProductionRelease
+    - cp app/build/outputs/apk/production/release/app-production-release.apk app-production-release.apk
+    - cp app/build/outputs/bundle/productionRelease/app-production-release.aab app-production-release.aab
+  artifacts:
+    paths:
+      - "app-production-release.*"
+
+develop:
+  interruptible: true
+  stage: build
+  tags: [ main ]
+  script:
+    - ./gradlew assembleDevelopRelease
+    - cp app/build/outputs/apk/develop/release/app-develop-release.apk app-develop-release.apk
+  artifacts:
+    paths:
+      - "*.apk"
+
+# Make production
+preprod:
+  interruptible: true
+  stage: build
+  tags: [ main ]
+  script:
+    - ./gradlew assemblePreprodRelease
+    - cp app/build/outputs/apk/preprod/release/app-preprod-release.apk app-preprod-release.apk
+  artifacts:
+    paths:
+      - "*.apk"
+
+# Run all tests, if any fails, interrupt the pipeline(fail it)
+#debugTests:
+#  interruptible: true
+#  stage: test
+#  script:
+#    - ./gradlew -Pci --console=plain :app:testDebug

@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 32px;
+}
+
+.emptyBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 16px;
+  gap: 16px;
+
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+}

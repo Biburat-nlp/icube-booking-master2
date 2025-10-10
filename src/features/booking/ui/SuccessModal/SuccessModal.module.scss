@@ -1,0 +1,63 @@
+.successBook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 32px 8px 32px;
+
+  h2 {
+    max-width: 180px;
+    text-align: center;
+    padding-top: 24px;
+    margin-bottom: 32px;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 100%;
+    color: var(--icube-dark-theme-green);
+  }
+
+  p {
+    margin-bottom: 32px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    text-align: center;
+  }
+
+  .button {
+    margin: 0 auto;
+  }
+}
+
+:global(.body--dark) {
+  .successBook {
+    p {
+      color: #ffffff;
+    }
+  }
+}
+
+:global(.body--light) {
+  .successBook {
+    p {
+      color: var(--icube-dark-grey);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .successBook {
+    p {
+      color: #ffffff;
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .successBook {
+    p {
+      color: var(--icube-dark-grey);
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "icube",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

@@ -1,0 +1,41 @@
+@forward "@/app/styles/variables.global";
+@forward "@/app/styles/normalize.scss";
+@forward "@/app/styles/fonts/font.scss";
+
+body {
+  min-width: var(--body-min-width);
+  margin: 0;
+  padding: 0;
+  font-family: 'SuisseIntl', sans-serif;
+  font-weight: 400;
+}
+
+body.body--dark {
+  color-scheme: dark;
+}
+
+body.body--light {
+  color-scheme: light;
+}
+
+input, select, textarea {
+  font-family: 'SuisseIntl', sans-serif;
+}
+
+ion-popover {
+  ion-backdrop {
+    opacity: 0.5 !important;
+  }
+}
+
+.ion_toast_danger_mode {
+  --background: var(--icube-dark-theme-red);
+
+  ::part(message) {
+    --color: #ffffff;
+  }
+}
+
+ion-modal {
+  --backdrop-opacity: 0.5 !important;
+}

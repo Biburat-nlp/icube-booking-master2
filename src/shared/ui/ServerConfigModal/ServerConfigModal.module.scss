@@ -1,0 +1,123 @@
+.modalContent {
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ion-color-light);
+}
+
+.headerIcon {
+  font-size: 24px;
+  color: var(--ion-color-primary);
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ion-color-dark);
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputItem {
+  --background: var(--ion-color-light);
+  --border-radius: 8px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+}
+
+.urlInput {
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+}
+
+.customIndicator {
+  padding: 8px 12px;
+  background: var(--ion-color-primary-tint);
+  border-radius: 6px;
+  border-left: 3px solid var(--ion-color-primary);
+  
+  ion-text {
+    color: white !important;
+  }
+}
+
+.errorContainer {
+  padding: 8px 12px;
+  background: var(--ion-color-danger-tint);
+  border-radius: 6px;
+  border-left: 3px solid var(--ion-color-danger);
+}
+
+.helpText {
+  padding: 8px 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ion-color-light);
+  margin-top: 24px;
+}
+
+.resetButton {
+  --border-color: var(--ion-color-warning);
+  --color: var(--ion-color-warning);
+}
+
+.actionButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.saveButton {
+  --background: var(--ion-color-primary);
+  --color: white;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 200px;
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    padding: 16px;
+  }
+  
+  .footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .actionButtons {
+    justify-content: stretch;
+  }
+  
+  .actionButtons ion-button {
+    flex: 1;
+  }
+}

@@ -1,0 +1,134 @@
+.languageSwitcher {
+  --color: var(--ion-color-medium);
+  --background: transparent;
+  --border-radius: 8px;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.languageSwitcher:hover {
+  --color: var(--ion-color-primary);
+  --background: var(--ion-color-light);
+}
+
+.icon {
+  font-size: 20px;
+  transition: color 0.2s ease;
+}
+
+.buttonText {
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// Варианты
+.icon {
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.text {
+  --padding-start: 12px;
+  --padding-end: 12px;
+}
+
+.full {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  justify-content: flex-start;
+}
+
+// Размеры
+.small {
+  --padding-start: 6px;
+  --padding-end: 6px;
+  --padding-top: 6px;
+  --padding-bottom: 6px;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.small .icon {
+  font-size: 16px;
+}
+
+.small .buttonText {
+  font-size: 12px;
+}
+
+.large {
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.large .icon {
+  font-size: 24px;
+}
+
+.large .buttonText {
+  font-size: 16px;
+}
+
+// Popover стили
+.popover {
+  --width: 200px;
+}
+
+.languageList {
+  padding: 8px 0;
+}
+
+.languageItem {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --background: transparent;
+  --color: var(--ion-color-dark);
+  transition: background-color 0.2s ease;
+}
+
+.languageItem:hover {
+  --background: var(--ion-color-light);
+}
+
+.languageLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flag {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.checkIcon {
+  color: var(--ion-color-primary);
+  font-size: 18px;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .languageSwitcher {
+    --padding-start: 6px;
+    --padding-end: 6px;
+  }
+  
+  .popover {
+    --width: 180px;
+  }
+}

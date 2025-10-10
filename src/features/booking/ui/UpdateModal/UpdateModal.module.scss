@@ -1,0 +1,81 @@
+.updateModal {
+  ::part(backdrop) {
+    --backdrop-opacity: 0.5
+  }
+
+  &__container {
+    padding: 0 16px 43px;
+
+    h2 {
+      max-width: 240px;
+      margin-bottom: 23px;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+      text-align: left;
+      vertical-align: top;
+    }
+  }
+
+  &__button {
+    margin-top: 24px;
+    margin-left: auto;
+  }
+}
+
+:global(.body--dark) {
+  .updateModal {
+    > div {
+      background: var(--icube-dark-bg) !important;
+    }
+
+    &__container {
+      h2 {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+:global(.body--light) {
+  .updateModal {
+    > div {
+      background: var(--icube-very-light-grey) !important;
+    }
+
+    &__container {
+      h2 {
+        color: var(--icube-dark-grey);
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .updateModal {
+    > div {
+      background: var(--icube-dark-bg) !important;
+    }
+
+    &__container {
+      h2 {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .updateModal {
+    > div {
+      background: var(--icube-very-light-grey) !important;
+    }
+
+    &__container {
+      h2 {
+        color: var(--icube-dark-grey);
+      }
+    }
+  }
+}

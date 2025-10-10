@@ -1,0 +1,239 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: 'SuisseIntl', sans-serif;
+  height: 100%;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 18.5px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+
+  path {
+    fill: var(--icube-dark-theme-light-blue);
+  }
+}
+
+.title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+
+  h3 {
+    margin: 0 0 4px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--icube-dark-theme-light-blue) !important;
+  }
+
+  p {
+    margin: 0;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--icube-dark-theme-light-blue) !important;
+  }
+}
+
+.timeSection {
+  margin-bottom: 16px;
+}
+
+.startDate {
+  margin-bottom: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+}
+
+.endDate {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--icube-dark-theme-green);
+
+  &__expired {
+    color: var(--icube-dark-theme-red);
+  }
+}
+
+.durationSection {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.durationLabel {
+  margin-bottom: 4px;
+  font-weight: 300;
+  font-size: 11px;
+}
+
+.durationTime {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+}
+
+.meetingSubject {
+  display: -webkit-box;
+  max-width: 141px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--icube-light-grey);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.updateIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.trashIcon {
+  width: 24px;
+  height: 24px;
+}
+
+:global(.body--dark) {
+  .card {
+    background: var(--icube-dark-grey);
+    box-shadow: 1px 1px 8px 0px #FFFFFF14;
+  }
+
+  .startDate {
+    color: #ffffff;
+  }
+
+  .durationLabel {
+    color: #ffffff;
+  }
+
+  .durationTime {
+    color: #ffffff;
+  }
+
+  .updateIcon {
+    path {
+      fill: #ffffff;
+    }
+  }
+
+  .trashIcon {
+    path {
+      fill: var(--icube-dark-theme-orange);
+    }
+  }
+}
+
+:global(.body--light) {
+  .card {
+    background: var(--icube-very-light-grey);
+    box-shadow: 0px 2px 6px 0px #00000040;
+  }
+
+  .startDate {
+    color: var(--icube-dark-grey);
+  }
+
+  .durationLabel {
+    color: var(--icube-dark-grey);
+  }
+
+  .durationTime {
+    color: var(--icube-dark-grey);
+  }
+
+  .updateIcon {
+    path {
+      fill: var(--icube-light-theme-light-blue);
+    }
+  }
+
+  .trashIcon {
+    path {
+      fill: var(--icube-light-theme-orange);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: var(--icube-dark-grey);
+    box-shadow: 1px 1px 8px 0px #FFFFFF14;
+  }
+
+  .startDate {
+    color: #ffffff;
+  }
+  .durationLabel {
+    color: #ffffff;
+  }
+
+  .durationTime {
+    color: #ffffff;
+  }
+
+  .updateIcon {
+    path {
+      fill: #ffffff;
+    }
+  }
+
+  .trashIcon {
+    path {
+      fill: var(--icube-dark-theme-orange);
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .card {
+    background: var(--icube-very-light-grey);
+    box-shadow: 0px 2px 6px 0px #00000040;
+  }
+
+  .startDate {
+    color: var(--icube-dark-grey);
+  }
+
+  .durationLabel {
+    color: var(--icube-dark-grey);
+  }
+
+  .durationTime {
+    color: var(--icube-dark-grey);
+  }
+
+  .updateIcon {
+    path {
+      fill: var(--icube-light-theme-light-blue);
+    }
+  }
+
+  .trashIcon {
+    path {
+      fill: var(--icube-light-theme-orange);
+    }
+  }
+}

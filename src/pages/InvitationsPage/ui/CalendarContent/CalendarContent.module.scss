@@ -1,0 +1,51 @@
+.calendar {
+  max-width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+:global(.body--dark) {
+  .calendar {
+    --background: var(--icube-dark-grey);
+    color: var(--icube-light-grey);
+  }
+
+  :global(ion-datetime::part(today)) {
+    background: #ffffff;
+    color: var(--icube-dark-theme-light-blue);
+  }
+}
+
+:global(.body--light) {
+  .calendar {
+    --background: var(--icube-very-light-grey);
+    color: var(--icube-dark-grey);
+  }
+
+  :global(ion-datetime::part(today)) {
+    background: var(--icube-dark-theme-light-blue);
+    color: #ffffff;
+  }
+}
+
+@media (prefers-color-scheme: dark) {  .calendar {
+    --background: var(--icube-dark-grey);
+    color: var(--icube-light-grey);
+  }
+
+  :global(ion-datetime::part(today)) {
+    background: #ffffff;
+    color: var(--icube-dark-theme-light-blue);
+  }
+}
+
+@media (prefers-color-scheme: light) {  .calendar {
+    --background: var(--icube-very-light-grey);
+    color: var(--icube-dark-grey);
+  }
+
+  :global(ion-datetime::part(today)) {
+    background: var(--icube-dark-theme-light-blue);
+    color: #ffffff;
+  }
+}

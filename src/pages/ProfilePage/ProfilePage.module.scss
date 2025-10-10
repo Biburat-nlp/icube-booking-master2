@@ -1,0 +1,229 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px 16px;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 12px;
+    gap: 3px;
+    border-radius: 8px;
+
+    &_label {
+      font-size: 12px;
+    }
+  }
+}
+
+.updateInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 12px;
+    gap: 3px;
+    border-radius: 8px;
+
+    &_textInput {
+      padding: 0;
+      min-height: 25px !important;
+      --border-color: transparent;
+      border: none !important;
+    }
+
+    &_label {
+      font-size: 12px;
+    }
+  }
+}
+
+.organization {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 12px;
+    gap: 3px;
+    border-radius: 8px;
+
+    &_textInput {
+      padding: 0;
+      min-height: 25px !important;
+      --border-color: transparent;
+      border: none !important;
+    }
+
+    &_label {
+      font-size: 12px;
+    }
+  }
+}
+
+.serverConfigSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  padding: 0;
+  border-radius: 8px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.button {
+  margin: 48px 0 24px auto;
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+:global(.body--dark) {
+  .mainInfo {
+    &__item {
+      background-color: var(--icube-dark-grey);
+      color: var(--icube-light-grey);
+    }
+  }
+
+  .updateInfo {
+    &__item {
+      background-color: var(--icube-dark-grey);
+      color: var(--icube-light-grey);
+    }
+  }
+
+  .organization {
+    &__item {
+      background-color: var(--icube-dark-grey);
+      color: var(--icube-light-grey);
+    }
+  }
+
+  .serverConfigSection {
+    background-color: var(--icube-dark-grey);
+    color: var(--icube-light-grey);
+    border-color: var(--icube-light-grey);
+  }
+}
+
+:global(.body--light) {
+  .mainInfo {
+    &__item {
+      background-color: var(--icube-light-grey);
+      color: var(--icube-dark-grey);
+    }
+  }
+
+  .updateInfo {
+    &__item {
+      background-color: var(--icube-light-grey);
+      color: var(--icube-dark-grey);
+    }
+  }
+
+  .organization {
+    &__item {
+      background-color: var(--icube-light-grey);
+      color: var(--icube-dark-grey);
+    }
+  }
+
+  .serverConfigSection {
+    background-color: var(--icube-light-grey);
+    color: var(--icube-dark-grey);
+    border-color: var(--icube-light-grey);
+  }
+
+  .disabled {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .mainInfo {
+    &__item {
+      background-color: var(--icube-dark-grey);
+      color: var(--icube-light-grey);
+    }
+  }
+
+  .updateInfo {
+    &__item {
+      background-color: var(--icube-dark-grey);
+      color: var(--icube-light-grey);
+    }
+  }
+
+  .organization {
+    &__item {
+      background-color: var(--icube-dark-grey);
+      color: var(--icube-light-grey);
+    }
+  }
+
+  .serverConfigSection {
+    background-color: var(--icube-dark-grey);
+    color: var(--icube-light-grey);
+    border-color: var(--icube-light-grey);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .mainInfo {
+    &__item {
+      background-color: var(--icube-light-grey);
+      color: var(--icube-dark-grey);
+    }
+  }
+
+  .updateInfo {
+    &__item {
+      background-color: var(--icube-light-grey);
+      color: var(--icube-dark-grey);
+    }
+  }
+
+  .organization {
+    &__item {
+      background-color: var(--icube-light-grey);
+      color: var(--icube-dark-grey);
+    }
+  }
+
+  .serverConfigSection {
+    background-color: var(--icube-light-grey);
+    color: var(--icube-dark-grey);
+    border-color: var(--icube-light-grey);
+  }
+
+  .disabled {
+    opacity: 0.3;
+  }
+}

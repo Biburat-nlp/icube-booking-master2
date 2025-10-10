@@ -1,0 +1,132 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px 15px;
+  box-sizing: border-box;
+  transition: 0.3s ease-out;
+}
+
+ion-toolbar:last-of-type {
+  --border-width: 0 !important;
+}
+
+ion-menu-button {
+  width: 16px;
+  min-height: 1px;
+  height: 20px;
+
+  &::part(native) {
+    padding: 0;
+    min-height: 1px;
+    height: 16px;
+  }
+}
+
+.logoWrap {
+  display: flex;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 87px;
+  height: 16px;
+  margin: 0 12px 0 20px;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+
+:global(.body--dark) {
+  .header {
+    background-color: var(--icube-dark-grey);
+    box-shadow: 1px 1px 8px 0px #FFFFFF14;
+  }
+
+  .menuIcon path {
+    fill: #ffffff;
+  }
+
+  .logo {
+    color: white;
+  }
+
+  .label {
+    color: var(--icube-dark-theme-light-blue);
+  }
+}
+
+  :global(.body--light) {
+    .header {
+      background-color: #ffffff;
+    }
+
+    .menuIcon path {
+      fill: var(--icube-dark-grey);
+    }
+
+    .logo {
+      color: var(--icube-blue);
+    }
+
+    .label {
+      color: var(--icube-dark-grey);
+    }
+  }
+
+
+@media (prefers-color-scheme: dark) {
+  .header {
+      background-color: var(--icube-dark-grey);
+      box-shadow: 1px 1px 8px 0px #FFFFFF14;
+  }
+
+  .menuIcon path {
+    fill: #ffffff;
+  }
+
+  .logo {
+    color: white;
+  }
+
+  .label {
+    color: var(--icube-dark-theme-light-blue);
+  }
+
+}
+
+@media (prefers-color-scheme: light) {
+  .header {
+    background-color: #ffffff;
+  }
+
+  .menuIcon path {
+    fill: var(--icube-dark-grey);
+  }
+
+  .logo {
+    color: var(--icube-blue);
+  }
+
+  .label {
+    color: var(--icube-dark-grey);
+  }
+}
+
+.hideShadow {
+  box-shadow: none !important;
+}
+
+.invitationBtn {
+  position: absolute;
+  top: calc(52px / 2 - 12px);
+  right: 9.5px;
+}
+
+.invitationIcon {
+  width: 24px;
+  height: 24px;
+}
