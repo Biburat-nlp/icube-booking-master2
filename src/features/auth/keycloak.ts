@@ -30,18 +30,11 @@ export const initKeycloak = async (): Promise<boolean> => {
 
     const redirectUri = Capacitor.isNativePlatform() 
         ? (import.meta.env.VITE_MOBILE_SCHEME || "icube://token")
-        : (import.meta.env.VITE_MOBILE_SCHEME || "icube://token");
+        : (import.meta.env.VITE_BASE_URL || window.location.origin);
     
     console.log('Platform:', Capacitor.isNativePlatform() ? 'Native' : 'Web');
     console.log('Redirect URI:', redirectUri);
     console.log('Current URL:', window.location.href);
-
-    // Проверяем, есть ли сохраненный callback URL от предыдущей сессии
-    const savedCallbackUrl = sessionStorage.getItem('keycloak_callback_url');
-    if (savedCallbackUrl) {
-        console.log('Found saved callback URL:', savedCallbackUrl);
-        sessionStorage.removeItem('keycloak_callback_url');
-    }
 
     const [token, refreshToken, idToken, skew, accessExp] = await Promise.all([
         storage.get(KEYS.token),
@@ -95,12 +88,9 @@ export const initKeycloak = async (): Promise<boolean> => {
         options = {
             ...options,
             adapter: 'cordova-native',
-            // Добавляем обработку callback URL для iOS
-            onLoad: 'check-sso',
-            // Отключаем проверку iframe для мобильных платформ
+            // Дополнительные настройки для iOS
             checkLoginIframe: false,
-            // Отключаем проверку iframe для обновления токенов
-            checkLoginIframeInterval: 0
+            onLoad: 'check-sso'
         }
     }
 
@@ -110,30 +100,6 @@ export const initKeycloak = async (): Promise<boolean> => {
         console.log('Keycloak initialized:', authenticated);
         console.log('Token after init:', !!keycloak.token);
         console.log('Token value:', keycloak.token ? keycloak.token.substring(0, 20) + '...' : 'null');
-
-        // Если есть сохраненный callback URL, пытаемся обработать его
-        if (savedCallbackUrl && !authenticated) {
-            console.log('Attempting to process saved callback URL...');
-            try {
-                const callbackUrl = new URL(savedCallbackUrl);
-                if (callbackUrl.searchParams.has('code') && callbackUrl.searchParams.has('state')) {
-                    // Для мобильных платформ используем специальную обработку callback
-                    if (Capacitor.isNativePlatform()) {
-                        // Извлекаем параметры из callback URL
-                        const code = callbackUrl.searchParams.get('code');
-                        const state = callbackUrl.searchParams.get('state');
-                        
-                        if (code && state) {
-                            console.log('Processing OAuth callback with code and state');
-                            // Keycloak должен автоматически обработать эти параметры
-                            // при следующей инициализации с правильными настройками
-                        }
-                    }
-                }
-            } catch (callbackError) {
-                console.error('Error processing saved callback URL:', callbackError);
-            }
-        }
 
         if (authenticated && haveTokens && accessExp) {
             const msLeft = Number(accessExp) - Date.now();
