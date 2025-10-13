@@ -5,12 +5,9 @@ const config: CapacitorConfig = {
     appName: "iCUBE Space",
     webDir: "dist",
     server: {
-      // Используем стандартную схему для работы History API
-      // Deep link icube:// остается в AndroidManifest для OAuth
       androidScheme: 'https',
       hostname: 'localhost',
-      // Для iOS используем кастомную схему для OAuth
-      iosScheme: 'icube',
+
     },
     plugins: {
         StatusBar: {
@@ -18,7 +15,7 @@ const config: CapacitorConfig = {
           style: "DARK",
         },
         CapacitorHttp: {
-          enabled: true  // Включаем для обхода CORS в native
+          enabled: true
         }
       },
 };
