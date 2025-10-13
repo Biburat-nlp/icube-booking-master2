@@ -45,6 +45,14 @@ export const initKeycloak = async (): Promise<boolean> => {
     ]);
 
     const haveTokens = !!token && !!refreshToken;
+    
+    console.log('Keycloak init - tokens from storage:', {
+        hasToken: !!token,
+        hasRefresh: !!refreshToken,
+        hasId: !!idToken,
+        tokenPreview: token ? token.substring(0, 20) + '...' : 'null',
+        accessExp: accessExp ? new Date(Number(accessExp)).toISOString() : 'null'
+    });
 
     let options: KeycloakInitOptions;
 
@@ -154,8 +162,14 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body.toString(),
     });
-    if (!resp.ok) throw new Error(`Token exchange failed: ${resp.status}`);
+    if (!resp.ok) {
+        const errorText = await resp.text();
+        console.error('Token exchange failed:', resp.status, errorText);
+        throw new Error(`Token exchange failed: ${resp.status}`);
+    }
     const data = await resp.json();
+    
+    console.log('Token exchange successful, saving tokens...');
 
     await storage.create();
     await Promise.all([
@@ -166,6 +180,16 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
         data.expires_in && storage.set(KEYS.exp, Date.now() + data.expires_in * 1000),
         data.refresh_expires_in && storage.set(KEYS.refreshExp, Date.now() + data.refresh_expires_in * 1000),
     ]);
+    
+    console.log('Tokens saved to storage');
+    
+    // Обновляем токены в keycloak экземпляре
+    keycloak.token = data.access_token;
+    keycloak.refreshToken = data.refresh_token;
+    keycloak.idToken = data.id_token;
+    keycloak.authenticated = true;
+    
+    console.log('Keycloak instance updated with new tokens');
 
     // Очищаем временные PKCE-значения
     try {
