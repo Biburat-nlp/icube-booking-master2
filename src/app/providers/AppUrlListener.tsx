@@ -13,16 +13,31 @@ const AppUrlListener: React.FC<any> = () => {
           // Проверяем, что это callback от Keycloak
           if (url.searchParams.has('code') && url.searchParams.has('state')) {
             console.log('Keycloak callback detected');
-            // Keycloak автоматически обработает callback при следующей инициализации
             await InAppBrowser.close();
-            // Перезагружаем приложение для обработки callback
-            window.location.reload();
+            
+            // Сохраняем callback URL для обработки Keycloak
+            sessionStorage.setItem('keycloak_callback_url', event.url);
+            
+            // Для мобильных платформ используем более безопасный способ перезагрузки
+            if (window.location.href.includes('localhost')) {
+              // Если мы на localhost, просто перезагружаем
+              window.location.reload();
+            } else {
+              // Иначе перенаправляем на главную страницу
+              window.location.href = window.location.origin;
+            }
           } else {
             // Обрабатываем hash для обычной навигации
             const hash = url.hash.substring(1);
             if (hash) {
               await InAppBrowser.close();
-              window.location.replace('/#' + hash);
+              // Используем более безопасный способ навигации
+              try {
+                window.location.replace('/#' + hash);
+              } catch (error) {
+                console.error('Navigation error:', error);
+                window.location.href = '/#' + hash;
+              }
             }
           }
         } catch (error) {
