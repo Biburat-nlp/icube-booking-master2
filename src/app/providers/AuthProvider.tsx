@@ -3,7 +3,8 @@ import { useQueryClient } from "react-query";
 import { useHistory } from "react-router-dom";
 
 import { initKeycloak, keycloak, KEYS } from "@/features/auth/keycloak";
-import { generateCodeVerifier, generateCodeChallenge } from "@/features/auth/pkce";
+import { generateCodeVerifier, generateCodeChallenge, PKCE_KEYS } from "@/features/auth/pkce";
+import { Preferences } from '@capacitor/preferences';
 
 import { usersApi } from "@/entities/users/api/api.ts";
 
@@ -72,8 +73,8 @@ export const AuthProvider = ({ children }: TProps) => {
             const verifier = await generateCodeVerifier();
             const challenge = await generateCodeChallenge(verifier);
             const state = await generateCodeVerifier(32);
-            await storage.set('pkce_verifier', verifier);
-            await storage.set('pkce_state', state);
+            await Preferences.set({ key: PKCE_KEYS.verifier, value: verifier });
+            await Preferences.set({ key: PKCE_KEYS.state, value: state });
 
             const base = `${import.meta.env.VITE_KEYCLOAK_URL}/realms/${import.meta.env.VITE_KEYCLOAK_REALM}/protocol/openid-connect/auth`;
             const qs = new URLSearchParams({

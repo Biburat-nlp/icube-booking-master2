@@ -130,8 +130,13 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
     body.set('code', code);
     body.set('redirect_uri', redirectUri);
     // Если использовали PKCE, можно добавить code_verifier из storage
-    const codeVerifier = await storage.get('pkce_verifier');
-    if (codeVerifier) body.set('code_verifier', codeVerifier);
+    try {
+        const { Preferences } = await import('@capacitor/preferences');
+        const { PKCE_KEYS } = await import('./pkce');
+        const { value } = await Preferences.get({ key: PKCE_KEYS.verifier });
+        if (value) body.set('code_verifier', value);
+        console.log('Using code_verifier len:', value ? value.length : 0);
+    } catch {}
 
     const resp = await fetch(tokenUrl, {
         method: 'POST',
@@ -150,4 +155,12 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
         data.expires_in && storage.set(KEYS.exp, Date.now() + data.expires_in * 1000),
         data.refresh_expires_in && storage.set(KEYS.refreshExp, Date.now() + data.refresh_expires_in * 1000),
     ]);
+
+    // Очищаем временные PKCE-значения
+    try {
+        const { Preferences } = await import('@capacitor/preferences');
+        const { PKCE_KEYS } = await import('./pkce');
+        await Preferences.remove({ key: PKCE_KEYS.verifier });
+        await Preferences.remove({ key: PKCE_KEYS.state });
+    } catch {}
 }

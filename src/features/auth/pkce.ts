@@ -25,4 +25,9 @@ export async function generateCodeChallenge(verifier: string): Promise<string> {
     return toBase64Url(digest);
 }
 
+export const PKCE_KEYS = {
+    verifier: 'pkce_verifier',
+    state: 'pkce_state',
+} as const;
+
 

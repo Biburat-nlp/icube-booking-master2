@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 import { InAppBrowser } from '@capacitor/inappbrowser';
 import { exchangeCodeForTokens } from '@/features/auth/keycloak';
+import { PKCE_KEYS } from '@/features/auth/pkce';
+import { Preferences } from '@capacitor/preferences';
 
 const AppUrlListener: React.FC<any> = () => {
     useEffect(() => {
@@ -13,7 +15,7 @@ const AppUrlListener: React.FC<any> = () => {
           if (url.searchParams.has('code') && url.searchParams.has('state')) {
             const code = url.searchParams.get('code')!;
             const state = url.searchParams.get('state')!;
-            const expectedState = await (await import('@/shared/lib/ionic-storage')).storage.get('pkce_state');
+            const { value: expectedState } = await Preferences.get({ key: PKCE_KEYS.state });
             if (expectedState && expectedState !== state) {
               console.error('State mismatch, aborting.');
               return;
@@ -41,7 +43,7 @@ const AppUrlListener: React.FC<any> = () => {
             if (params.has('code') && params.has('state')) {
               const code = params.get('code')!;
               const state = params.get('state')!;
-              const expectedState = await (await import('@/shared/lib/ionic-storage')).storage.get('pkce_state');
+              const { value: expectedState } = await Preferences.get({ key: PKCE_KEYS.state });
               if (expectedState && expectedState !== state) {
                 console.error('State mismatch, aborting.');
                 return;
