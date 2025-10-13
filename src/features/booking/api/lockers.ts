@@ -35,7 +35,7 @@ export type Cell = {
 
 export const lockersApi = {
     getReservations: async (params: { datetime_start?: string }): Promise<TReservationItem> => {
-        const { data } = await api.get("/my-office/cells", { params });
+        const { data } = await api.get("/my-office/cells/", { params });
         return {
             ...data,
             nameBlock: "my_booking:tables:lockers",

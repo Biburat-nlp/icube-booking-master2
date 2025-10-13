@@ -16,7 +16,7 @@ export const workspacesApi = {
         limit?: number;
         offset?: number;
     }): Promise<TReservationItem> => {
-        const { data } = await universalApi.get("/my-office/desktops", params);
+        const { data } = await universalApi.get("/my-office/desktops/", params);
         return {
             ...data,
             nameBlock: "my_booking:tables:workplaces",

@@ -16,7 +16,7 @@ export const parkingApi = {
         limit?: number;
         offset?: number;
     }): Promise<TReservationItem> => {
-        const { data } = await api.get("/my-office/parkings", { params });
+        const { data } = await api.get("/my-office/parkings/", { params });
         return {
             ...data,
             nameBlock: "my_booking:tables:parking_places",

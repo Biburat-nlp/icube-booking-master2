@@ -16,7 +16,7 @@ export const meetingRoomsApi = {
         limit?: number;
         offset?: number;
     }): Promise<TReservationItem> => {
-        const { data } = await universalApi.get("/my-office/meeting-rooms", params);
+        const { data } = await universalApi.get("/my-office/meeting-rooms/", params);
         return {
             ...data,
             nameBlock: "my_booking:tables:meeting_rooms",
