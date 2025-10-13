@@ -1,0 +1,185 @@
+⚡️  WebView loaded
+⚡️  To Native ->  StatusBar setStyle 18147764
+⚡️  TO JS {}
+⚡️  To Native ->  App getLaunchUrl 18147765
+⚡️  TO JS undefined
+⚡️  To Native ->  App addListener 18147766
+⚡️  [log] - VITE_KEYCLOAK_URL: https://icube-space.ru/kc
+⚡️  [log] - VITE_KEYCLOAK_REALM: master
+⚡️  [log] - VITE_KEYCLOAK_CLIENT_ID: frontend
+⚡️  [log] - Platform: Native
+⚡️  [log] - Redirect URI: icube://token
+⚡️  [log] - Current URL: capacitor://localhost
+⚡️  To Native ->  App addListener 18147767
+⚡️  To Native ->  Keyboard getResizeMode 18147768
+⚡️  TO JS {"mode":"native"}
+⚡️  [log] - Keycloak init - tokens from storage: {"hasToken":true,"hasRefresh":true,"hasId":true,"tokenPreview":"eyJhbGciOiJSUzI1NiIs...","accessExp":"2025-10-13T18:09:08.000Z"}
+⚡️  To Native ->  CapacitorHttp request 18147769
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+⚡️  TO JS {"data":{"error":"invalid_grant","error_description":"Session doesn't have required client"},"url":"https:\/\/icube-space.ru\/kc\/realms\/master\/protocol\/openid-connect\/token","headers":{"x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff",
+⚡️  [error] - Keycloak initialization error: {"response":{}}
+⚡️  [log] - AuthProvider - Platform: Native
+⚡️  [log] - AuthProvider - Redirect URI: icube://token
+⚡️  To Native ->  Preferences remove 18147770
+⚡️  TO JS undefined
+⚡️  To Native ->  Preferences remove 18147771
+⚡️  TO JS undefined
+⚡️  To Native ->  Preferences remove 18147772
+⚡️  TO JS undefined
+⚡️  To Native ->  Preferences remove 18147773
+⚡️  TO JS undefined
+⚡️  To Native ->  Preferences remove 18147774
+⚡️  TO JS undefined
+⚡️  To Native ->  Preferences set 18147775
+⚡️  TO JS undefined
+⚡️  To Native ->  Preferences set 18147776
+⚡️  TO JS undefined
+⚡️  To Native ->  Preferences set 18147777
+⚡️  TO JS undefined
+⚡️  To Native ->  Preferences set 18147778
+⚡️  TO JS undefined
+⚡️  [log] - PKCE prepare: {"verifierLen":64,"challenge":"ufqR...TJfQ","state":"dt-....xJ3l"}
+⚡️  To Native ->  InAppBrowser openInSystemBrowser 18147779
+⚡️  TO JS undefined
+WebContent[63993] 0x11104c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+-[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
+-[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
+-[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
+-[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
+WebContent[63993] 0x11104c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+-[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
+WebContent[63993] 0x11104c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+-[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
+WebContent[63993] 0x11104c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+WebContent[63993] 0x11104c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+⚡️  TO JS {"url":"icube:\/\/token?state=dt-.sE3ihdar9A4GLtBhQ7Z4kA4XxJ3l&session_state=c3a9fc71-80a4-4718-b858-941930319d12&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=2b994340-d56f-4fe4-9dac-3779899173d2.c3a9fc71-80a4-4718-b858-941930319d12.c313ab9
+⚡️  To Native ->  Preferences get 18147780
+⚡️  [log] - AppUrlListener received URL: icube://token?state=dt-.sE3ihdar9A4GLtBhQ7Z4kA4XxJ3l&session_state=c3a9fc71-80a4-4718-b858-941930319d12&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=2b994340-d56f-4fe4-9dac-3779899173d2.c3a9fc71-80a4-4718-b858-941930319d12.c313ab94-f79f-4d24-88df-e40fe9aef029
+WebContent[63993] 0x11104c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+⚡️  TO JS {"value":null}
+⚡️  To Native ->  Preferences set 18147781
+⚡️  TO JS undefined
+WebContent[63993] 0x11104c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+⚡️  To Native ->  Preferences get 18147782
+⚡️  TO JS {"value":"dt-.sE3ihdar9A4GLtBhQ7Z4kA4XxJ3l"}
+WebContent[63993] 0x11104c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+⚡️  To Native ->  InAppBrowser close 18147783
+WebContent[63993] 0x11104c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+-[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
+-[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
+-[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
+-[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
+⚡️  TO JS undefined
+⚡️  [log] - Exchanging auth code for tokens (query) ...
+⚡️  To Native ->  Preferences get 18147784
+⚡️  TO JS {"value":"icube:\/\/token"}
+⚡️  [log] - Using redirectUri for exchange: icube://token
+⚡️  To Native ->  Preferences get 18147785
+⚡️  TO JS {"value":".mfXXsAJVHLjHMeHZ9lRXgJcEuvxOqSGkP_h039GSyecuTiGiFMmrYGwEzTaZAgy"}
+⚡️  To Native ->  Preferences get 18147786
+⚡️  TO JS {"value":"ufqRDCs0Pk0z_79MzT911FlHNZ4XVc9Gofk2CLNTJfQ"}
+⚡️  [log] - PKCE check: {"verifierLen":64,"challengeSaved":"ufqR...TJfQ","challengeRecalc":"ufqR...TJfQ"}
+⚡️  To Native ->  CapacitorHttp request 18147787
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+⚡️  TO JS {"url":"https:\/\/icube-space.ru\/kc\/realms\/master\/protocol\/openid-connect\/token","data":{"refresh_token":"eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJiYmU1MGEzMC01Mjg3LTQ3ZDgtYjM0Mi04NzA4NDM1ZTg1Y2MifQ.eyJleHAiOjE3NjAzODA4MDYsImlhdCI6MTc2MDM3O
+⚡️  [log] - Token exchange successful, saving tokens...
+⚡️  [log] - Tokens saved to storage
+⚡️  [log] - Keycloak instance updated with new tokens
+⚡️  To Native ->  Preferences remove 18147788
+⚡️  TO JS undefined
+⚡️  To Native ->  Preferences remove 18147789
+⚡️  TO JS undefined
+⚡️  [log] - Cleaned up PKCE data
+-[RTIInputSystemClient remoteTextInputSessionWithID:textSuggestionsChanged:]  Can only set suggestions for an active session. sessionID = 01E12376-11DC-488F-9C7A-3F5D77558DF6
+⚡️  WebView loaded
+⚡️  To Native ->  StatusBar setStyle 30789224
+⚡️  TO JS {}
+⚡️  To Native ->  App getLaunchUrl 30789225
+⚡️  To Native ->  App addListener 30789226
+⚡️  TO JS {"url":"icube:\/\/token?state=dt-.sE3ihdar9A4GLtBhQ7Z4kA4XxJ3l&session_state=c3a9fc71-80a4-4718-b858-941930319d12&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=2b994340-d56f-4fe4-9dac-3779899173d2.c3a9fc71-80a4-4718-b858-941930319d12.c313ab9
+⚡️  TO JS undefined
+⚡️  [log] - VITE_KEYCLOAK_URL: https://icube-space.ru/kc
+⚡️  [log] - VITE_KEYCLOAK_REALM: master
+⚡️  [log] - VITE_KEYCLOAK_CLIENT_ID: frontend
+⚡️  [log] - Platform: Native
+⚡️  [log] - Redirect URI: icube://token
+⚡️  [log] - Current URL: capacitor://localhost/
+⚡️  To Native ->  Preferences get 30789227
+⚡️  [log] - AppUrlListener received URL: icube://token?state=dt-.sE3ihdar9A4GLtBhQ7Z4kA4XxJ3l&session_state=c3a9fc71-80a4-4718-b858-941930319d12&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=2b994340-d56f-4fe4-9dac-3779899173d2.c3a9fc71-80a4-4718-b858-941930319d12.c313ab94-f79f-4d24-88df-e40fe9aef029
+⚡️  TO JS {"value":"2b994340-d56f-4fe4-9dac-3779899173d2.c3a9fc71-80a4-4718-b858-941930319d12.c313ab94-f79f-4d24-88df-e40fe9aef029"}
+⚡️  [log] - Code already processed, skipping: 2b994340-d...
+⚡️  [log] - Keycloak init - tokens from storage: {"hasToken":true,"hasRefresh":true,"hasId":true,"tokenPreview":"eyJhbGciOiJSUzI1NiIs...","accessExp":"2025-10-13T18:20:06.200Z"}
+⚡️  To Native ->  CapacitorHttp request 30789228
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+⚡️  To Native ->  App addListener 30789229
+⚡️  To Native ->  Keyboard getResizeMode 30789230
+⚡️  TO JS {"mode":"native"}
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+⚡️  TO JS {"status":200,"url":"https:\/\/icube-space.ru\/kc\/realms\/master\/protocol\/openid-connect\/token","headers":{"content-type":"application\/json","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","content-length":"4444","date":"Mon, 13 Oct 
+⚡️  [log] - Keycloak initialized: true
+⚡️  [log] - Token after init: true
+⚡️  [log] - Token value: eyJhbGciOiJSUzI1NiIs...
+⚡️  [log] - Token expires in: 599677 ms
+⚡️  [log] - universalApi.get: /users/me Platform: Native
+⚡️  [log] - CapacitorHttp: Authorization header added
+⚡️  [log] - CapacitorHttp: Token preview: eyJhbGciOiJSUzI1NiIs...
+⚡️  [log] - CapacitorHttp Request: GET https://icube-space.ru/api/users/me Token available: true
+⚡️  [log] - CapacitorHttp Headers: {"Authorization":"Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzOUlxVm9TTTJSLTV0V25NcUotQ2xKZGszZm1yQjZTczRIaTV5QUl5Rm5JIn0.eyJleHAiOjE3NjAzNzk2MDYsImlhdCI6MTc2MDM3OTAwNiwiYXV0aF90aW1lIjoxNzYwMzc5MDA1LCJqdGkiOiI3MWEzZjMzNi0wNWZiLTRjMTUtYjk0OS1kYTM0OGYwYmIyOTQiLCJpc3MiOiJodHRwczovL2ljdWJlLXNwYWNlLnJ1L2tjL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOlsiYXBpIiwiaWN1YmUtc3BhY2UiLCJtYXN0ZXItcmVhbG0iLCJhY2NvdW50Il0sInN1YiI6ImExYzgxMWE1LTU0MDMtNGI1OC1hMjMwLTY3ODkwMDYwNjA3NiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250ZW5kIiwic2Vzc2lvbl9zdGF0ZSI6ImMzYTlmYzcxLTgwYTQtNDcxOC1iODU4LTk0MTkzMDMxOWQxMiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9pY3ViZS1zcGFjZS5ydSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwiZGVmYXVsdC1yb2xlcy1tYXN0ZXIiLCJvZmZsaW5lX2FjY2VzcyIsImFkbWluIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJtYXN0ZXItcmVhbG0iOnsicm9sZXMiOlsidmlldy1yZWFsbSIsInZpZXctaWRlbnRpdHktcHJvdmlkZXJzIiwibWFuYWdlLWlkZW50aXR5LXByb3ZpZGVycyIsImltcGVyc29uYXRpb24iLCJjcmVhdGUtY2xpZW50IiwibWFuYWdlLXVzZXJzIiwicXVlcnktcmVhbG1zIiwidmlldy1hdXRob3JpemF0aW9uIiwicXVlcnktY2xpZW50cyIsInF1ZXJ5LXVzZXJzIiwibWFuYWdlLWV2ZW50cyIsIm1hbmFnZS1yZWFsbSIsInZpZXctZXZlbnRzIiwidmlldy11c2VycyIsInZpZXctY2xpZW50cyIsIm1hbmFnZS1hdXRob3JpemF0aW9uIiwibWFuYWdlLWNsaWVudHMiLCJxdWVyeS1ncm91cHMiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIGVtYWlsIGRqYW5nb19ncm91cHMgcHJvZmlsZSIsInNpZCI6ImMzYTlmYzcxLTgwYTQtNDcxOC1iODU4LTk0MTkzMDMxOWQxMiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJkamFuZ29fZ3JvdXBzIjpbImFkbWluIiwic3VwZXJhZG1pbiJdLCJuYW1lIjoi0JDQtNC80LjQvdC40YHRgtGA0LDRgtC-0YAg0JzQvtCx0LjQu9GM0L3Ri9C5IiwicHJlZmVycmVkX3VzZXJuYW1lIjoibW9iaWxlX2FkbWluIiwiZ2l2ZW5fbmFtZSI6ItCQ0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGAIiwiZmFtaWx5X25hbWUiOiLQnNC-0LHQuNC70YzQvdGL0LkiLCJlbWFpbCI6Im1vYmlsZV9hZG1pbkB0ZXN0LnJ1In0.Umc1HtuPeniwOJwi8HLebO974R2dZIT0azJD_IXXcURsUS11HZ-2gySkM-u3MwOVEfs8mKiTcX2LXQpWY3gdUuST5rl096AoStIF45hiRxa_09VNUBB6xYYrPLKdH3lrnQlHCYw7v4a_7hAfCvSsNIDJHllK_H6SjA7HtfxNxrcBXHNCcqVN-YizlMMHrhKaJSe2u2COx4K3CJCraez7-eWPeq9vf7danogUWa0ce3oZ4NVniaezECtgpXeqnc6taWG7PhC7F49nWtpJlS-nu9-V2azWLfIzUDRCq2cRjfPfsz_euQYr0a9P_stKnSit4TH4xkA_zxZicykaOAkciQ","Content-Type":"application/json"}
+⚡️  To Native ->  CapacitorHttp request 30789231
+⚡️  [log] - CapacitorHttp: Keycloak authenticated: true
+⚡️  [log] - CapacitorHttp: Keycloak token expired: false
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+⚡️  TO JS {"data":{"detail":{"errors":[{"name":"__all__","code":"not_authenticated","message":"Учетные данные не были предоставлены."}]},"status":"error"},"url":"https:\/\/icube-space.ru\/api\/users\/me\/","status":401,"headers":{"content-type":"application\/json","
+⚡️  [log] - CapacitorHttp Response: 401 https://icube-space.ru/api/users/me
+⚡️  [log] - CapacitorHttp Response Data: {"detail":{"errors":[{"name":"__all__","code":"not_authenticated","message":"Учетные данные не были предоставлены."}]},"status":"error"}
+⚡️  [log] - universalApi.get: /users/me Platform: Native
+⚡️  [log] - CapacitorHttp: Authorization header added
+⚡️  [log] - CapacitorHttp: Token preview: eyJhbGciOiJSUzI1NiIs...
+⚡️  [log] - CapacitorHttp Request: GET https://icube-space.ru/api/users/me Token available: true
+⚡️  To Native ->  CapacitorHttp request 30789232
+⚡️  [log] - CapacitorHttp Headers: {"Authorization":"Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzOUlxVm9TTTJSLTV0V25NcUotQ2xKZGszZm1yQjZTczRIaTV5QUl5Rm5JIn0.eyJleHAiOjE3NjAzNzk2MDYsImlhdCI6MTc2MDM3OTAwNiwiYXV0aF90aW1lIjoxNzYwMzc5MDA1LCJqdGkiOiI3MWEzZjMzNi0wNWZiLTRjMTUtYjk0OS1kYTM0OGYwYmIyOTQiLCJpc3MiOiJodHRwczovL2ljdWJlLXNwYWNlLnJ1L2tjL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOlsiYXBpIiwiaWN1YmUtc3BhY2UiLCJtYXN0ZXItcmVhbG0iLCJhY2NvdW50Il0sInN1YiI6ImExYzgxMWE1LTU0MDMtNGI1OC1hMjMwLTY3ODkwMDYwNjA3NiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250ZW5kIiwic2Vzc2lvbl9zdGF0ZSI6ImMzYTlmYzcxLTgwYTQtNDcxOC1iODU4LTk0MTkzMDMxOWQxMiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9pY3ViZS1zcGFjZS5ydSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwiZGVmYXVsdC1yb2xlcy1tYXN0ZXIiLCJvZmZsaW5lX2FjY2VzcyIsImFkbWluIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJtYXN0ZXItcmVhbG0iOnsicm9sZXMiOlsidmlldy1yZWFsbSIsInZpZXctaWRlbnRpdHktcHJvdmlkZXJzIiwibWFuYWdlLWlkZW50aXR5LXByb3ZpZGVycyIsImltcGVyc29uYXRpb24iLCJjcmVhdGUtY2xpZW50IiwibWFuYWdlLXVzZXJzIiwicXVlcnktcmVhbG1zIiwidmlldy1hdXRob3JpemF0aW9uIiwicXVlcnktY2xpZW50cyIsInF1ZXJ5LXVzZXJzIiwibWFuYWdlLWV2ZW50cyIsIm1hbmFnZS1yZWFsbSIsInZpZXctZXZlbnRzIiwidmlldy11c2VycyIsInZpZXctY2xpZW50cyIsIm1hbmFnZS1hdXRob3JpemF0aW9uIiwibWFuYWdlLWNsaWVudHMiLCJxdWVyeS1ncm91cHMiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIGVtYWlsIGRqYW5nb19ncm91cHMgcHJvZmlsZSIsInNpZCI6ImMzYTlmYzcxLTgwYTQtNDcxOC1iODU4LTk0MTkzMDMxOWQxMiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJkamFuZ29fZ3JvdXBzIjpbImFkbWluIiwic3VwZXJhZG1pbiJdLCJuYW1lIjoi0JDQtNC80LjQvdC40YHRgtGA0LDRgtC-0YAg0JzQvtCx0LjQu9GM0L3Ri9C5IiwicHJlZmVycmVkX3VzZXJuYW1lIjoibW9iaWxlX2FkbWluIiwiZ2l2ZW5fbmFtZSI6ItCQ0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGAIiwiZmFtaWx5X25hbWUiOiLQnNC-0LHQuNC70YzQvdGL0LkiLCJlbWFpbCI6Im1vYmlsZV9hZG1pbkB0ZXN0LnJ1In0.Umc1HtuPeniwOJwi8HLebO974R2dZIT0azJD_IXXcURsUS11HZ-2gySkM-u3MwOVEfs8mKiTcX2LXQpWY3gdUuST5rl096AoStIF45hiRxa_09VNUBB6xYYrPLKdH3lrnQlHCYw7v4a_7hAfCvSsNIDJHllK_H6SjA7HtfxNxrcBXHNCcqVN-YizlMMHrhKaJSe2u2COx4K3CJCraez7-eWPeq9vf7danogUWa0ce3oZ4NVniaezECtgpXeqnc6taWG7PhC7F49nWtpJlS-nu9-V2azWLfIzUDRCq2cRjfPfsz_euQYr0a9P_stKnSit4TH4xkA_zxZicykaOAkciQ","Content-Type":"application/json"}
+⚡️  [log] - CapacitorHttp: Keycloak authenticated: true
+⚡️  [log] - CapacitorHttp: Keycloak token expired: false
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+⚡️  To Native ->  Keyboard getResizeMode 30789233
+⚡️  TO JS {"mode":"native"}
+⚡️  To Native ->  Keyboard getResizeMode 30789234
+⚡️  TO JS {"mode":"native"}
+⚡️  [log] - universalApi.get: /my-office/meeting-rooms Platform: Native
+⚡️  [log] - CapacitorHttp: Authorization header added
+⚡️  [log] - CapacitorHttp: Token preview: eyJhbGciOiJSUzI1NiIs...
+⚡️  [log] - CapacitorHttp Request: GET https://icube-space.ru/api/my-office/meeting-rooms?limit=9999&offset=0&datetime_start=2025-10-13T18%3A10%3A06.583Z Token available: true
+⚡️  [log] - CapacitorHttp Headers: {"Authorization":"Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzOUlxVm9TTTJSLTV0V25NcUotQ2xKZGszZm1yQjZTczRIaTV5QUl5Rm5JIn0.eyJleHAiOjE3NjAzNzk2MDYsImlhdCI6MTc2MDM3OTAwNiwiYXV0aF90aW1lIjoxNzYwMzc5MDA1LCJqdGkiOiI3MWEzZjMzNi0wNWZiLTRjMTUtYjk0OS1kYTM0OGYwYmIyOTQiLCJpc3MiOiJodHRwczovL2ljdWJlLXNwYWNlLnJ1L2tjL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOlsiYXBpIiwiaWN1YmUtc3BhY2UiLCJtYXN0ZXItcmVhbG0iLCJhY2NvdW50Il0sInN1YiI6ImExYzgxMWE1LTU0MDMtNGI1OC1hMjMwLTY3ODkwMDYwNjA3NiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250ZW5kIiwic2Vzc2lvbl9zdGF0ZSI6ImMzYTlmYzcxLTgwYTQtNDcxOC1iODU4LTk0MTkzMDMxOWQxMiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9pY3ViZS1zcGFjZS5ydSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwiZGVmYXVsdC1yb2xlcy1tYXN0ZXIiLCJvZmZsaW5lX2FjY2VzcyIsImFkbWluIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJtYXN0ZXItcmVhbG0iOnsicm9sZXMiOlsidmlldy1yZWFsbSIsInZpZXctaWRlbnRpdHktcHJvdmlkZXJzIiwibWFuYWdlLWlkZW50aXR5LXByb3ZpZGVycyIsImltcGVyc29uYXRpb24iLCJjcmVhdGUtY2xpZW50IiwibWFuYWdlLXVzZXJzIiwicXVlcnktcmVhbG1zIiwidmlldy1hdXRob3JpemF0aW9uIiwicXVlcnktY2xpZW50cyIsInF1ZXJ5LXVzZXJzIiwibWFuYWdlLWV2ZW50cyIsIm1hbmFnZS1yZWFsbSIsInZpZXctZXZlbnRzIiwidmlldy11c2VycyIsInZpZXctY2xpZW50cyIsIm1hbmFnZS1hdXRob3JpemF0aW9uIiwibWFuYWdlLWNsaWVudHMiLCJxdWVyeS1ncm91cHMiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIGVtYWlsIGRqYW5nb19ncm91cHMgcHJvZmlsZSIsInNpZCI6ImMzYTlmYzcxLTgwYTQtNDcxOC1iODU4LTk0MTkzMDMxOWQxMiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJkamFuZ29fZ3JvdXBzIjpbImFkbWluIiwic3VwZXJhZG1pbiJdLCJuYW1lIjoi0JDQtNC80LjQvdC40YHRgtGA0LDRgtC-0YAg0JzQvtCx0LjQu9GM0L3Ri9C5IiwicHJlZmVycmVkX3VzZXJuYW1lIjoibW9iaWxlX2FkbWluIiwiZ2l2ZW5fbmFtZSI6ItCQ0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGAIiwiZmFtaWx5X25hbWUiOiLQnNC-0LHQuNC70YzQvdGL0LkiLCJlbWFpbCI6Im1vYmlsZV9hZG1pbkB0ZXN0LnJ1In0.Umc1HtuPeniwOJwi8HLebO974R2dZIT0azJD_IXXcURsUS11HZ-2gySkM-u3MwOVEfs8mKiTcX2LXQpWY3gdUuST5rl096AoStIF45hiRxa_09VNUBB6xYYrPLKdH3lrnQlHCYw7v4a_7hAfCvSsNIDJHllK_H6SjA7HtfxNxrcBXHNCcqVN-YizlMMHrhKaJSe2u2COx4K3CJCraez7-eWPeq9vf7danogUWa0ce3oZ4NVniaezECtgpXeqnc6taWG7PhC7F49nWtpJlS-nu9-V2azWLfIzUDRCq2cRjfPfsz_euQYr0a9P_stKnSit4TH4xkA_zxZicykaOAkciQ","Content-Type":"application/json"}
+⚡️  [log] - CapacitorHttp: Keycloak authenticated: true
+⚡️  [log] - CapacitorHttp: Keycloak token expired: false
+⚡️  [log] - universalApi.get: /my-office/desktops Platform: Native
+⚡️  [log] - CapacitorHttp: Authorization header added
+⚡️  [log] - CapacitorHttp: Token preview: eyJhbGciOiJSUzI1NiIs...
+⚡️  [log] - CapacitorHttp Request: GET https://icube-space.ru/api/my-office/desktops?limit=9999&offset=0&datetime_start=2025-10-13T18%3A10%3A06.583Z Token available: true
+⚡️  [log] - CapacitorHttp Headers: {"Authorization":"Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzOUlxVm9TTTJSLTV0V25NcUotQ2xKZGszZm1yQjZTczRIaTV5QUl5Rm5JIn0.eyJleHAiOjE3NjAzNzk2MDYsImlhdCI6MTc2MDM3OTAwNiwiYXV0aF90aW1lIjoxNzYwMzc5MDA1LCJqdGkiOiI3MWEzZjMzNi0wNWZiLTRjMTUtYjk0OS1kYTM0OGYwYmIyOTQiLCJpc3MiOiJodHRwczovL2ljdWJlLXNwYWNlLnJ1L2tjL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOlsiYXBpIiwiaWN1YmUtc3BhY2UiLCJtYXN0ZXItcmVhbG0iLCJhY2NvdW50Il0sInN1YiI6ImExYzgxMWE1LTU0MDMtNGI1OC1hMjMwLTY3ODkwMDYwNjA3NiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250ZW5kIiwic2Vzc2lvbl9zdGF0ZSI6ImMzYTlmYzcxLTgwYTQtNDcxOC1iODU4LTk0MTkzMDMxOWQxMiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9pY3ViZS1zcGFjZS5ydSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwiZGVmYXVsdC1yb2xlcy1tYXN0ZXIiLCJvZmZsaW5lX2FjY2VzcyIsImFkbWluIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJtYXN0ZXItcmVhbG0iOnsicm9sZXMiOlsidmlldy1yZWFsbSIsInZpZXctaWRlbnRpdHktcHJvdmlkZXJzIiwibWFuYWdlLWlkZW50aXR5LXByb3ZpZGVycyIsImltcGVyc29uYXRpb24iLCJjcmVhdGUtY2xpZW50IiwibWFuYWdlLXVzZXJzIiwicXVlcnktcmVhbG1zIiwidmlldy1hdXRob3JpemF0aW9uIiwicXVlcnktY2xpZW50cyIsInF1ZXJ5LXVzZXJzIiwibWFuYWdlLWV2ZW50cyIsIm1hbmFnZS1yZWFsbSIsInZpZXctZXZlbnRzIiwidmlldy11c2VycyIsInZpZXctY2xpZW50cyIsIm1hbmFnZS1hdXRob3JpemF0aW9uIiwibWFuYWdlLWNsaWVudHMiLCJxdWVyeS1ncm91cHMiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIGVtYWlsIGRqYW5nb19ncm91cHMgcHJvZmlsZSIsInNpZCI6ImMzYTlmYzcxLTgwYTQtNDcxOC1iODU4LTk0MTkzMDMxOWQxMiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJkamFuZ29fZ3JvdXBzIjpbImFkbWluIiwic3VwZXJhZG1pbiJdLCJuYW1lIjoi0JDQtNC80LjQvdC40YHRgtGA0LDRgtC-0YAg0JzQvtCx0LjQu9GM0L3Ri9C5IiwicHJlZmVycmVkX3VzZXJuYW1lIjoibW9iaWxlX2FkbWluIiwiZ2l2ZW5fbmFtZSI6ItCQ0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGAIiwiZmFtaWx5X25hbWUiOiLQnNC-0LHQuNC70YzQvdGL0LkiLCJlbWFpbCI6Im1vYmlsZV9hZG1pbkB0ZXN0LnJ1In0.Umc1HtuPeniwOJwi8HLebO974R2dZIT0azJD_IXXcURsUS11HZ-2gySkM-u3MwOVEfs8mKiTcX2LXQpWY3gdUuST5rl096AoStIF45hiRxa_09VNUBB6xYYrPLKdH3lrnQlHCYw7v4a_7hAfCvSsNIDJHllK_H6SjA7HtfxNxrcBXHNCcqVN-YizlMMHrhKaJSe2u2COx4K3CJCraez7-eWPeq9vf7danogUWa0ce3oZ4NVniaezECtgpXeqnc6taWG7PhC7F49nWtpJlS-nu9-V2azWLfIzUDRCq2cRjfPfsz_euQYr0a9P_stKnSit4TH4xkA_zxZicykaOAkciQ","Content-Type":"application/json"}
+⚡️  [log] - CapacitorHttp: Keycloak authenticated: true
+⚡️  [log] - CapacitorHttp: Keycloak token expired: false
+⚡️  To Native ->  CapacitorHttp request 30789235
+⚡️  To Native ->  CapacitorHttp request 30789236
+⚡️  [log] - API Request: /my-office/cells Token available: true
+⚡️  [log] - Authorization header added
+⚡️  [log] - API Request: /my-office/parkings Token available: true
+⚡️  [log] - Authorization header added
+⚡️  TO JS {"status":401,"url":"https:\/\/icube-space.ru\/api\/users\/me\/","headers":{"cross-origin-opener-policy":"same-origin","x-frame-options":"DENY","vary":"Accept, Cookie, origin","allow":"GET, PATCH, HEAD, OPTIONS","date":"Mon, 13 Oct 2025 18:10:06 GMT","cont
+⚡️  [log] - CapacitorHttp Response: 401 https://icube-space.ru/api/users/me
+⚡️  [log] - CapacitorHttp Response Data: {"status":"error","detail":{"errors":[{"name":"__all__","message":"Учетные данные не были предоставлены.","code":"not_authenticated"}]}}
+⚡️  TO JS {"headers":{"content-type":"application\/json","allow":"GET, HEAD, OPTIONS","x-frame-options":"DENY","www-authenticate":"Bearer realm=\"api\"","server":"nginx","x-content-type-options":"nosniff","date":"Mon, 13 Oct 2025 18:10:06 GMT","cross-origin-opener-p
+⚡️  [log] - CapacitorHttp Response: 401 https://icube-space.ru/api/my-office/meeting-rooms?limit=9999&offset=0&datetime_start=2025-10-13T18%3A10%3A06.583Z
+⚡️  [log] - CapacitorHttp Response Data: {"detail":{"errors":[{"name":"__all__","code":"not_authenticated","message":"Учетные данные не были предоставлены."}]},"status":"error"}
+⚡️  TO JS {"status":401,"headers":{"referrer-policy":"same-origin","server":"nginx","www-authenticate":"Bearer realm=\"api\"","cross-origin-opener-policy":"same-origin","x-frame-options":"DENY","allow":"GET, HEAD, OPTIONS","date":"Mon, 13 Oct 2025 18:10:06 GMT","var
+⚡️  [error] - {}
+⚡️  [log] - CapacitorHttp Response: 401 https://icube-space.ru/api/my-office/desktops?limit=9999&offset=0&datetime_start=2025-10-13T18%3A10%3A06.583Z
+⚡️  [log] - CapacitorHttp Response Data: {"detail":{"errors":[{"code":"not_authenticated","name":"__all__","message":"Учетные данные не были предоставлены."}]},"status":"error"}
+⚡️  [log] - API Response Error: 401 /my-office/cells Token available: true
+⚡️  [error] - {"message":"Request failed with status code 401","name":"AxiosError","stack":"ZT@capacitor://localhost/assets/index-C_sQtqKa.js:184:51729\nC@capacitor://localhost/assets/index-C_sQtqKa.js:184:56366\n@capacitor://localhost/assets/index-C_sQtqKa.js:184:64909","config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"adapter":["xhr","http","fetch"],"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{},"headers":{"Accept":"application/json, text/plain, */*","Content-Type":"application/json","Authorization":"Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzOUlxVm9TTTJSLTV0V25NcUotQ2xKZGszZm1yQjZTczRIaTV5QUl5Rm5JIn0.eyJleHAiOjE3NjAzNzk2MDYsImlhdCI6MTc2MDM3OTAwNiwiYXV0aF90aW1lIjoxNzYwMzc5MDA1LCJqdGkiOiI3MWEzZjMzNi0wNWZiLTRjMTUtYjk0OS1kYTM0OGYwYmIyOTQiLCJpc3MiOiJodHRwczovL2ljdWJlLXNwYWNlLnJ1L2tjL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOlsiYXBpIiwiaWN1YmUtc3BhY2UiLCJtYXN0ZXItcmVhbG0iLCJhY2NvdW50Il0sInN1YiI6ImExYzgxMWE1LTU0MDMtNGI1OC1hMjMwLTY3ODkwMDYwNjA3NiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250ZW5kIiwic2Vzc2lvbl9zdGF0ZSI6ImMzYTlmYzcxLTgwYTQtNDcxOC1iODU4LTk0MTkzMDMxOWQxMiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9pY3ViZS1zcGFjZS5ydSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiY3JlYXRlLXJlYWxtIiwiZGVmYXVsdC1yb2xlcy1tYXN0ZXIiLCJvZmZsaW5lX2FjY2VzcyIsImFkbWluIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJtYXN0ZXItcmVhbG0iOnsicm9sZXMiOlsidmlldy1yZWFsbSIsInZpZXctaWRlbnRpdHktcHJvdmlkZXJzIiwibWFuYWdlLWlkZW50aXR5LXByb3ZpZGVycyIsImltcGVyc29uYXRpb24iLCJjcmVhdGUtY2xpZW50IiwibWFuYWdlLXVzZXJzIiwicXVlcnktcmVhbG1zIiwidmlldy1hdXRob3JpemF0aW9uIiwicXVlcnktY2xpZW50cyIsInF1ZXJ5LXVzZXJzIiwibWFuYWdlLWV2ZW50cyIsIm1hbmFnZS1yZWFsbSIsInZpZXctZXZlbnRzIiwidmlldy11c2VycyIsInZpZXctY2xpZW50cyIsIm1hbmFnZS1hdXRob3JpemF0aW9uIiwibWFuYWdlLWNsaWVudHMiLCJxdWVyeS1ncm91cHMiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIGVtYWlsIGRqYW5nb19ncm91cHMgcHJvZmlsZSIsInNpZCI6ImMzYTlmYzcxLTgwYTQtNDcxOC1iODU4LTk0MTkzMDMxOWQxMiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJkamFuZ29fZ3JvdXBzIjpbImFkbWluIiwic3VwZXJhZG1pbiJdLCJuYW1lIjoi0JDQtNC80LjQvdC40YHRgtGA0LDRgtC-0YAg0JzQvtCx0LjQu9GM0L3Ri9C5IiwicHJlZmVycmVkX3VzZXJuYW1lIjoibW9iaWxlX2FkbWluIiwiZ2l2ZW5fbmFtZSI6ItCQ0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGAIiwiZmFtaWx5X25hbWUiOiLQnNC-0LHQuNC70YzQvdGL0LkiLCJlbWFpbCI6Im1vYmlsZV9hZG1pbkB0ZXN0LnJ1In0.Umc1HtuPeniwOJwi8HLebO974R2dZIT0azJD_IXXcURsUS11HZ-2gySkM-u3MwOVEfs8mKiTcX2LXQpWY3gdUuST5rl096AoStIF45hiRxa_09VNUBB6xYYrPLKdH3lrnQlHCYw7v4a_7hAfCvSsNIDJHllK_H6SjA7HtfxNxrcBXHNCcqVN-YizlMMHrhKaJSe2u2COx4K3CJCraez7-eWPeq9vf7danogUWa0ce3oZ4NVniaezECtgpXeqnc6taWG7PhC7F49nWtpJlS-nu9-V2azWLfIzUDRCq2cRjfPfsz_euQYr0a9P_stKnSit4TH4xkA_zxZicykaOAkciQ"},"baseURL":"https://icube-space.ru/api","params":{"limit":9999,"offset":0,"datetime_start":"2025-10-13T18:10:06.583Z"},"method":"get","url":"/my-office/cells","allowAbsoluteUrls":true},"code":"ERR_BAD_REQUEST","status":401}
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+⚡️  [log] - API Response Error: 401 /my-office/parkings Token available: true
+⚡️  [error] - {}

@@ -26,52 +26,27 @@ export const api = axios.create({
     },
 });
 
-// Универсальный API клиент
+// Универсальный API клиент - используем axios везде для лучшей совместимости
 export const universalApi = {
     async get<T = any>(url: string, params?: Record<string, any>) {
         console.log('universalApi.get:', url, 'Platform:', Capacitor.isNativePlatform() ? 'Native' : 'Web');
-        if (Capacitor.isNativePlatform()) {
-            const response = await capacitorHttpClient.get<T>(url, params);
-            return { data: response.data };
-        } else {
-            return api.get<T>(url, { params });
-        }
+        return api.get<T>(url, { params });
     },
 
     async post<T = any>(url: string, data?: any, params?: Record<string, any>) {
-        if (Capacitor.isNativePlatform()) {
-            const response = await capacitorHttpClient.post<T>(url, data, params);
-            return { data: response.data };
-        } else {
-            return api.post<T>(url, data, { params });
-        }
+        return api.post<T>(url, data, { params });
     },
 
     async put<T = any>(url: string, data?: any, params?: Record<string, any>) {
-        if (Capacitor.isNativePlatform()) {
-            const response = await capacitorHttpClient.put<T>(url, data, params);
-            return { data: response.data };
-        } else {
-            return api.put<T>(url, data, { params });
-        }
+        return api.put<T>(url, data, { params });
     },
 
     async delete<T = any>(url: string, params?: Record<string, any>) {
-        if (Capacitor.isNativePlatform()) {
-            const response = await capacitorHttpClient.delete<T>(url, params);
-            return { data: response.data };
-        } else {
-            return api.delete<T>(url, { params });
-        }
+        return api.delete<T>(url, { params });
     },
 
     async patch<T = any>(url: string, data?: any, params?: Record<string, any>) {
-        if (Capacitor.isNativePlatform()) {
-            const response = await capacitorHttpClient.patch<T>(url, data, params);
-            return { data: response.data };
-        } else {
-            return api.patch<T>(url, data, { params });
-        }
+        return api.patch<T>(url, data, { params });
     }
 };
 
