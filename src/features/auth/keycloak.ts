@@ -84,15 +84,15 @@ export const initKeycloak = async (): Promise<boolean> => {
         };
     }
 
-    if (Capacitor.isNativePlatform()) {
-        options = {
-            ...options,
-            adapter: 'cordova-native',
-            // Дополнительные настройки для iOS
-            checkLoginIframe: false,
-            onLoad: 'check-sso'
-        }
-    }
+    // На iOS/Android (Capacitor WebView) ведём себя как в обычном вебе,
+    // чтобы keycloak-js разбирал callback из URL WebView без cordova-адаптера
+    options = {
+        ...options,
+        checkLoginIframe: false,
+        onLoad: 'check-sso',
+        pkceMethod: 'S256',
+        flow: 'standard'
+    };
 
     try {
         const authenticated = await keycloak.init(options);
