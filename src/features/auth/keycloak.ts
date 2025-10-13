@@ -142,6 +142,7 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
     if (!resp.ok) throw new Error(`Token exchange failed: ${resp.status}`);
     const data = await resp.json();
 
+    await storage.create();
     await Promise.all([
         storage.set(KEYS.token, data.access_token),
         storage.set(KEYS.refresh, data.refresh_token),

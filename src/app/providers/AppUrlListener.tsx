@@ -12,13 +12,14 @@ const AppUrlListener: React.FC<any> = () => {
           // Проверяем, что это callback от Keycloak
           if (url.searchParams.has('code') && url.searchParams.has('state')) {
             const code = url.searchParams.get('code')!;
-            await InAppBrowser.close();
+            try { await InAppBrowser.close(); } catch (e) { console.warn('IAB close ignored:', e); }
             // Меняем код на токены нативно и перезагружаем UI
             try {
+              console.log('Exchanging auth code for tokens (query) ...');
               await exchangeCodeForTokens(code, 'icube://token');
               window.location.replace('/');
             } catch (e) {
-              console.error('Token exchange failed:', e);
+              console.error('Token exchange failed (query):', e);
             }
             return;
           }
@@ -33,12 +34,13 @@ const AppUrlListener: React.FC<any> = () => {
             const params = new URLSearchParams(hash);
             if (params.has('code') && params.has('state')) {
               const code = params.get('code')!;
-              await InAppBrowser.close();
+              try { await InAppBrowser.close(); } catch (e) { console.warn('IAB close ignored:', e); }
               try {
+                console.log('Exchanging auth code for tokens (fragment) ...');
                 await exchangeCodeForTokens(code, 'icube://token');
                 window.location.replace('/');
               } catch (e) {
-                console.error('Token exchange failed:', e);
+                console.error('Token exchange failed (fragment):', e);
               }
               return;
             }
