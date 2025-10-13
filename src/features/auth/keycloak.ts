@@ -84,12 +84,10 @@ export const initKeycloak = async (): Promise<boolean> => {
         };
     }
 
-    // На iOS/Android (Capacitor WebView) ведём себя как в обычном вебе,
-    // чтобы keycloak-js разбирал callback из URL WebView без cordova-адаптера
+    // Общие настройки
     options = {
         ...options,
         checkLoginIframe: false,
-        onLoad: 'check-sso',
         pkceMethod: 'S256',
         flow: 'standard'
     };
@@ -124,3 +122,32 @@ export const initKeycloak = async (): Promise<boolean> => {
         return false;
     }
 };
+
+export async function exchangeCodeForTokens(code: string, redirectUri: string): Promise<void> {
+    const tokenUrl = `${import.meta.env.VITE_KEYCLOAK_URL}/realms/${import.meta.env.VITE_KEYCLOAK_REALM}/protocol/openid-connect/token`;
+    const body = new URLSearchParams();
+    body.set('grant_type', 'authorization_code');
+    body.set('client_id', import.meta.env.VITE_KEYCLOAK_CLIENT_ID);
+    body.set('code', code);
+    body.set('redirect_uri', redirectUri);
+    // Если использовали PKCE, можно добавить code_verifier из storage
+    const codeVerifier = await storage.get('pkce_verifier');
+    if (codeVerifier) body.set('code_verifier', codeVerifier);
+
+    const resp = await fetch(tokenUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+    });
+    if (!resp.ok) throw new Error(`Token exchange failed: ${resp.status}`);
+    const data = await resp.json();
+
+    await Promise.all([
+        storage.set(KEYS.token, data.access_token),
+        storage.set(KEYS.refresh, data.refresh_token),
+        storage.set(KEYS.id, data.id_token),
+        storage.set(KEYS.skew, 0),
+        data.expires_in && storage.set(KEYS.exp, Date.now() + data.expires_in * 1000),
+        data.refresh_expires_in && storage.set(KEYS.refreshExp, Date.now() + data.refresh_expires_in * 1000),
+    ]);
+}

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 import { InAppBrowser } from '@capacitor/inappbrowser';
+import { exchangeCodeForTokens } from '@/features/auth/keycloak';
 
 const AppUrlListener: React.FC<any> = () => {
     useEffect(() => {
@@ -10,11 +11,15 @@ const AppUrlListener: React.FC<any> = () => {
           const url = new URL(eventUrl);
           // Проверяем, что это callback от Keycloak
           if (url.searchParams.has('code') && url.searchParams.has('state')) {
-            const params = url.searchParams.toString();
-            const current = new URL(window.location.href);
-            const newHref = `${current.origin}${current.pathname}?${params}${current.hash || ''}`;
+            const code = url.searchParams.get('code')!;
             await InAppBrowser.close();
-            window.location.replace(newHref);
+            // Меняем код на токены нативно и перезагружаем UI
+            try {
+              await exchangeCodeForTokens(code, 'icube://token');
+              window.location.replace('/');
+            } catch (e) {
+              console.error('Token exchange failed:', e);
+            }
             return;
           }
           if (url.searchParams.has('error')) {
@@ -27,10 +32,14 @@ const AppUrlListener: React.FC<any> = () => {
           if (hash) {
             const params = new URLSearchParams(hash);
             if (params.has('code') && params.has('state')) {
-              const current = new URL(window.location.href);
-              const newHref = `${current.origin}${current.pathname}?${params.toString()}`;
+              const code = params.get('code')!;
               await InAppBrowser.close();
-              window.location.replace(newHref);
+              try {
+                await exchangeCodeForTokens(code, 'icube://token');
+                window.location.replace('/');
+              } catch (e) {
+                console.error('Token exchange failed:', e);
+              }
               return;
             }
             await InAppBrowser.close();

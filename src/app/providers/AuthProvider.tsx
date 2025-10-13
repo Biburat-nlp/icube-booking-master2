@@ -3,6 +3,7 @@ import { useQueryClient } from "react-query";
 import { useHistory } from "react-router-dom";
 
 import { initKeycloak, keycloak, KEYS } from "@/features/auth/keycloak";
+import { generateCodeVerifier, generateCodeChallenge } from "@/features/auth/pkce";
 
 import { usersApi } from "@/entities/users/api/api.ts";
 
@@ -67,11 +68,26 @@ export const AuthProvider = ({ children }: TProps) => {
         console.log('AuthProvider - Redirect URI:', redirectUri);
         
         if (Capacitor.isNativePlatform()) {
-            const url = await keycloak.createLoginUrl({ redirectUri });
-            await InAppBrowser.openInSystemBrowser({
-                url,
-                options: DefaultSystemBrowserOptions
-            });
+            // Генерируем PKCE для нативного потока
+            const verifier = await generateCodeVerifier();
+            const challenge = await generateCodeChallenge(verifier);
+            await storage.set('pkce_verifier', verifier);
+
+            const authUrl = await keycloak.createLoginUrl({
+                redirectUri,
+                // Переопределим PKCE параметры
+                // keycloak-js добавит свои, но challenge в URL допустим
+                // Дополнительно безопасно — главный обмен сделаем сами по deep link
+                // pkceMethod в init уже S256
+                // Добавление code_challenge вручную на всякий случай
+                scope: 'openid',
+                // @ts-ignore
+                code_challenge: challenge,
+                // @ts-ignore
+                code_challenge_method: 'S256'
+            } as any);
+
+            await InAppBrowser.openInSystemBrowser({ url: authUrl, options: DefaultSystemBrowserOptions });
         } else {
             await keycloak.login({ redirectUri });
         }        
