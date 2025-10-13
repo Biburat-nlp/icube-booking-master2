@@ -1,7 +1,8 @@
 import axios, { type AxiosError, type AxiosRequestHeaders } from "axios";
 import { Capacitor } from "@capacitor/core";
 
-import { keycloak } from "@/features/auth/keycloak.ts";
+import { keycloak, KEYS } from "@/features/auth/keycloak.ts";
+import { storage } from "@/shared/lib/ionic-storage";
 import { serverConfigManager } from "@/shared/config/serverConfig.ts";
 import { capacitorHttpClient } from "./capacitorHttp.ts";
 
@@ -78,12 +79,25 @@ export const updateApiBaseUrl = async (newBaseUrl: string) => {
     api.defaults.baseURL = newBaseUrl;
 };
 
-api.interceptors.request.use((config) => {
+api.interceptors.request.use(async (config) => {
     console.log('API Request:', config.url, 'Token available:', !!keycloak.token);
-    if (keycloak.token) {
+    let token = keycloak.token;
+    if (!token && Capacitor.isNativePlatform()) {
+        try {
+            await storage.create();
+            const stored = await storage.get(KEYS.token);
+            if (stored && typeof stored === 'string') {
+                token = stored;
+                console.log('API Request: using token from storage');
+            }
+        } catch (e) {
+            console.warn('API Request: failed to read token from storage', e);
+        }
+    }
+    if (token) {
         config.headers = {
             ...config.headers,
-            Authorization: `Bearer ${keycloak.token}`,
+            Authorization: `Bearer ${token}`,
         } as AxiosRequestHeaders;
         console.log('Authorization header added');
     } else {
