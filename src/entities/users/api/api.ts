@@ -16,8 +16,7 @@ export const usersApi = {
     },
 
     me: async (): Promise<TUser> => {
-        const { data } = await universalApi.get("/users/me");
-
+        const { data } = await universalApi.get("/users/me/");
         return data;
     },
 

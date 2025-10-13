@@ -1,129 +1,131 @@
-⚡️  WebView loaded
-⚡️  To Native ->  StatusBar setStyle 19748551
+WebView loaded
+⚡️  To Native ->  StatusBar setStyle 86543016
 ⚡️  TO JS {}
-⚡️  To Native ->  App getLaunchUrl 19748552
-⚡️  To Native ->  App addListener 19748553
+⚡️  To Native ->  App getLaunchUrl 86543017
+⚡️  To Native ->  App addListener 86543018
 ⚡️  TO JS undefined
 ⚡️  [log] - VITE_KEYCLOAK_URL: https://icube-space.ru/kc
 ⚡️  [log] - VITE_KEYCLOAK_REALM: master
 ⚡️  [log] - VITE_KEYCLOAK_CLIENT_ID: frontend
 ⚡️  [log] - Platform: Native
 ⚡️  [log] - Redirect URI: icube://token
-⚡️  [log] - Current URL: ionic://icube-space.ru
-⚡️  To Native ->  App addListener 19748554
-⚡️  To Native ->  Keyboard getResizeMode 19748555
+⚡️  [log] - Current URL: capacitor://localhost
+⚡️  To Native ->  App addListener 86543019
+⚡️  To Native ->  Keyboard getResizeMode 86543020
 ⚡️  TO JS {"mode":"native"}
-⚡️  [log] - Keycloak init - tokens from storage: {"hasToken":false,"hasRefresh":false,"hasId":false,"tokenPreview":"null","accessExp":"null"}
-⚡️  [log] - Keycloak initialized: false
-⚡️  [log] - Token after init: false
-⚡️  [log] - Token value: null
-⚡️  To Native ->  ⚡️  [log] - AuthProvider - Platform: Native
-Preferences remove 19748556
+⚡️  [log] - Keycloak init - tokens from storage: {"hasToken":true,"hasRefresh":true,"hasId":true,"tokenPreview":"eyJhbGciOiJSUzI1NiIs...","accessExp":"2025-10-13T18:44:27.269Z"}
+⚡️  To Native ->  CapacitorHttp request 86543021
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+⚡️  TO JS {"status":400,"data":{"error":"invalid_grant","error_description":"Session not active"},"url":"https:\/\/icube-space.ru\/kc\/realms\/master\/protocol\/openid-connect\/token","headers":{"x-content-type-options":"nosniff","x-xss-protection":"1; mode=block","
+⚡️  [error] - Keycloak initialization error: {"response":{}}
+⚡️  [log] - AuthProvider - Platform: Native
 ⚡️  [log] - AuthProvider - Redirect URI: icube://token
+⚡️  To Native ->  Preferences remove 86543022
 ⚡️  TO JS undefined
-⚡️  To Native ->  Preferences remove 19748557
+⚡️  To Native ->  Preferences remove 86543023
 ⚡️  TO JS undefined
-⚡️  To Native ->  Preferences remove 19748558
+⚡️  To Native ->  Preferences remove 86543024
 ⚡️  TO JS undefined
-⚡️  To Native ->  Preferences remove 19748559
+⚡️  To Native ->  Preferences remove 86543025
 ⚡️  TO JS undefined
-⚡️  To Native ->  Preferences remove 19748560
+⚡️  To Native ->  Preferences remove 86543026
 ⚡️  TO JS undefined
-⚡️  To Native ->  Preferences set 19748561
+⚡️  To Native ->  Preferences set 86543027
 ⚡️  TO JS undefined
-⚡️  To Native ->  Preferences set 19748562
+⚡️  To Native ->  Preferences set 86543028
 ⚡️  TO JS undefined
-⚡️  To Native ->  Preferences set 19748563
+⚡️  To Native ->  Preferences set 86543029
 ⚡️  TO JS undefined
-⚡️  To Native ->  Preferences set 19748564
+⚡️  To Native ->  Preferences set 86543030
 ⚡️  TO JS undefined
-⚡️  [log] - PKCE prepare: {"verifierLen":64,"challenge":"dZmY...oOdg","state":"0GKb...zo4~"}
-⚡️  To Native ->  InAppBrowser openInSystemBrowser 19748565
+⚡️  [log] - PKCE prepare: {"verifierLen":64,"challenge":"MpUk...-AQ8","state":"DmEB...qW6u"}
+⚡️  To Native ->  InAppBrowser openInSystemBrowser 86543031
 ⚡️  TO JS undefined
-WebContent[67010] 0x10f04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+WebContent[69602] 0x10e04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
 -[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
 -[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
 -[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
 -[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
-WebContent[67010] 0x10f04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+WebContent[69602] 0x10e04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
 -[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
-WebContent[67010] 0x10f04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+WebContent[69602] 0x10e04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
 -[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
-WebContent[67010] 0x10f04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
-WebContent[67010] 0x10f04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
-⚡️  TO JS {"iosSourceApplication":"com.apple.SafariViewService","iosOpenInPlace":"","url":"icube:\/\/token?state=0GKbV_gYbz4lG2wK32lNebkvLJeczo4~&session_state=04e74658-4d58-4d6f-8444-af4a6b9e9946&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=a1a9f692
-⚡️  [log] - AppUrlListener received URL: icube://token?state=0GKbV_gYbz4lG2wK32lNebkvLJeczo4~&session_state=04e74658-4d58-4d6f-8444-af4a6b9e9946&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=a1a9f692-b31f-4af8-8d84-7e0eed8fe264.04e74658-4d58-4d6f-8444-af4a6b9e9946.c313ab94-f79f-4d24-88df-e40fe9aef029
-⚡️  To Native ->  Preferences get 19748566
+WebContent[69602] 0x10e04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+WebContent[69602] 0x10e04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+⚡️  TO JS {"iosOpenInPlace":"","iosSourceApplication":"com.apple.SafariViewService","url":"icube:\/\/token?state=DmEBvY-xBuONAOMNlrO_6tYvB36PqW6u&session_state=19c843e8-a2d4-45c1-9ace-54561b87c4f2&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=e955e2ef
+⚡️  [log] - AppUrlListener received URL: icube://token?state=DmEBvY-xBuONAOMNlrO_6tYvB36PqW6u&session_state=19c843e8-a2d4-45c1-9ace-54561b87c4f2&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=e955e2ef-d0e0-41ce-98c7-99f8f13937d6.19c843e8-a2d4-45c1-9ace-54561b87c4f2.c313ab94-f79f-4d24-88df-e40fe9aef029
+⚡️  To Native ->  Preferences get 86543032
 ⚡️  TO JS {"value":null}
-WebContent[67010] 0x10f04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
-⚡️  To Native ->  Preferences set 19748567
+WebContent[69602] 0x10e04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+⚡️  To Native ->  Preferences set 86543033
 ⚡️  TO JS undefined
-WebContent[67010] 0x10f04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
-⚡️  To Native ->  Preferences get 19748568
-⚡️  TO JS {"value":"0GKbV_gYbz4lG2wK32lNebkvLJeczo4~"}
-WebContent[67010] 0x10f04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
-⚡️  To Native ->  InAppBrowser close 19748569
-WebContent[67010] 0x10f04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+WebContent[69602] 0x10e04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+⚡️  To Native ->  Preferences get 86543034
+⚡️  TO JS {"value":"DmEBvY-xBuONAOMNlrO_6tYvB36PqW6u"}
+WebContent[69602] 0x10e04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
+⚡️  To Native ->  InAppBrowser close 86543035
+WebContent[69602] 0x10e04c100 - [sessionID=1] WebProcess::updateFreezerStatus: isFreezable=1, error=-1
 -[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
 -[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
 -[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
 -[RTIInputSystemClient remoteTextInputSessionWithID:performInputOperation:]  perform input operation requires a valid sessionID. inputModality = Keyboard, inputOperation = <null selector>, customInfoType = UIEmojiSearchOperations
 ⚡️  TO JS undefined
 ⚡️  [log] - Exchanging auth code for tokens (query) ...
-⚡️  To Native ->  Preferences get 19748570
+⚡️  To Native ->  Preferences get 86543036
 ⚡️  TO JS {"value":"icube:\/\/token"}
 ⚡️  [log] - Using redirectUri for exchange: icube://token
-⚡️  To Native ->  Preferences get 19748571
-⚡️  TO JS {"value":"4~iymAbQN5.bKjc~JtjzJyg~LdkwjIyd.AWBluhkstf5TOAE3eQsCeQRUTMHdNds"}
-⚡️  To Native ->  Preferences get 19748572
-⚡️  TO JS {"value":"dZmYWqSZJofdg7j8V7Il1vAol74-u3eceHc2eodoOdg"}
-⚡️  [log] - PKCE check: {"verifierLen":64,"challengeSaved":"dZmY...oOdg","challengeRecalc":"dZmY...oOdg"}
-⚡️  To Native ->  CapacitorHttp request 19748573
+⚡️  To Native ->  Preferences get 86543037
+⚡️  TO JS {"value":"M1gYPvMHkUvZmkIo4y3sq2YDNkccv9AFho~dnfQpeRygjibudxwWS4wUyHfi5tJ7"}
+⚡️  To Native ->  Preferences get 86543038
+⚡️  TO JS {"value":"MpUkXEgU_zcD63DzzTiHspTMJM548cMkPVQJppZ-AQ8"}
+⚡️  [log] - PKCE check: {"verifierLen":64,"challengeSaved":"MpUk...-AQ8","challengeRecalc":"MpUk...-AQ8"}
+⚡️  To Native ->  CapacitorHttp request 86543039
 nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
 nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
-⚡️  TO JS {"url":"https:\/\/icube-space.ru\/kc\/realms\/master\/protocol\/openid-connect\/token","headers":{"content-type":"application\/json","x-content-type-options":"nosniff","date":"Mon, 13 Oct 2025 18:41:25 GMT","x-xss-protection":"1; mode=block","strict-transp
+⚡️  TO JS {"url":"https:\/\/icube-space.ru\/kc\/realms\/master\/protocol\/openid-connect\/token","headers":{"date":"Mon, 13 Oct 2025 19:01:11 GMT","x-frame-options":"SAMEORIGIN","x-xss-protection":"1; mode=block","content-length":"4481","x-content-type-options":"nos
 ⚡️  [log] - Token exchange successful, saving tokens...
 ⚡️  [log] - Tokens saved to storage
 ⚡️  [log] - Keycloak instance updated with new tokens
-⚡️  To Native ->  Preferences remove 19748574
+⚡️  To Native ->  Preferences remove 86543040
 ⚡️  TO JS undefined
-⚡️  To Native ->  Preferences remove 19748575
+⚡️  To Native ->  Preferences remove 86543041
 ⚡️  TO JS undefined
 ⚡️  [log] - Cleaned up PKCE data
--[RTIInputSystemClient remoteTextInputSessionWithID:textSuggestionsChanged:]  Can only set suggestions for an active session. sessionID = BEF04121-C185-4624-AF29-5EED94F3A5D4
+-[RTIInputSystemClient remoteTextInputSessionWithID:textSuggestionsChanged:]  Can only set suggestions for an active session. sessionID = DF283D4A-19EE-4AFC-A045-A7A3F72F1A9A
 ⚡️  WebView loaded
-⚡️  To Native ->  StatusBar setStyle 57481323
+⚡️  To Native ->  StatusBar setStyle 48879775
 ⚡️  TO JS {}
-⚡️  To Native ->  App getLaunchUrl 57481324
-⚡️  To Native ->  App addListener 57481325
-⚡️  TO JS {"url":"icube:\/\/token?state=0GKbV_gYbz4lG2wK32lNebkvLJeczo4~&session_state=04e74658-4d58-4d6f-8444-af4a6b9e9946&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=a1a9f692-b31f-4af8-8d84-7e0eed8fe264.04e74658-4d58-4d6f-8444-af4a6b9e9946.c313ab9
+⚡️  To Native ->  App getLaunchUrl 48879776
+⚡️  To Native ->  App addListener 48879777
+⚡️  TO JS {"url":"icube:\/\/token?state=DmEBvY-xBuONAOMNlrO_6tYvB36PqW6u&session_state=19c843e8-a2d4-45c1-9ace-54561b87c4f2&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=e955e2ef-d0e0-41ce-98c7-99f8f13937d6.19c843e8-a2d4-45c1-9ace-54561b87c4f2.c313ab9
 ⚡️  TO JS undefined
 ⚡️  [log] - VITE_KEYCLOAK_URL: https://icube-space.ru/kc
 ⚡️  [log] - VITE_KEYCLOAK_REALM: master
 ⚡️  [log] - VITE_KEYCLOAK_CLIENT_ID: frontend
 ⚡️  [log] - Platform: Native
 ⚡️  [log] - Redirect URI: icube://token
-⚡️  [log] - Current URL: ionic://icube-space.ru/
-⚡️  To Native ->  Preferences get 57481326
-⚡️  [log] - AppUrlListener received URL: icube://token?state=0GKbV_gYbz4lG2wK32lNebkvLJeczo4~&session_state=04e74658-4d58-4d6f-8444-af4a6b9e9946&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=a1a9f692-b31f-4af8-8d84-7e0eed8fe264.04e74658-4d58-4d6f-8444-af4a6b9e9946.c313ab94-f79f-4d24-88df-e40fe9aef029
-⚡️  TO JS {"value":"a1a9f692-b31f-4af8-8d84-7e0eed8fe264.04e74658-4d58-4d6f-8444-af4a6b9e9946.c313ab94-f79f-4d24-88df-e40fe9aef029"}
-⚡️  [log] - Code already processed, skipping: a1a9f692-b...
-⚡️  To Native ->  App addListener 57481327
-⚡️  To Native ->  Keyboard getResizeMode 57481328
+⚡️  [log] - Current URL: capacitor://localhost/
+⚡️  [log] - AppUrlListener received URL: icube://token?state=DmEBvY-xBuONAOMNlrO_6tYvB36PqW6u&session_state=19c843e8-a2d4-45c1-9ace-54561b87c4f2&iss=https%3A%2F%2Ficube-space.ru%2Fkc%2Frealms%2Fmaster&code=e955e2ef-d0e0-41ce-98c7-99f8f13937d6.19c843e8-a2d4-45c1-9ace-54561b87c4f2.c313ab94-f79f-4d24-88df-e40fe9aef029
+⚡️  To Native ->  Preferences get 48879778
+⚡️  TO JS {"value":"e955e2ef-d0e0-41ce-98c7-99f8f13937d6.19c843e8-a2d4-45c1-9ace-54561b87c4f2.c313ab94-f79f-4d24-88df-e40fe9aef029"}
+⚡️  [log] - Code already processed, skipping: e955e2ef-d...
+⚡️  [log] - Keycloak init - tokens from storage: {"hasToken":true,"hasRefresh":true,"hasId":true,"tokenPreview":"eyJhbGciOiJSUzI1NiIs...","accessExp":"2025-10-13T19:11:11.607Z"}
+⚡️  To Native ->  CapacitorHttp request 48879779
+nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
+⚡️  To Native ->  App addListener 48879780
+⚡️  To Native ->  Keyboard getResizeMode 48879781
 ⚡️  TO JS {"mode":"native"}
-⚡️  [log] - Keycloak init - tokens from storage: {"hasToken":true,"hasRefresh":true,"hasId":true,"tokenPreview":"eyJhbGciOiJSUzI1NiIs...","accessExp":"2025-10-13T18:51:25.635Z"}
-⚡️  To Native ->  CapacitorHttp request 57481329
 nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
-nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
-⚡️  TO JS {"data":{"session_state":"04e74658-4d58-4d6f-8444-af4a6b9e9946","expires_in":600,"refresh_token":"eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJiYmU1MGEzMC01Mjg3LTQ3ZDgtYjM0Mi04NzA4NDM1ZTg1Y2MifQ.eyJleHAiOjE3NjAzODI2ODYsImlhdCI6MTc2MDM4MDg4NiwianRpIjo
+⚡️  TO JS {"url":"https:\/\/icube-space.ru\/kc\/realms\/master\/protocol\/openid-connect\/token","headers":{"content-length":"4481","server":"nginx","content-type":"application\/json","x-content-type-options":"nosniff","x-frame-options":"SAMEORIGIN","date":"Mon, 13 
 ⚡️  [log] - Keycloak initialized: true
 ⚡️  [log] - Token after init: true
 ⚡️  [log] - Token value: eyJhbGciOiJSUzI1NiIs...
-⚡️  [log] - Token expires in: 599560 ms
+⚡️  [log] - Token expires in: 599670 ms
 ⚡️  [log] - universalApi.get: /users/me Platform: Native
 ⚡️  [log] - API Request: /users/me Token available: true
 ⚡️  [log] - Authorization header added
 nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
 nw_socket_set_connection_idle [C1.1.1.1:3] setsockopt SO_CONNECTION_IDLE failed [42: Protocol not available]
 ⚡️  [log] - API Response Error: 401 /users/me Token available: true
-⚡️  [error] - Auth init error: {"message":"Request failed with status code 401","name":"AxiosError","stack":"QT@ionic://icube-space.ru/assets/index-Bjl8pJBT.js:184:51729\nC@ionic://icube-space.ru/assets/index-Bjl8pJBT.js:184:56366\n@ionic://icube-space.ru/assets/index-Bjl8pJBT.js:184:64909","config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"adapter":["xhr","http","fetch"],"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{},"headers":{"Accept":"application/json, text/plain, */*","Content-Type":"application/json","Authorization":"Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzOUlxVm9TTTJSLTV0V25NcUotQ2xKZGszZm1yQjZTczRIaTV5QUl5Rm5JIn0.eyJleHAiOjE3NjAzODE0ODYsImlhdCI6MTc2MDM4MDg4NiwiYXV0aF90aW1lIjoxNzYwMzgwODg0LCJqdGkiOiJjZGIyNTgwOS1kNjM1LTQ5ZjEtOGUwNi05NDdhZWE4YWY4YjgiLCJpc3MiOiJodHRwczovL2ljdWJlLXNwYWNlLnJ1L2tjL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOlsiYXBpIiwiaWN1YmUtc3BhY2UiLCJtYXN0ZXItcmVhbG0iLCJhY2NvdW50Il0sInN1YiI6ImExYzgxMWE1LTU0MDMtNGI1OC1hMjMwLTY3ODkwMDYwNjA3NiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250ZW5kIiwic2Vzc2lvbl9zdGF0ZSI6IjA0ZTc0NjU4LTRkNTgtNGQ2Zi04NDQ0LWFmNGE2YjllOTk0NiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiY2FwYWNpdG9yOi8vbG9jYWxob3N0IiwiKiIsImlvbmljOi8vaWN1YmUtc3BhY2UucnUiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImNyZWF0ZS1yZWFsbSIsImRlZmF1bHQtcm9sZXMtbWFzdGVyIiwib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctcmVhbG0iLCJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBkamFuZ29fZ3JvdXBzIHByb2ZpbGUiLCJzaWQiOiIwNGU3NDY1OC00ZDU4LTRkNmYtODQ0NC1hZjRhNmI5ZTk5NDYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZGphbmdvX2dyb3VwcyI6WyJhZG1pbiIsInN1cGVyYWRtaW4iXSwibmFtZSI6ItCQ0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGAINCc0L7QsdC40LvRjNC90YvQuSIsInByZWZlcnJlZF91c2VybmFtZSI6Im1vYmlsZV9hZG1pbiIsImdpdmVuX25hbWUiOiLQkNC00LzQuNC90LjRgdGC0YDQsNGC0L7RgCIsImZhbWlseV9uYW1lIjoi0JzQvtCx0LjQu9GM0L3Ri9C5IiwiZW1haWwiOiJtb2JpbGVfYWRtaW5AdGVzdC5ydSJ9.dKC5Z3Dqj_TLe1wCNtqUS77gf2YZM1dctVOlSRsfrTO3N-E4ihGpvLRR76_cjxSaV-L7hiJPRbgwNSSGmKUwBdtbyi4EP9PGph9BlIgF9GOc-TN-nZhkzaXpC_XjBIcdboeI0t9OEn3ELRCN_l9oGXoYLczwEOS-YRrndV6Xf0zXk_5-pxx_n_LsjkHvhTHKUAVJYIZz7t1m3n9HQjyEtBnjVZhh2RnR29I5TZGtqIbEAsVGMj4zQasa9w7_bdH1ypRekvdQfYbF4GGFMR08jhlSNqf5LyZWoOXsB91TMiEbrUxZynZp5nf8ZdgV0YUi3LJl8Zd1HkhJQ74S5zcC9w"},"baseURL":"https://icube-space.ru/api","method":"get","url":"/users/me","allowAbsoluteUrls":true},"code":"ERR_BAD_REQUEST","status":401}
+⚡️  [error] - Auth init error: {"message":"Request failed with status code 401","name":"AxiosError","stack":"QT@capacitor://localhost/assets/index-Bjl8pJBT.js:184:51729\nC@capacitor://localhost/assets/index-Bjl8pJBT.js:184:56366\n@capacitor://localhost/assets/index-Bjl8pJBT.js:184:64909","config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"adapter":["xhr","http","fetch"],"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{},"headers":{"Accept":"application/json, text/plain, */*","Content-Type":"application/json","Authorization":"Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzOUlxVm9TTTJSLTV0V25NcUotQ2xKZGszZm1yQjZTczRIaTV5QUl5Rm5JIn0.eyJleHAiOjE3NjAzODI2NzEsImlhdCI6MTc2MDM4MjA3MSwiYXV0aF90aW1lIjoxNzYwMzgyMDcwLCJqdGkiOiIxM2IxMzFhNC0wZmFkLTQ3YjgtOGFjMi03MjlhODEyMjg3Y2IiLCJpc3MiOiJodHRwczovL2ljdWJlLXNwYWNlLnJ1L2tjL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOlsiYXBpIiwiaWN1YmUtc3BhY2UiLCJtYXN0ZXItcmVhbG0iLCJhY2NvdW50Il0sInN1YiI6ImExYzgxMWE1LTU0MDMtNGI1OC1hMjMwLTY3ODkwMDYwNjA3NiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250ZW5kIiwic2Vzc2lvbl9zdGF0ZSI6IjE5Yzg0M2U4LWEyZDQtNDVjMS05YWNlLTU0NTYxYjg3YzRmMiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiY2FwYWNpdG9yOi8vbG9jYWxob3N0IiwiKiIsImlvbmljOi8vaWN1YmUtc3BhY2UucnUiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImNyZWF0ZS1yZWFsbSIsImRlZmF1bHQtcm9sZXMtbWFzdGVyIiwib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctcmVhbG0iLCJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBkamFuZ29fZ3JvdXBzIHByb2ZpbGUiLCJzaWQiOiIxOWM4NDNlOC1hMmQ0LTQ1YzEtOWFjZS01NDU2MWI4N2M0ZjIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZGphbmdvX2dyb3VwcyI6WyJhZG1pbiIsInN1cGVyYWRtaW4iXSwibmFtZSI6ItCQ0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGAINCc0L7QsdC40LvRjNC90YvQuSIsInByZWZlcnJlZF91c2VybmFtZSI6Im1vYmlsZV9hZG1pbiIsImdpdmVuX25hbWUiOiLQkNC00LzQuNC90LjRgdGC0YDQsNGC0L7RgCIsImZhbWlseV9uYW1lIjoi0JzQvtCx0LjQu9GM0L3Ri9C5IiwiZW1haWwiOiJtb2JpbGVfYWRtaW5AdGVzdC5ydSJ9.BpRjZqBJs5zTNwEpKKH07OvbstyfANIhTqB92aWs4SjEUR3-F6Et-gs3hryYQ9DZOjsg7VXg8YpU65HVWpb0JOkHJ1hMxvR4n98Gt-Q2x6oQvImTehM_J0Zfp1-0OGiduCpxYQWoqpf70ZO1JNkW4KcBejS0uluyoTLMc3Wfy_toPA5Qjz8JEKAf6Ee390D2icrzk5AsRQ4Uvd92ZJYHbI3ftJH2xWL5Cu68hR6K-1e3ovV2K83eTyNdNH6mx-R5xZZ0lfH8kkF_WbSItj41sKeqkOAs35FWWllDK6KwMkYdmsZ-1o2o9CwIpogDAaVe84NmK3tVQ4UUx4juIjZ1qg"},"baseURL":"https://icube-space.ru/api","method":"get","url":"/users/me","allowAbsoluteUrls":true},"code":"ERR_BAD_REQUEST","status":401}
