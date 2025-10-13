@@ -68,24 +68,25 @@ export const AuthProvider = ({ children }: TProps) => {
         console.log('AuthProvider - Redirect URI:', redirectUri);
         
         if (Capacitor.isNativePlatform()) {
-            // Генерируем PKCE для нативного потока
+            // Генерируем PKCE и state для ручного auth-запроса
             const verifier = await generateCodeVerifier();
             const challenge = await generateCodeChallenge(verifier);
+            const state = await generateCodeVerifier(32);
             await storage.set('pkce_verifier', verifier);
+            await storage.set('pkce_state', state);
 
-            const authUrl = await keycloak.createLoginUrl({
-                redirectUri,
-                // Переопределим PKCE параметры
-                // keycloak-js добавит свои, но challenge в URL допустим
-                // Дополнительно безопасно — главный обмен сделаем сами по deep link
-                // pkceMethod в init уже S256
-                // Добавление code_challenge вручную на всякий случай
+            const base = `${import.meta.env.VITE_KEYCLOAK_URL}/realms/${import.meta.env.VITE_KEYCLOAK_REALM}/protocol/openid-connect/auth`;
+            const qs = new URLSearchParams({
+                client_id: import.meta.env.VITE_KEYCLOAK_CLIENT_ID,
+                redirect_uri: redirectUri,
+                response_type: 'code',
+                response_mode: 'fragment',
                 scope: 'openid',
-                // @ts-ignore
+                state,
                 code_challenge: challenge,
-                // @ts-ignore
-                code_challenge_method: 'S256'
-            } as any);
+                code_challenge_method: 'S256',
+            }).toString();
+            const authUrl = `${base}?${qs}`;
 
             await InAppBrowser.openInSystemBrowser({ url: authUrl, options: DefaultSystemBrowserOptions });
         } else {

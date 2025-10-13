@@ -88,7 +88,6 @@ export const initKeycloak = async (): Promise<boolean> => {
     options = {
         ...options,
         checkLoginIframe: false,
-        pkceMethod: 'S256',
         flow: 'standard'
     };
 

@@ -12,6 +12,12 @@ const AppUrlListener: React.FC<any> = () => {
           // Проверяем, что это callback от Keycloak
           if (url.searchParams.has('code') && url.searchParams.has('state')) {
             const code = url.searchParams.get('code')!;
+            const state = url.searchParams.get('state')!;
+            const expectedState = await (await import('@/shared/lib/ionic-storage')).storage.get('pkce_state');
+            if (expectedState && expectedState !== state) {
+              console.error('State mismatch, aborting.');
+              return;
+            }
             try { await InAppBrowser.close(); } catch (e) { console.warn('IAB close ignored:', e); }
             // Меняем код на токены нативно и перезагружаем UI
             try {
@@ -34,6 +40,12 @@ const AppUrlListener: React.FC<any> = () => {
             const params = new URLSearchParams(hash);
             if (params.has('code') && params.has('state')) {
               const code = params.get('code')!;
+              const state = params.get('state')!;
+              const expectedState = await (await import('@/shared/lib/ionic-storage')).storage.get('pkce_state');
+              if (expectedState && expectedState !== state) {
+                console.error('State mismatch, aborting.');
+                return;
+              }
               try { await InAppBrowser.close(); } catch (e) { console.warn('IAB close ignored:', e); }
               try {
                 console.log('Exchanging auth code for tokens (fragment) ...');
