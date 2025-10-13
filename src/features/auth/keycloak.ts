@@ -191,11 +191,12 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
     
     console.log('Keycloak instance updated with new tokens');
 
-    // Очищаем временные PKCE-значения
+    // Очищаем временные PKCE-значения (НЕ очищаем processed code - он защищает от повторной обработки)
     try {
         const { Preferences } = await import('@capacitor/preferences');
         const { PKCE_KEYS } = await import('./pkce');
         await Preferences.remove({ key: PKCE_KEYS.verifier });
         await Preferences.remove({ key: PKCE_KEYS.state });
+        console.log('Cleaned up PKCE data');
     } catch {}
 }

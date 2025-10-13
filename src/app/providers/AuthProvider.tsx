@@ -73,11 +73,12 @@ export const AuthProvider = ({ children }: TProps) => {
             const verifier = await generateCodeVerifier();
             const challenge = await generateCodeChallenge(verifier);
             const state = await generateCodeVerifier(32);
-            // Очистим старые значения
+            // Очистим старые значения, включая обработанный код
             await Preferences.remove({ key: PKCE_KEYS.verifier });
             await Preferences.remove({ key: PKCE_KEYS.state });
             await Preferences.remove({ key: PKCE_KEYS.challenge });
             await Preferences.remove({ key: PKCE_KEYS.redirectUri });
+            await Preferences.remove({ key: 'auth_processed_code' });
 
             await Preferences.set({ key: PKCE_KEYS.verifier, value: verifier });
             await Preferences.set({ key: PKCE_KEYS.state, value: state });

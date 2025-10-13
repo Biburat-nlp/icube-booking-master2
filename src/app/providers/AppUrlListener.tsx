@@ -5,16 +5,18 @@ import { exchangeCodeForTokens } from '@/features/auth/keycloak';
 import { PKCE_KEYS } from '@/features/auth/pkce';
 import { Preferences } from '@capacitor/preferences';
 
+const PROCESSED_CODE_KEY = 'auth_processed_code';
+
 const AppUrlListener: React.FC<any> = () => {
-    const processedUrls = useRef<Set<string>>(new Set());
+    const processingRef = useRef<boolean>(false);
     
     useEffect(() => {
       const processUrl = async (eventUrl: string) => {
         console.log('AppUrlListener received URL:', eventUrl);
         
-        // Защита от повторной обработки одного и того же URL
-        if (processedUrls.current.has(eventUrl)) {
-          console.log('URL already processed, skipping:', eventUrl);
+        // Защита от одновременной обработки
+        if (processingRef.current) {
+          console.log('Already processing an auth callback, skipping');
           return;
         }
         
@@ -25,8 +27,16 @@ const AppUrlListener: React.FC<any> = () => {
             const code = url.searchParams.get('code')!;
             const state = url.searchParams.get('state')!;
             
-            // Отмечаем URL как обработанный ДО начала обработки
-            processedUrls.current.add(eventUrl);
+            // Проверяем, не был ли этот код уже обработан
+            const { value: processedCode } = await Preferences.get({ key: PROCESSED_CODE_KEY });
+            if (processedCode === code) {
+              console.log('Code already processed, skipping:', code.substring(0, 10) + '...');
+              return;
+            }
+            
+            // Отмечаем, что начали обработку
+            processingRef.current = true;
+            await Preferences.set({ key: PROCESSED_CODE_KEY, value: code });
             
             const { value: expectedState } = await Preferences.get({ key: PKCE_KEYS.state });
             if (expectedState && expectedState !== state) {
@@ -53,7 +63,6 @@ const AppUrlListener: React.FC<any> = () => {
             return;
           }
           if (url.searchParams.has('error')) {
-            processedUrls.current.add(eventUrl);
             console.error('OAuth error:', url.searchParams.get('error'));
             await InAppBrowser.close();
             return;
@@ -66,8 +75,16 @@ const AppUrlListener: React.FC<any> = () => {
               const code = params.get('code')!;
               const state = params.get('state')!;
               
-              // Отмечаем URL как обработанный ДО начала обработки
-              processedUrls.current.add(eventUrl);
+              // Проверяем, не был ли этот код уже обработан
+              const { value: processedCode } = await Preferences.get({ key: PROCESSED_CODE_KEY });
+              if (processedCode === code) {
+                console.log('Code already processed (fragment), skipping:', code.substring(0, 10) + '...');
+                return;
+              }
+              
+              // Отмечаем, что начали обработку
+              processingRef.current = true;
+              await Preferences.set({ key: PROCESSED_CODE_KEY, value: code });
               
               const { value: expectedState } = await Preferences.get({ key: PKCE_KEYS.state });
               if (expectedState && expectedState !== state) {
