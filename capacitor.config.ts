@@ -7,7 +7,8 @@ const config: CapacitorConfig = {
     server: {
       androidScheme: 'https',
       iosScheme: 'https',
-      hostname: 'icube-space.ru',
+      hostname: 'localhost',
+      // Одинаковая схема для Android и iOS
 
     },
     plugins: {
