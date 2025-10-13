@@ -13,10 +13,13 @@ const AppUrlListener: React.FC<any> = () => {
           // Проверяем, что это callback от Keycloak
           if (url.searchParams.has('code') && url.searchParams.has('state')) {
             console.log('Keycloak callback detected');
-            // Keycloak автоматически обработает callback при следующей инициализации
+            // Переносим code/state из deep link в URL WebView, чтобы keycloak-js смог их обработать
+            const params = url.searchParams.toString();
+            const current = new URL(window.location.href);
+            const newHref = `${current.origin}${current.pathname}?${params}${current.hash || ''}`;
             await InAppBrowser.close();
-            // Перезагружаем приложение для обработки callback
-            window.location.reload();
+            window.location.replace(newHref);
+            return;
           } else if (url.searchParams.has('error')) {
             console.error('OAuth error:', url.searchParams.get('error'));
             await InAppBrowser.close();
