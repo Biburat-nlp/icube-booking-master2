@@ -24,7 +24,9 @@ const AppUrlListener: React.FC<any> = () => {
             // Меняем код на токены нативно и перезагружаем UI
             try {
               console.log('Exchanging auth code for tokens (query) ...');
-              await exchangeCodeForTokens(code, 'icube://token');
+              const { value: redirectUri } = await Preferences.get({ key: PKCE_KEYS.redirectUri });
+              console.log('Using redirectUri for exchange:', redirectUri);
+              await exchangeCodeForTokens(code, redirectUri || 'icube://token');
               window.location.replace('/');
             } catch (e) {
               console.error('Token exchange failed (query):', e);
@@ -51,7 +53,9 @@ const AppUrlListener: React.FC<any> = () => {
               try { await InAppBrowser.close(); } catch (e) { console.warn('IAB close ignored:', e); }
               try {
                 console.log('Exchanging auth code for tokens (fragment) ...');
-                await exchangeCodeForTokens(code, 'icube://token');
+                const { value: redirectUri } = await Preferences.get({ key: PKCE_KEYS.redirectUri });
+                console.log('Using redirectUri for exchange:', redirectUri);
+                await exchangeCodeForTokens(code, redirectUri || 'icube://token');
                 window.location.replace('/');
               } catch (e) {
                 console.error('Token exchange failed (fragment):', e);

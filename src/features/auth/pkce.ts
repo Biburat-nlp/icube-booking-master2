@@ -28,6 +28,8 @@ export async function generateCodeChallenge(verifier: string): Promise<string> {
 export const PKCE_KEYS = {
     verifier: 'pkce_verifier',
     state: 'pkce_state',
+    challenge: 'pkce_challenge',
+    redirectUri: 'pkce_redirect_uri',
 } as const;
 
 

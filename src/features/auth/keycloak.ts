@@ -132,10 +132,21 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
     // Если использовали PKCE, можно добавить code_verifier из storage
     try {
         const { Preferences } = await import('@capacitor/preferences');
-        const { PKCE_KEYS } = await import('./pkce');
-        const { value } = await Preferences.get({ key: PKCE_KEYS.verifier });
-        if (value) body.set('code_verifier', value);
-        console.log('Using code_verifier len:', value ? value.length : 0);
+        const { PKCE_KEYS, generateCodeChallenge } = await import('./pkce');
+        const { value: verifier } = await Preferences.get({ key: PKCE_KEYS.verifier });
+        const { value: challengeSaved } = await Preferences.get({ key: PKCE_KEYS.challenge });
+        if (verifier) {
+            body.set('code_verifier', verifier);
+            // Диагностика соответствия challenge
+            try {
+                const recalculated = await generateCodeChallenge(verifier);
+                console.log('PKCE check:', {
+                    verifierLen: verifier.length,
+                    challengeSaved: challengeSaved ? challengeSaved.substring(0,4) + '...' + challengeSaved.slice(-4) : 'none',
+                    challengeRecalc: recalculated.substring(0,4) + '...' + recalculated.slice(-4)
+                });
+            } catch {}
+        }
     } catch {}
 
     const resp = await fetch(tokenUrl, {

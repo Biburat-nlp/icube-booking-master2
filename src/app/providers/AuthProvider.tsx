@@ -73,20 +73,29 @@ export const AuthProvider = ({ children }: TProps) => {
             const verifier = await generateCodeVerifier();
             const challenge = await generateCodeChallenge(verifier);
             const state = await generateCodeVerifier(32);
+            // Очистим старые значения
+            await Preferences.remove({ key: PKCE_KEYS.verifier });
+            await Preferences.remove({ key: PKCE_KEYS.state });
+            await Preferences.remove({ key: PKCE_KEYS.challenge });
+            await Preferences.remove({ key: PKCE_KEYS.redirectUri });
+
             await Preferences.set({ key: PKCE_KEYS.verifier, value: verifier });
             await Preferences.set({ key: PKCE_KEYS.state, value: state });
+            await Preferences.set({ key: PKCE_KEYS.redirectUri, value: redirectUri });
 
             const base = `${import.meta.env.VITE_KEYCLOAK_URL}/realms/${import.meta.env.VITE_KEYCLOAK_REALM}/protocol/openid-connect/auth`;
             const qs = new URLSearchParams({
                 client_id: import.meta.env.VITE_KEYCLOAK_CLIENT_ID,
                 redirect_uri: redirectUri,
                 response_type: 'code',
-                response_mode: 'fragment',
+                response_mode: 'query',
                 scope: 'openid',
                 state,
                 code_challenge: challenge,
                 code_challenge_method: 'S256',
             }).toString();
+            await Preferences.set({ key: PKCE_KEYS.challenge, value: challenge });
+            console.log('PKCE prepare:', { verifierLen: verifier.length, challenge: challenge.substring(0,4) + '...' + challenge.slice(-4), state: state.substring(0,4) + '...' + state.slice(-4) });
             const authUrl = `${base}?${qs}`;
 
             await InAppBrowser.openInSystemBrowser({ url: authUrl, options: DefaultSystemBrowserOptions });
