@@ -25,11 +25,21 @@ const AppUrlListener: React.FC<any> = () => {
             await InAppBrowser.close();
             // Можно показать пользователю ошибку
           } else {
-            // Обрабатываем hash для обычной навигации
+            // Если OAuth вернулся во фрагменте (#code&state=...), конвертируем во входные параметры запроса
             const hash = url.hash.substring(1);
             if (hash) {
-              await InAppBrowser.close();
-              window.location.replace('/#' + hash);
+              const params = new URLSearchParams(hash);
+              if (params.has('code') && params.has('state')) {
+                const current = new URL(window.location.href);
+                const newHref = `${current.origin}${current.pathname}?${params.toString()}`;
+                await InAppBrowser.close();
+                window.location.replace(newHref);
+                return;
+              } else {
+                // Обычная навигация по hash
+                await InAppBrowser.close();
+                window.location.replace('/#' + hash);
+              }
             }
           }
         } catch (error) {
