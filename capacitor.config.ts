@@ -6,8 +6,9 @@ const config: CapacitorConfig = {
     webDir: "dist",
     server: {
       androidScheme: 'https',
-      iosScheme: 'https',
-      hostname: 'localhost',
+      iosScheme: 'ionic',
+      hostname: 'icube-space.ru',
+      iosCleartext: true,
 
     },
     plugins: {
