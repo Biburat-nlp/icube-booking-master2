@@ -10,7 +10,7 @@ import { notifyError } from "@/shared/utils/error/errorNotifier.ts";
 
 
 export const createApiInstance = async () => {
-    const baseURL = await serverConfigManager.getBaseUrl();
+    const baseURL = await serverConfigManager.getApiBaseUrl();
     return axios.create({
         baseURL,
         headers: {
@@ -26,10 +26,8 @@ export const api = axios.create({
     },
 });
 
-// Универсальный API клиент - используем axios везде для лучшей совместимости
 export const universalApi = {
     async get<T = any>(url: string, params?: Record<string, any>) {
-        console.log('universalApi.get:', url, 'Platform:', Capacitor.isNativePlatform() ? 'Native' : 'Web');
         return api.get<T>(url, { params });
     },
 
@@ -50,12 +48,22 @@ export const universalApi = {
     }
 };
 
-export const updateApiBaseUrl = async (newBaseUrl: string) => {
-    api.defaults.baseURL = newBaseUrl;
+export const updateApiBaseUrl = async (domainOrApiBase: string) => {
+    let base = domainOrApiBase;
+    try {
+        const url = new URL(domainOrApiBase);
+        const hasApiPath = /\/api(\/|$)/.test(url.pathname);
+        if (!hasApiPath) {
+            const trimmed = url.origin;
+            base = `${trimmed}/api`;
+        }
+    } catch {
+        
+    }
+    api.defaults.baseURL = base;
 };
 
 api.interceptors.request.use(async (config) => {
-    console.log('API Request:', config.url, 'Token available:', !!keycloak.token);
     let token = keycloak.token;
     if (!token && Capacitor.isNativePlatform()) {
         try {
@@ -63,10 +71,9 @@ api.interceptors.request.use(async (config) => {
             const stored = await storage.get(KEYS.token);
             if (stored && typeof stored === 'string') {
                 token = stored;
-                console.log('API Request: using token from storage');
             }
         } catch (e) {
-            console.warn('API Request: failed to read token from storage', e);
+            
         }
     }
     if (token) {
@@ -74,9 +81,6 @@ api.interceptors.request.use(async (config) => {
             ...config.headers,
             Authorization: `Bearer ${token}`,
         } as AxiosRequestHeaders;
-        console.log('Authorization header added');
-    } else {
-        console.warn('No token available for request:', config.url);
     }
     return config;
 });
@@ -89,8 +93,6 @@ api.interceptors.response.use(
     async (error: AxiosError) => {
         const originalRequest = error.config;
         const status = error.response?.status;
-        
-        console.log('API Response Error:', status, error.config?.url, 'Token available:', !!keycloak.token);
 
         if (status === 401 && originalRequest) {
             if (refreshAttempts >= MAX_REFRESH_ATTEMPTS) {

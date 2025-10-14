@@ -30,10 +30,9 @@ export class CapacitorHttpClient {
         
         if (keycloak.token) {
             headers['Authorization'] = `Bearer ${keycloak.token}`;
-            console.log('CapacitorHttp: Authorization header added');
-            console.log('CapacitorHttp: Token preview:', keycloak.token.substring(0, 20) + '...');
+            
         } else {
-            console.warn('CapacitorHttp: No token available for request:', url);
+            
         }
 
         headers['Content-Type'] = 'application/json';
@@ -53,10 +52,7 @@ export class CapacitorHttpClient {
             }
         }
 
-        console.log('CapacitorHttp Request:', method, finalUrl, 'Token available:', !!keycloak.token);
-        console.log('CapacitorHttp Headers:', headers);
-        console.log('CapacitorHttp: Keycloak authenticated:', keycloak.authenticated);
-        console.log('CapacitorHttp: Keycloak token expired:', keycloak.isTokenExpired());
+        
 
         try {
             const response = await CapacitorHttp.request({
@@ -66,8 +62,7 @@ export class CapacitorHttpClient {
                 data: data ? JSON.stringify(data) : undefined,
             });
 
-            console.log('CapacitorHttp Response:', response.status, finalUrl);
-            console.log('CapacitorHttp Response Data:', response.data);
+            
 
             return {
                 data: response.data,
@@ -76,20 +71,20 @@ export class CapacitorHttpClient {
                 url: response.url,
             };
         } catch (error: any) {
-            console.error('CapacitorHttp Error:', error);
+            
             
             if (error.status === 401) {
                 try {
-                    console.log('CapacitorHttp: Attempting token refresh...');
+                    
                     const refreshed = await keycloak.updateToken(30);
                     if (refreshed && keycloak.token) {
-                        console.log('CapacitorHttp: Token refreshed, retrying request...');
+                        
                         
                         headers['Authorization'] = `Bearer ${keycloak.token}`;
                         return this.makeRequest(options);
                     }
                 } catch (refreshError) {
-                    console.error('CapacitorHttp: Token refresh failed:', refreshError);
+                    
                     await keycloak.logout();
                 }
             }

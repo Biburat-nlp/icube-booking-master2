@@ -574,6 +574,11 @@ export const en_dictionary = {
         loading: "Loading settings...",
         server_settings_title: "Server settings",
     },
+    auth_page: {
+        title: "Welcome!",
+        subtitle: "Please sign in to continue using the app.",
+        login_button: "Sign in",
+    },
     filters: {
         select_office: "Select office",
         conference_call: "Conference call",

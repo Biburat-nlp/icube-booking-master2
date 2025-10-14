@@ -12,6 +12,7 @@ import { storage } from "@/shared/lib/ionic-storage";
 import type { TUser } from "@/shared/types/user";
 import { InAppBrowser, DefaultSystemBrowserOptions } from '@capacitor/inappbrowser';
 import { Capacitor } from "@capacitor/core";
+import { serverConfigManager } from "@/shared/config/serverConfig.ts";
 
 export interface IAuthContextType {
     isLoading: boolean;
@@ -40,7 +41,6 @@ export const AuthProvider = ({ children }: TProps) => {
             const me = await usersApi.me();
             setUser(me);
         } catch (e) {
-            console.error("Не удалось обновить профиль:", e);
         }
     }, []);
 
@@ -65,15 +65,10 @@ export const AuthProvider = ({ children }: TProps) => {
             ? (import.meta.env.VITE_MOBILE_SCHEME || "icube://token")
             : (import.meta.env.VITE_BASE_URL || window.location.href);
         
-        console.log('AuthProvider - Platform:', Capacitor.isNativePlatform() ? 'Native' : 'Web');
-        console.log('AuthProvider - Redirect URI:', redirectUri);
-        
         if (Capacitor.isNativePlatform()) {
-            // Генерируем PKCE и state для ручного auth-запроса
             const verifier = await generateCodeVerifier();
             const challenge = await generateCodeChallenge(verifier);
             const state = await generateCodeVerifier(32);
-            // Очистим старые значения, включая обработанный код
             await Preferences.remove({ key: PKCE_KEYS.verifier });
             await Preferences.remove({ key: PKCE_KEYS.state });
             await Preferences.remove({ key: PKCE_KEYS.challenge });
@@ -84,7 +79,8 @@ export const AuthProvider = ({ children }: TProps) => {
             await Preferences.set({ key: PKCE_KEYS.state, value: state });
             await Preferences.set({ key: PKCE_KEYS.redirectUri, value: redirectUri });
 
-            const base = `${import.meta.env.VITE_KEYCLOAK_URL}/realms/${import.meta.env.VITE_KEYCLOAK_REALM}/protocol/openid-connect/auth`;
+            const kcBase = await serverConfigManager.getKeycloakBaseUrl();
+            const base = `${kcBase}/realms/${import.meta.env.VITE_KEYCLOAK_REALM}/protocol/openid-connect/auth`;
             const qs = new URLSearchParams({
                 client_id: import.meta.env.VITE_KEYCLOAK_CLIENT_ID,
                 redirect_uri: redirectUri,
@@ -96,7 +92,6 @@ export const AuthProvider = ({ children }: TProps) => {
                 code_challenge_method: 'S256',
             }).toString();
             await Preferences.set({ key: PKCE_KEYS.challenge, value: challenge });
-            console.log('PKCE prepare:', { verifierLen: verifier.length, challenge: challenge.substring(0,4) + '...' + challenge.slice(-4), state: state.substring(0,4) + '...' + state.slice(-4) });
             const authUrl = `${base}?${qs}`;
 
             await InAppBrowser.openInSystemBrowser({ url: authUrl, options: DefaultSystemBrowserOptions });
@@ -109,7 +104,11 @@ export const AuthProvider = ({ children }: TProps) => {
         setLoad(true);
         try {
         if (Capacitor.isNativePlatform()) {
-            const url = await keycloak.createLogoutUrl();
+            const kcBase = await serverConfigManager.getKeycloakBaseUrl();
+            const redirectUri = Capacitor.isNativePlatform() 
+                ? (import.meta.env.VITE_MOBILE_SCHEME || "icube://token")
+                : (import.meta.env.VITE_BASE_URL || window.location.href);
+            const url = `${kcBase}/realms/${import.meta.env.VITE_KEYCLOAK_REALM}/protocol/openid-connect/logout?client_id=${encodeURIComponent(import.meta.env.VITE_KEYCLOAK_CLIENT_ID)}&post_logout_redirect_uri=${encodeURIComponent(redirectUri)}`;
             await InAppBrowser.openInSystemBrowser({
                 url,
                 options: DefaultSystemBrowserOptions
@@ -122,7 +121,6 @@ export const AuthProvider = ({ children }: TProps) => {
             queryClient.clear();
             await storage.clear();
         } catch (e) {
-            console.error("Logout error:", e);
         } finally {
             mountedRef.current && setLoad(false);
         }
@@ -143,7 +141,6 @@ export const AuthProvider = ({ children }: TProps) => {
                     keycloak.onAuthRefreshSuccess = persistTokens;
                 }
             } catch (e) {
-                console.error("Auth init error:", e);
             } finally {
                 mountedRef.current && setLoad(false);
             }

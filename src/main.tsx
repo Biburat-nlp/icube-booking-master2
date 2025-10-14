@@ -32,9 +32,7 @@ async function bootstrap() {
 
     try {
         await initStorage();
-    } catch (err) {
-        console.error("Failed to init storage", err);
-    }
+    } catch (err) {}
 
     root.render(
         <ErrorBoundary>

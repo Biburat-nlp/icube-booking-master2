@@ -635,6 +635,11 @@ export const ru_dictionary = {
         loading: "Загрузка настроек...",
         server_settings_title: "Настройки сервера",
     },
+    auth_page: {
+        title: "Добро пожаловать!",
+        subtitle: "Авторизуйтесь для продолжения работы с приложением.",
+        login_button: "Войти",
+    },
     filters: {
         select_office: "Выберите офис",
         conference_call: "Конференц-связь",

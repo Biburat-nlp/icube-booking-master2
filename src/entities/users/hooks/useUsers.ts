@@ -22,9 +22,7 @@ export const useUsers = (params?: any, onSuccess?: (data: any) => void) => {
 export const useUploadUserPhoto = (onSuccess?: (updated: TUser) => void) => {
     return useMutation<TUser, unknown, File>((file) => usersApi.uploadAvatar(file), {
         onSuccess,
-        onError: (err) => {
-            console.error("Произошла ошибка", err);
-        },
+        onError: () => {},
     });
 };
 
@@ -33,9 +31,7 @@ export const useUpdateUser = (onSuccess?: (user: TUser) => void) => {
         (data: Pick<TUser, "messenger_link" | "work_day_start" | "work_day_end">) => usersApi.updateUser(data),
         {
             onSuccess,
-            onError: (err) => {
-                console.error("Произошла ошибка", err);
-            },
+            onError: () => {},
         }
     );
 };
@@ -43,8 +39,6 @@ export const useUpdateUser = (onSuccess?: (user: TUser) => void) => {
 export const useGetPinCode = (onSuccess?: (pinCode: string) => void) => {
     return useMutation(() => usersApi.getPincode(), {
         onSuccess,
-        onError: (err) => {
-            console.error("Произошла ошибка", err);
-        },
+        onError: () => {},
     });
 };

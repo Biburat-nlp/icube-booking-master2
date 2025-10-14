@@ -12,11 +12,9 @@ const AppUrlListener: React.FC<any> = () => {
     
     useEffect(() => {
       const processUrl = async (eventUrl: string) => {
-        console.log('AppUrlListener received URL:', eventUrl);
         
         // Защита от одновременной обработки
         if (processingRef.current) {
-          console.log('Already processing an auth callback, skipping');
           return;
         }
         
@@ -30,7 +28,6 @@ const AppUrlListener: React.FC<any> = () => {
             // Проверяем, не был ли этот код уже обработан
             const { value: processedCode } = await Preferences.get({ key: PROCESSED_CODE_KEY });
             if (processedCode === code) {
-              console.log('Code already processed, skipping:', code.substring(0, 10) + '...');
               return;
             }
             
@@ -40,15 +37,12 @@ const AppUrlListener: React.FC<any> = () => {
             
             const { value: expectedState } = await Preferences.get({ key: PKCE_KEYS.state });
             if (expectedState && expectedState !== state) {
-              console.error('State mismatch, aborting.');
               return;
             }
-            try { await InAppBrowser.close(); } catch (e) { console.warn('IAB close ignored:', e); }
+            try { await InAppBrowser.close(); } catch (e) {}
             // Меняем код на токены нативно и перезагружаем UI
             try {
-              console.log('Exchanging auth code for tokens (query) ...');
               const { value: redirectUri } = await Preferences.get({ key: PKCE_KEYS.redirectUri });
-              console.log('Using redirectUri for exchange:', redirectUri);
               await exchangeCodeForTokens(code, redirectUri || 'icube://token');
               
               // Используем setTimeout чтобы дать время токенам сохраниться
@@ -58,12 +52,10 @@ const AppUrlListener: React.FC<any> = () => {
                 window.location.reload();
               }, 100);
             } catch (e) {
-              console.error('Token exchange failed (query):', e);
             }
             return;
           }
           if (url.searchParams.has('error')) {
-            console.error('OAuth error:', url.searchParams.get('error'));
             await InAppBrowser.close();
             return;
           }
@@ -78,7 +70,6 @@ const AppUrlListener: React.FC<any> = () => {
               // Проверяем, не был ли этот код уже обработан
               const { value: processedCode } = await Preferences.get({ key: PROCESSED_CODE_KEY });
               if (processedCode === code) {
-                console.log('Code already processed (fragment), skipping:', code.substring(0, 10) + '...');
                 return;
               }
               
@@ -88,14 +79,11 @@ const AppUrlListener: React.FC<any> = () => {
               
               const { value: expectedState } = await Preferences.get({ key: PKCE_KEYS.state });
               if (expectedState && expectedState !== state) {
-                console.error('State mismatch, aborting.');
                 return;
               }
-              try { await InAppBrowser.close(); } catch (e) { console.warn('IAB close ignored:', e); }
+              try { await InAppBrowser.close(); } catch (e) {}
               try {
-                console.log('Exchanging auth code for tokens (fragment) ...');
                 const { value: redirectUri } = await Preferences.get({ key: PKCE_KEYS.redirectUri });
-                console.log('Using redirectUri for exchange:', redirectUri);
                 await exchangeCodeForTokens(code, redirectUri || 'icube://token');
                 
                 // Используем setTimeout чтобы дать время токенам сохраниться
@@ -105,7 +93,6 @@ const AppUrlListener: React.FC<any> = () => {
                   window.location.reload();
                 }, 100);
               } catch (e) {
-                console.error('Token exchange failed (fragment):', e);
               }
               return;
             }
@@ -113,7 +100,6 @@ const AppUrlListener: React.FC<any> = () => {
             window.location.replace('/#' + hash);
           }
         } catch (error) {
-          console.error('Error processing URL:', error);
           try { await InAppBrowser.close(); } catch {}
         }
       };

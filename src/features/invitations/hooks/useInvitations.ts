@@ -27,7 +27,7 @@ export const useSetInvitation = (created_by: number, onSuccess?: (data: TInvitat
         },
         {
             onSuccess,
-            onError: (error) => console.error(error),
+            onError: () => {},
         }
     );
 };
@@ -41,7 +41,7 @@ export const useUpdateInvitation = (created_by: number, onSuccess?: (data: TInvi
         },
         {
             onSuccess,
-            onError: (error) => console.error(error),
+            onError: () => {},
         }
     );
 };
@@ -57,7 +57,7 @@ export const useRemoveInvitation = (onSuccess?: (data: TInvitations[]) => void) 
         },
         {
             onSuccess,
-            onError: (error) => console.error(error),
+            onError: () => {},
         }
     );
 };

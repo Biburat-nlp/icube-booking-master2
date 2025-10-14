@@ -40,7 +40,6 @@ export function useRoute(startVertex: number | null, endVertex: number | null, v
                 setRoutePoints(pts);
             })
             .catch((err) => {
-                console.error("Error fetching route:", err);
                 setError(err);
                 setRoutePoints([]);
             })

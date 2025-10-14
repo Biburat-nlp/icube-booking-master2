@@ -19,11 +19,14 @@ const splitterPostProcessor: PostProcessorModule = {
     },
 };
 
+const deviceLang = (typeof navigator !== "undefined" && navigator.language ? navigator.language : "").toLowerCase();
+const initialLng = deviceLang.startsWith("ru") ? "ru" : "en";
+
 i18n.use(splitterPostProcessor)
     .use(initReactI18next)
     .init({
-        lng: "ru",
-        fallbackLng: "ru",
+        lng: initialLng,
+        fallbackLng: "en",
         debug: false,
         keySeparator: ":",
         nsSeparator: false,

@@ -41,11 +41,7 @@ export const useReservations = (params: any, onSuccess: (data: any) => void) => 
                 usage: curUsage,
                 all: allReservations.results,
             };
-            
-            console.log('useReservations result:', result);
-            console.log('usage data:', curUsage);
-            console.log('all reservations:', allReservations.results);
-            
+
             return result;
         },
         {
@@ -64,7 +60,7 @@ export const useReserveWorkspace = (onSuccessCallback?: (data: any) => void) => 
         },
         {
             onSuccess: onSuccessCallback,
-            onError: (error) => console.error(error),
+            onError: () => {},
         }
     );
 };
@@ -83,7 +79,7 @@ export const useUpdateWorkspace = (onSuccessCallback?: (data: any) => void) => {
         },
         {
             onSuccess: onSuccessCallback,
-            onError: (error) => console.error(error),
+            onError: () => {},
         }
     );
 };
@@ -97,7 +93,7 @@ export const useCancelWorkspace = (onSuccessCallback?: (data: any) => void) => {
         },
         {
             onSuccess: onSuccessCallback,
-            onError: (error) => console.error(error),
+            onError: () => {},
         }
     );
 };

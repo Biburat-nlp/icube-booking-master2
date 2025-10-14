@@ -25,11 +25,10 @@ export const ServerConfigProvider: React.FC<ServerConfigProviderProps> = ({ chil
             const config = await serverConfigManager.getConfig();
             setBaseUrl(config.baseUrl);
             setIsCustom(config.isCustom);
-            
-            // Update API base URL
-            await updateApiBaseUrl(config.baseUrl);
+            // Update API base URL derived from domain
+            const apiBase = await serverConfigManager.getApiBaseUrl();
+            await updateApiBaseUrl(apiBase);
         } catch (error) {
-            console.error("Failed to refresh server config:", error);
         }
     };
 
@@ -39,7 +38,6 @@ export const ServerConfigProvider: React.FC<ServerConfigProviderProps> = ({ chil
                 await refreshConfig();
                 setIsInitialized(true);
             } catch (error) {
-                console.error("Failed to initialize server config:", error);
                 setIsInitialized(true); // Избегаем бесконечной загрузки kappa
             }
         };

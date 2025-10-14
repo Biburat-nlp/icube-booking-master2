@@ -23,18 +23,9 @@ export const keycloak = new Keycloak({
 export const initKeycloak = async (): Promise<boolean> => {
     await storage.create();
 
-    // Логируем переменные окружения для отладки
-    console.log('VITE_KEYCLOAK_URL:', import.meta.env.VITE_KEYCLOAK_URL);
-    console.log('VITE_KEYCLOAK_REALM:', import.meta.env.VITE_KEYCLOAK_REALM);
-    console.log('VITE_KEYCLOAK_CLIENT_ID:', import.meta.env.VITE_KEYCLOAK_CLIENT_ID);
-
     const redirectUri = Capacitor.isNativePlatform() 
         ? (import.meta.env.VITE_MOBILE_SCHEME || "icube://token")
         : (import.meta.env.VITE_BASE_URL || window.location.origin);
-    
-    console.log('Platform:', Capacitor.isNativePlatform() ? 'Native' : 'Web');
-    console.log('Redirect URI:', redirectUri);
-    console.log('Current URL:', window.location.href);
 
     const [token, refreshToken, idToken, skew, accessExp] = await Promise.all([
         storage.get(KEYS.token),
@@ -45,21 +36,11 @@ export const initKeycloak = async (): Promise<boolean> => {
     ]);
 
     const haveTokens = !!token && !!refreshToken;
-    
-    console.log('Keycloak init - tokens from storage:', {
-        hasToken: !!token,
-        hasRefresh: !!refreshToken,
-        hasId: !!idToken,
-        tokenPreview: token ? token.substring(0, 20) + '...' : 'null',
-        accessExp: accessExp ? new Date(Number(accessExp)).toISOString() : 'null'
-    });
 
     let options: KeycloakInitOptions;
 
     if (haveTokens) {
-        // Проверяем валидность токенов перед использованием
         try {
-            // Простая проверка формата JWT токена
             if (token && token.split('.').length === 3) {
                 options = {
                     token,
@@ -70,7 +51,6 @@ export const initKeycloak = async (): Promise<boolean> => {
                     redirectUri,
                 };
             } else {
-                // Токен невалидный, очищаем хранилище
                 await storage.clear();
                 options = {
                     checkLoginIframe: false,
@@ -78,7 +58,6 @@ export const initKeycloak = async (): Promise<boolean> => {
                 };
             }
         } catch (error) {
-            console.error('Invalid token format, clearing storage:', error);
             await storage.clear();
             options = {
                 checkLoginIframe: false,
@@ -92,7 +71,6 @@ export const initKeycloak = async (): Promise<boolean> => {
         };
     }
 
-    // Общие настройки
     options = {
         ...options,
         checkLoginIframe: false,
@@ -101,59 +79,41 @@ export const initKeycloak = async (): Promise<boolean> => {
 
     try {
         const authenticated = await keycloak.init(options);
-        
-        console.log('Keycloak initialized:', authenticated);
-        console.log('Token after init:', !!keycloak.token);
-        console.log('Token value:', keycloak.token ? keycloak.token.substring(0, 20) + '...' : 'null');
 
         if (authenticated && haveTokens && accessExp) {
             const msLeft = Number(accessExp) - Date.now();
-            console.log('Token expires in:', msLeft, 'ms');
             if (msLeft < 60000) {
                 try {
-                    console.log('Refreshing token...');
                     await keycloak.updateToken(60);
-                    console.log('Token refreshed successfully');
                 } catch (error) {
-                    console.error('Token refresh failed:', error);
-                    // Не пытаемся автоматически логиниться, пусть пользователь сделает это вручную
                 }
             }
         }
 
         return authenticated;
     } catch (error) {
-        console.error('Keycloak initialization error:', error);
-        // Очищаем хранилище при ошибке инициализации
         await storage.clear();
         return false;
     }
 };
 
 export async function exchangeCodeForTokens(code: string, redirectUri: string): Promise<void> {
-    const tokenUrl = `${import.meta.env.VITE_KEYCLOAK_URL}/realms/${import.meta.env.VITE_KEYCLOAK_REALM}/protocol/openid-connect/token`;
+    const { serverConfigManager } = await import("@/shared/config/serverConfig.ts");
+    const kcBase = await serverConfigManager.getKeycloakBaseUrl();
+    const tokenUrl = `${kcBase}/realms/${import.meta.env.VITE_KEYCLOAK_REALM}/protocol/openid-connect/token`;
     const body = new URLSearchParams();
     body.set('grant_type', 'authorization_code');
     body.set('client_id', import.meta.env.VITE_KEYCLOAK_CLIENT_ID);
     body.set('code', code);
     body.set('redirect_uri', redirectUri);
-    // Если использовали PKCE, можно добавить code_verifier из storage
+
     try {
-        const { Preferences } = await import('@capacitor/preferences');
-        const { PKCE_KEYS, generateCodeChallenge } = await import('./pkce');
+    const { Preferences } = await import('@capacitor/preferences');
+    const { PKCE_KEYS } = await import('./pkce');
         const { value: verifier } = await Preferences.get({ key: PKCE_KEYS.verifier });
-        const { value: challengeSaved } = await Preferences.get({ key: PKCE_KEYS.challenge });
+    const { value: challengeSaved } = await Preferences.get({ key: PKCE_KEYS.challenge });
         if (verifier) {
             body.set('code_verifier', verifier);
-            // Диагностика соответствия challenge
-            try {
-                const recalculated = await generateCodeChallenge(verifier);
-                console.log('PKCE check:', {
-                    verifierLen: verifier.length,
-                    challengeSaved: challengeSaved ? challengeSaved.substring(0,4) + '...' + challengeSaved.slice(-4) : 'none',
-                    challengeRecalc: recalculated.substring(0,4) + '...' + recalculated.slice(-4)
-                });
-            } catch {}
         }
     } catch {}
 
@@ -163,13 +123,10 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
         body: body.toString(),
     });
     if (!resp.ok) {
-        const errorText = await resp.text();
-        console.error('Token exchange failed:', resp.status, errorText);
+        await resp.text();
         throw new Error(`Token exchange failed: ${resp.status}`);
     }
     const data = await resp.json();
-    
-    console.log('Token exchange successful, saving tokens...');
 
     await storage.create();
     await Promise.all([
@@ -180,23 +137,16 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
         data.expires_in && storage.set(KEYS.exp, Date.now() + data.expires_in * 1000),
         data.refresh_expires_in && storage.set(KEYS.refreshExp, Date.now() + data.refresh_expires_in * 1000),
     ]);
-    
-    console.log('Tokens saved to storage');
-    
-    // Обновляем токены в keycloak экземпляре
+
     keycloak.token = data.access_token;
     keycloak.refreshToken = data.refresh_token;
     keycloak.idToken = data.id_token;
     keycloak.authenticated = true;
-    
-    console.log('Keycloak instance updated with new tokens');
 
-    // Очищаем временные PKCE-значения (НЕ очищаем processed code - он защищает от повторной обработки)
     try {
         const { Preferences } = await import('@capacitor/preferences');
         const { PKCE_KEYS } = await import('./pkce');
         await Preferences.remove({ key: PKCE_KEYS.verifier });
         await Preferences.remove({ key: PKCE_KEYS.state });
-        console.log('Cleaned up PKCE data');
     } catch {}
 }

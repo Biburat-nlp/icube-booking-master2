@@ -4,6 +4,7 @@ import { checkmark, close, refresh, server } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 import { useServerConfig } from "@/shared/hooks/useServerConfig.ts";
 import { updateApiBaseUrl } from "@/shared/api/api.ts";
+import { useAuth } from "@/app/providers/AuthProvider.tsx";
 import { serverConfigManager } from "@/shared/config/serverConfig.ts";
 import { useServerConfigContext } from "@/app/providers/ServerConfigProvider.tsx";
 import styles from "./ServerConfigModal.module.scss";
@@ -17,6 +18,7 @@ export const ServerConfigModal: React.FC<ServerConfigModalProps> = ({ isOpen, on
     const { t } = useTranslation();
     const { config, isLoading, error, updateConfig, resetToDefault, validateUrl, formatUrl, isDefaultUrl } = useServerConfig();
     const { refreshConfig } = useServerConfigContext();
+    const { user, logout } = useAuth();
     const [serverUrl, setServerUrl] = useState("");
     const [isSaving, setIsSaving] = useState(false);
     const [isResetting, setIsResetting] = useState(false);
@@ -45,7 +47,7 @@ export const ServerConfigModal: React.FC<ServerConfigModalProps> = ({ isOpen, on
             setValidationError(null);
             
             const formattedUrl = formatUrl(serverUrl);
-            
+            // Store domain only; API base will be derived
             // Проверяем, является ли введенный URL стандартным
             const isDefault = isDefaultUrl(formattedUrl);
             
@@ -55,10 +57,19 @@ export const ServerConfigModal: React.FC<ServerConfigModalProps> = ({ isOpen, on
             };
 
             await updateConfig(newConfig);
-            await updateApiBaseUrl(formattedUrl);
+            const apiBase = serverConfigManager.getApiBaseUrlFromDomain(formattedUrl);
+            await updateApiBaseUrl(apiBase);
             
             // Обновляем глобальный контекст
             await refreshConfig();
+
+            // If user is logged in, force logout after server change
+            if (user) {
+                try {
+                    await logout();
+                } catch (e) {
+                }
+            }
             
             onClose();
         } catch (err) {
@@ -74,10 +85,18 @@ export const ServerConfigModal: React.FC<ServerConfigModalProps> = ({ isOpen, on
             setValidationError(null);
             await resetToDefault();
             const defaultConfig = await serverConfigManager.getConfig();
-            await updateApiBaseUrl(defaultConfig.baseUrl);
+            const apiBase = await serverConfigManager.getApiBaseUrl();
+            await updateApiBaseUrl(apiBase);
             
             // Обновляем глобальный контекст
             await refreshConfig();
+
+            if (user) {
+                try {
+                    await logout();
+                } catch (e) {
+                }
+            }
             
             onClose();
         } catch (err) {

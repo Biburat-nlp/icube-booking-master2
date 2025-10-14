@@ -71,7 +71,7 @@ export const useReserveMeetingRoom = (onSuccessCallback?: (data: any) => void) =
         },
         {
             onSuccess: onSuccessCallback,
-            onError: (error) => console.error(error),
+            onError: () => {},
         }
     );
 };
@@ -85,7 +85,7 @@ export const useCancelMeetingRoom = (onSuccess?: (data: any) => void) => {
         },
         {
             onSuccess,
-            onError: (error) => console.log(error),
+            onError: () => {},
         }
     );
 };
@@ -112,7 +112,7 @@ export const useUpdateMeetingRoom = (onSuccess?: (data: any) => void) => {
         },
         {
             onSuccess,
-            onError: (error) => console.error(error),
+            onError: () => {},
         }
     );
 };

@@ -10,7 +10,6 @@ export const combineDateAndTime = (isoDateStr: string, timeStr: string) => {
 
         return updatedDate;
     } catch (error) {
-        console.error("Ошибка при обработке даты или времени:", error);
         return null;
     }
 };

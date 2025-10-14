@@ -55,7 +55,7 @@ export const useReserveParking = (onSuccessCallback?: (data: any) => void) => {
         },
         {
             onSuccess: onSuccessCallback,
-            onError: (error) => console.error(error),
+            onError: () => {},
         }
     );
 };
@@ -69,7 +69,7 @@ export const useCancelParking = (onSuccessCallback?: (data: any) => void) => {
         },
         {
             onSuccess: onSuccessCallback,
-            onError: (error) => console.error(error),
+            onError: () => {},
         }
     );
 };

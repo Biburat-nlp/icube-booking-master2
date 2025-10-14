@@ -98,15 +98,9 @@ export const WorkspacesPage = ({ path }: TProps) => {
 
     const { treeData, office } = useOfficeFilters(params, selectedSpace, () => {}, "desktops");
     const { data: reservations, refetch: refetchReservations } = useReservations(params, (data) => {
-        console.log('WorkspacesPage onSuccess data:', data);
-        
         const filteredByUsage = filteredDesktops?.filter(({ id }) =>
             data?.usage?.reserved_ids ? !data?.usage?.reserved_ids.includes(id) : id
         );
-        
-        console.log('filteredDesktops:', filteredDesktops);
-        console.log('filteredByUsage:', filteredByUsage);
-        console.log('data.usage.reserved_ids:', data?.usage?.reserved_ids);
 
         const workspaceMap = office?.workspaces.reduce<Record<number, string>>((map, ws) => {
             map[ws.id] = ws.title;
@@ -124,18 +118,10 @@ export const WorkspacesPage = ({ path }: TProps) => {
             },
             {} as Record<string, Desktop[]>
         );
-
-        console.log('groupByWorkspaces:', groupByWorkspaces);
         setFreeDesktops(groupByWorkspaces);
     });
 
     const handleFilterDesktops = useCallback(() => {
-        console.log('handleFilterDesktops called');
-        console.log('office:', office);
-        console.log('office.desktops:', office?.desktops);
-        console.log('switchFilter:', switchFilter);
-        console.log('selectedSpace:', selectedSpace);
-        
         const filteredByOptions = office?.desktops.filter(
             (el) =>
                 (!switchFilter.has_keyboard || el.has_keyboard) &&
@@ -150,9 +136,6 @@ export const WorkspacesPage = ({ path }: TProps) => {
             ? filteredByOptions?.filter(({ work_space_id }) => work_space_id === +selectedSpace)
             : filteredByOptions;
 
-        console.log('filteredByOptions:', filteredByOptions);
-        console.log('filteredBySpaceId:', filteredBySpaceId);
-        
         setFilteredDesktops(filteredBySpaceId);
     }, [office, selectedSpace, switchFilter]);
 

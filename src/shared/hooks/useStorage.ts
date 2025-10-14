@@ -14,8 +14,7 @@ export const useSessionStorage = <T>(key: string, initialValue: T) => {
         try {
             setStoredValue(value);
             window.sessionStorage.setItem(key, JSON.stringify(value));
-        } catch (error) {
-            console.error(`Error setting sessionStorage key "${key}":`, error);
+    } catch (error) {
         }
     };
 
@@ -36,8 +35,7 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
         try {
             setStoredValue(value);
             window.localStorage.setItem(key, JSON.stringify(value));
-        } catch (error) {
-            console.error(`Error setting localStorage key "${key}":`, error);
+    } catch (error) {
         }
     };
 
