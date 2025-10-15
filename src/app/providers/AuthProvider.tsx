@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useContext, useEffect, useRef, useSt
 import { useQueryClient } from "react-query";
 import { useHistory } from "react-router-dom";
 
-import { initKeycloak, keycloak, KEYS } from "@/features/auth/keycloak";
+import { initKeycloak, keycloak, prepareKeycloak, KEYS } from "@/features/auth/keycloak";
 import { generateCodeVerifier, generateCodeChallenge, PKCE_KEYS } from "@/features/auth/pkce";
 import { Preferences } from '@capacitor/preferences';
 
@@ -45,14 +45,15 @@ export const AuthProvider = ({ children }: TProps) => {
     }, []);
 
     const persistTokens = useCallback(async () => {
+        const kc = keycloak ?? await prepareKeycloak();
         await Promise.all([
-            storage.set(KEYS.token, keycloak.token),
-            storage.set(KEYS.refresh, keycloak.refreshToken),
-            storage.set(KEYS.id, keycloak.idToken),
-            storage.set(KEYS.skew, keycloak.timeSkew),
+            storage.set(KEYS.token, kc.token),
+            storage.set(KEYS.refresh, kc.refreshToken),
+            storage.set(KEYS.id, kc.idToken),
+            storage.set(KEYS.skew, kc.timeSkew),
 
-            keycloak.tokenParsed?.exp && storage.set(KEYS.exp, keycloak.tokenParsed.exp * 1_000),
-            keycloak.refreshTokenParsed?.exp && storage.set(KEYS.refreshExp, keycloak.refreshTokenParsed.exp * 1_000),
+            kc.tokenParsed?.exp && storage.set(KEYS.exp, kc.tokenParsed.exp * 1_000),
+            kc.refreshTokenParsed?.exp && storage.set(KEYS.refreshExp, kc.refreshTokenParsed.exp * 1_000),
         ]);
 
         refreshUser();
@@ -96,7 +97,8 @@ export const AuthProvider = ({ children }: TProps) => {
 
             await InAppBrowser.openInSystemBrowser({ url: authUrl, options: DefaultSystemBrowserOptions });
         } else {
-            await keycloak.login({ redirectUri });
+            const kc = keycloak ?? await prepareKeycloak();
+            await kc.login({ redirectUri });
         }        
     }, []);
 
@@ -114,7 +116,8 @@ export const AuthProvider = ({ children }: TProps) => {
                 options: DefaultSystemBrowserOptions
             });
         } else {
-            await keycloak.logout();
+            const kc = keycloak ?? await prepareKeycloak();
+            await kc.logout();
         }
             
             setUser(null);
@@ -132,13 +135,14 @@ export const AuthProvider = ({ children }: TProps) => {
             try {
                 const ok = await initKeycloak();
 
-                if (ok && keycloak.token) {
+                const kc = keycloak ?? await prepareKeycloak();
+                if (ok && kc.token) {
                     const me = await usersApi.me();
                     if (mountedRef.current) setUser(me);
 
                     await persistTokens();
-                    keycloak.onAuthSuccess = persistTokens;
-                    keycloak.onAuthRefreshSuccess = persistTokens;
+                    kc.onAuthSuccess = persistTokens;
+                    kc.onAuthRefreshSuccess = persistTokens;
                 }
             } catch (e) {
             } finally {

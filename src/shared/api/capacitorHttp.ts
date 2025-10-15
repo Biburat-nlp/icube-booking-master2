@@ -1,7 +1,7 @@
 import { CapacitorHttp } from '@capacitor/core';
 import { Capacitor } from '@capacitor/core';
 
-import { keycloak } from '@/features/auth/keycloak';
+import { keycloak, prepareKeycloak } from '@/features/auth/keycloak';
 
 export interface CapacitorHttpRequestOptions {
     url: string;
@@ -28,8 +28,9 @@ export class CapacitorHttpClient {
     private async makeRequest<T = any>(options: CapacitorHttpRequestOptions): Promise<CapacitorHttpResponse<T>> {
         const { url, method, headers = {}, data, params } = options;
         
-        if (keycloak.token) {
-            headers['Authorization'] = `Bearer ${keycloak.token}`;
+        const kc = keycloak ?? await prepareKeycloak();
+        if (kc.token) {
+            headers['Authorization'] = `Bearer ${kc.token}`;
             
         } else {
             
@@ -75,17 +76,15 @@ export class CapacitorHttpClient {
             
             if (error.status === 401) {
                 try {
-                    
-                    const refreshed = await keycloak.updateToken(30);
-                    if (refreshed && keycloak.token) {
-                        
-                        
-                        headers['Authorization'] = `Bearer ${keycloak.token}`;
+                    const kc = keycloak ?? await prepareKeycloak();
+                    const refreshed = await kc.updateToken(30);
+                    if (refreshed && kc.token) {
+                        headers['Authorization'] = `Bearer ${kc.token}`;
                         return this.makeRequest(options);
                     }
                 } catch (refreshError) {
-                    
-                    await keycloak.logout();
+                    const kc = keycloak ?? await prepareKeycloak();
+                    await kc.logout();
                 }
             }
             

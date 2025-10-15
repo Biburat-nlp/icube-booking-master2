@@ -2,6 +2,7 @@ import { Capacitor } from "@capacitor/core";
 import Keycloak from "keycloak-js";
 
 import { storage } from "@/shared/lib/ionic-storage";
+import { serverConfigManager } from "@/shared/config/serverConfig.ts";
 
 import type { KeycloakInitOptions } from "keycloak-js";
 
@@ -14,14 +15,25 @@ export const KEYS = {
     refreshExp: "kc_refresh_exp",
 } as const;
 
-export const keycloak = new Keycloak({
-    url: import.meta.env.VITE_KEYCLOAK_URL,
-    realm: import.meta.env.VITE_KEYCLOAK_REALM,
-    clientId: import.meta.env.VITE_KEYCLOAK_CLIENT_ID,
-});
+let currentKcBase: string | null = null;
+export let keycloak: Keycloak | null = null;
+
+export const prepareKeycloak = async (): Promise<Keycloak> => {
+    const kcBase = await serverConfigManager.getKeycloakBaseUrl();
+    if (!keycloak || currentKcBase !== kcBase) {
+        keycloak = new Keycloak({
+            url: kcBase,
+            realm: import.meta.env.VITE_KEYCLOAK_REALM,
+            clientId: import.meta.env.VITE_KEYCLOAK_CLIENT_ID,
+        });
+        currentKcBase = kcBase;
+    }
+    return keycloak;
+};
 
 export const initKeycloak = async (): Promise<boolean> => {
     await storage.create();
+    const kc = await prepareKeycloak();
 
     const redirectUri = Capacitor.isNativePlatform() 
         ? (import.meta.env.VITE_MOBILE_SCHEME || "icube://token")
@@ -78,13 +90,13 @@ export const initKeycloak = async (): Promise<boolean> => {
     };
 
     try {
-        const authenticated = await keycloak.init(options);
+        const authenticated = await kc.init(options);
 
         if (authenticated && haveTokens && accessExp) {
             const msLeft = Number(accessExp) - Date.now();
             if (msLeft < 60000) {
                 try {
-                    await keycloak.updateToken(60);
+                    await kc.updateToken(60);
                 } catch (error) {
                 }
             }
@@ -106,7 +118,7 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
     body.set('client_id', import.meta.env.VITE_KEYCLOAK_CLIENT_ID);
     body.set('code', code);
     body.set('redirect_uri', redirectUri);
-
+    
     try {
     const { Preferences } = await import('@capacitor/preferences');
     const { PKCE_KEYS } = await import('./pkce');
@@ -138,10 +150,11 @@ export async function exchangeCodeForTokens(code: string, redirectUri: string): 
         data.refresh_expires_in && storage.set(KEYS.refreshExp, Date.now() + data.refresh_expires_in * 1000),
     ]);
 
-    keycloak.token = data.access_token;
-    keycloak.refreshToken = data.refresh_token;
-    keycloak.idToken = data.id_token;
-    keycloak.authenticated = true;
+    const kc = await prepareKeycloak();
+    kc.token = data.access_token;
+    kc.refreshToken = data.refresh_token;
+    kc.idToken = data.id_token;
+    kc.authenticated = true;
 
     try {
         const { Preferences } = await import('@capacitor/preferences');

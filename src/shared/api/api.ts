@@ -1,7 +1,7 @@
 import axios, { type AxiosError, type AxiosRequestHeaders } from "axios";
 import { Capacitor } from "@capacitor/core";
 
-import { keycloak, KEYS } from "@/features/auth/keycloak.ts";
+import { keycloak, prepareKeycloak, KEYS } from "@/features/auth/keycloak.ts";
 import { storage } from "@/shared/lib/ionic-storage";
 import { serverConfigManager } from "@/shared/config/serverConfig.ts";
 import { capacitorHttpClient } from "./capacitorHttp.ts";
@@ -64,7 +64,8 @@ export const updateApiBaseUrl = async (domainOrApiBase: string) => {
 };
 
 api.interceptors.request.use(async (config) => {
-    let token = keycloak.token;
+    const kc = keycloak ?? await prepareKeycloak();
+    let token = kc.token;
     if (!token && Capacitor.isNativePlatform()) {
         try {
             await storage.create();
@@ -96,24 +97,27 @@ api.interceptors.response.use(
 
         if (status === 401 && originalRequest) {
             if (refreshAttempts >= MAX_REFRESH_ATTEMPTS) {
-                await keycloak.logout();
+                const kc = keycloak ?? await prepareKeycloak();
+                await kc.logout();
                 return Promise.reject(error);
             }
 
             refreshAttempts += 1;
 
             try {
-                const refreshed = await keycloak.updateToken(30);
+                const kc = keycloak ?? await prepareKeycloak();
+                const refreshed = await kc.updateToken(30);
                 if (refreshed) {
                     refreshAttempts = 0;
                     originalRequest.headers = {
                         ...originalRequest.headers,
-                        Authorization: `Bearer ${keycloak.token}`,
+                        Authorization: `Bearer ${kc.token}`,
                     } as AxiosRequestHeaders;
                     return api(originalRequest);
                 }
             } catch (refreshError) {
-                await keycloak.logout();
+                const kc = keycloak ?? await prepareKeycloak();
+                await kc.logout();
                 return Promise.reject(refreshError);
             }
         }
