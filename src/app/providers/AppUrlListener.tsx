@@ -145,67 +145,66 @@ const AppUrlListener: React.FC<any> = () => {
       return null;
     }
 
-    const visibleErrors = overlayExpanded ? authErrors : authErrors.slice(-3);
-    const hiddenCount = overlayExpanded ? 0 : Math.max(0, authErrors.length - visibleErrors.length);
-
-    return (
-      <div style={{
-        position: 'fixed',
-        left: 8,
-        right: 8,
-        bottom: 8,
-        zIndex: 99999,
-        background: '#fff',
-        color: '#000',
-        border: '1px solid #e0e0e0',
-        borderRadius: 8,
-        padding: 12,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
-        fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif',
-        fontSize: 13,
-        maxHeight: overlayExpanded ? '70vh' : '28vh',
-        overflow: 'auto',
-        whiteSpace: 'pre-wrap'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
-          <div style={{ fontWeight: 600, flex: 1 }}>Проблемы с авторизацией</div>
-          <button
-            onClick={() => setOverlayExpanded((v) => !v)}
-            style={{
-              marginRight: 8,
-              padding: '4px 8px',
-              border: '1px solid #ccc',
-              background: '#fafafa',
-              borderRadius: 6,
-              cursor: 'pointer'
-            }}
-          >{overlayExpanded ? 'Свернуть' : 'Развернуть'}</button>
-          <button
-            onClick={() => setOverlayVisible(false)}
-            aria-label="Закрыть"
-            style={{
-              padding: '4px 8px',
-              border: '1px solid #ccc',
-              background: '#fafafa',
-              borderRadius: 6,
-              cursor: 'pointer'
-            }}
-          >Закрыть</button>
-        </div>
-
-        {visibleErrors.map((e, i) => (
-          <div key={i} style={{ marginBottom: 6 }}>
-            {authErrors.length - visibleErrors.length + i + 1}. {e}
-          </div>
-        ))}
-
-        {hiddenCount > 0 && (
-          <div style={{ marginTop: 6, color: '#666' }}>
-            Скрыто записей: {hiddenCount}. Нажмите «Развернуть», чтобы увидеть все.
-          </div>
-        )}
-      </div>
-    );
+    // Оверлей ошибок авторизации временно отключён, ниже оставлен закомментированный рендер для быстрого включения
+    // const visibleErrors = overlayExpanded ? authErrors : authErrors.slice(-3);
+    // const hiddenCount = overlayExpanded ? 0 : Math.max(0, authErrors.length - visibleErrors.length);
+    // return (
+    //   <div style={{
+    //     position: 'fixed',
+    //     left: 8,
+    //     right: 8,
+    //     bottom: 8,
+    //     zIndex: 99999,
+    //     background: '#fff',
+    //     color: '#000',
+    //     border: '1px solid #e0e0e0',
+    //     borderRadius: 8,
+    //     padding: 12,
+    //     boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
+    //     fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif',
+    //     fontSize: 13,
+    //     maxHeight: overlayExpanded ? '70vh' : '28vh',
+    //     overflow: 'auto',
+    //     whiteSpace: 'pre-wrap'
+    //   }}>
+    //     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
+    //       <div style={{ fontWeight: 600, flex: 1 }}>Проблемы с авторизацией</div>
+    //       <button
+    //         onClick={() => setOverlayExpanded((v) => !v)}
+    //         style={{
+    //           marginRight: 8,
+    //           padding: '4px 8px',
+    //           border: '1px solid #ccc',
+    //           background: '#fafafa',
+    //           borderRadius: 6,
+    //           cursor: 'pointer'
+    //         }}
+    //       >{overlayExpanded ? 'Свернуть' : 'Развернуть'}</button>
+    //       <button
+    //         onClick={() => setOverlayVisible(false)}
+    //         aria-label="Закрыть"
+    //         style={{
+    //           padding: '4px 8px',
+    //           border: '1px solid #ccc',
+    //           background: '#fafafa',
+    //           borderRadius: 6,
+    //           cursor: 'pointer'
+    //         }}
+    //       >Закрыть</button>
+    //     </div>
+    //     {visibleErrors.map((e, i) => (
+    //       <div key={i} style={{ marginBottom: 6 }}>
+    //         {authErrors.length - visibleErrors.length + i + 1}. {e}
+    //       </div>
+    //     ))}
+    //     {hiddenCount > 0 && (
+    //       <div style={{ marginTop: 6, color: '#666' }}>
+    //         Скрыто записей: {hiddenCount}. Нажмите «Развернуть», чтобы увидеть все.
+    //       </div>
+    //     )}
+    //   </div>
+    // );
+    return null;
   };
   
   export default AppUrlListener;

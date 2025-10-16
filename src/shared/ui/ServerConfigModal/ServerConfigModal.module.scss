@@ -1,6 +1,6 @@
 .modalContent {
-  padding: calc(env(safe-area-inset-top, 0px) + 16px) 16px calc(env(safe-area-inset-bottom, 0px) + 16px);
-  height: 100%;
+  padding: 10px;
+  height: 90%;
   display: flex;
   flex-direction: column;
 }
@@ -16,18 +16,19 @@
 
 .headerIcon {
   font-size: 24px;
+  margin-top: 15px;
   color: var(--ion-color-primary);
 }
 
 .header h2 {
-  margin: 0;
+  margin-top: 15px;
   font-size: 20px;
   font-weight: 600;
   color: var(--ion-color-dark);
 }
 
 .content {
-  flex: 1;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -105,7 +106,7 @@
 
 @media (max-width: 768px) {
   .modalContent {
-    padding: calc(env(safe-area-inset-top, 0px) + 5px) 12px calc(env(safe-area-inset-bottom, 0px) + 5px);
+    padding: calc(env(safe-area-inset-top, 0px) + 12px) 12px calc(env(safe-area-inset-bottom, 0px) + 12px);
   }
   
   .footer {
