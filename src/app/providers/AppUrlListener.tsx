@@ -10,12 +10,15 @@ const PROCESSED_CODE_KEY = 'auth_processed_code';
 const AppUrlListener: React.FC<any> = () => {
     const processingRef = useRef<boolean>(false);
     const [authErrors, setAuthErrors] = useState<string[]>([]);
+    const [overlayVisible, setOverlayVisible] = useState<boolean>(false);
+    const [overlayExpanded, setOverlayExpanded] = useState<boolean>(false);
 
     const addError = (message: string) => {
       setAuthErrors((prev) => {
         const next = [...prev, message];
         return next.slice(-8);
       });
+      setOverlayVisible(true);
     };
     
     useEffect(() => {
@@ -138,7 +141,14 @@ const AppUrlListener: React.FC<any> = () => {
       });
     }, []);
   
-    return authErrors.length ? (
+    if (!overlayVisible || authErrors.length === 0) {
+      return null;
+    }
+
+    const visibleErrors = overlayExpanded ? authErrors : authErrors.slice(-3);
+    const hiddenCount = overlayExpanded ? 0 : Math.max(0, authErrors.length - visibleErrors.length);
+
+    return (
       <div style={{
         position: 'fixed',
         left: 8,
@@ -153,18 +163,49 @@ const AppUrlListener: React.FC<any> = () => {
         boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
         fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif',
         fontSize: 13,
-        maxHeight: '40vh',
+        maxHeight: overlayExpanded ? '70vh' : '28vh',
         overflow: 'auto',
         whiteSpace: 'pre-wrap'
       }}>
-        <div style={{ fontWeight: 600, marginBottom: 8 }}>Проблемы с авторизацией</div>
-        {authErrors.map((e, i) => (
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
+          <div style={{ fontWeight: 600, flex: 1 }}>Проблемы с авторизацией</div>
+          <button
+            onClick={() => setOverlayExpanded((v) => !v)}
+            style={{
+              marginRight: 8,
+              padding: '4px 8px',
+              border: '1px solid #ccc',
+              background: '#fafafa',
+              borderRadius: 6,
+              cursor: 'pointer'
+            }}
+          >{overlayExpanded ? 'Свернуть' : 'Развернуть'}</button>
+          <button
+            onClick={() => setOverlayVisible(false)}
+            aria-label="Закрыть"
+            style={{
+              padding: '4px 8px',
+              border: '1px solid #ccc',
+              background: '#fafafa',
+              borderRadius: 6,
+              cursor: 'pointer'
+            }}
+          >Закрыть</button>
+        </div>
+
+        {visibleErrors.map((e, i) => (
           <div key={i} style={{ marginBottom: 6 }}>
-            {i + 1}. {e}
+            {authErrors.length - visibleErrors.length + i + 1}. {e}
           </div>
         ))}
+
+        {hiddenCount > 0 && (
+          <div style={{ marginTop: 6, color: '#666' }}>
+            Скрыто записей: {hiddenCount}. Нажмите «Развернуть», чтобы увидеть все.
+          </div>
+        )}
       </div>
-    ) : null;
+    );
   };
   
   export default AppUrlListener;

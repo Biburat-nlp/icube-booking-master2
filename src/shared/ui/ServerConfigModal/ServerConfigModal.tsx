@@ -116,7 +116,14 @@ export const ServerConfigModal: React.FC<ServerConfigModalProps> = ({ isOpen, on
 
     if (isLoading) {
         return (
-            <IonModal isOpen={isOpen} onDidDismiss={handleClose}>
+            <IonModal
+                isOpen={isOpen}
+                onDidDismiss={handleClose}
+                breakpoints={[0, 0.9]}
+                initialBreakpoint={0.9}
+                handle={true}
+                className={styles.sheetModal}
+            >
                 <div className={styles.modalContent}>
                     <div className={styles.loadingContainer}>
                         <IonSpinner name="crescent" />
@@ -128,7 +135,14 @@ export const ServerConfigModal: React.FC<ServerConfigModalProps> = ({ isOpen, on
     }
 
     return (
-        <IonModal isOpen={isOpen} onDidDismiss={handleClose}>
+        <IonModal
+            isOpen={isOpen}
+            onDidDismiss={handleClose}
+            breakpoints={[0, 0.9]}
+            initialBreakpoint={0.9}
+            handle={true}
+            className={styles.sheetModal}
+        >
             <div className={styles.modalContent}>
                 <div className={styles.header}>
                     <IonIcon icon={server} className={styles.headerIcon} />
